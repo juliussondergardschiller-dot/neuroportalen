@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Begreber og klassifikation — Neuroportalen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .toast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 1.25rem 0;
+    }
+    .toast-card {
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-size: 14px;
+    }
+    .toast-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .toast-card p  { font-size: 12px; line-height: 1.5; opacity: .85; }
+    .toast-card .toast-pct {
+      font-size: 22px; font-weight: 700; margin-bottom: 4px; display: block;
+    }
+
+    .definition-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .definition-box dt {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--teal-dark);
+      margin-bottom: 4px;
+    }
+    .definition-box dd {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-left: 0;
+    }
+    .definition-box + .definition-box { margin-top: 0.5rem; }
+
+    @media (max-width: 600px) {
+      .toast-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menu-toggle">☰</button>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="/index.html" class="logo-mark">
+        <div class="logo-icon">N</div>
+        <div>
+          <div class="logo-text">Neuroportalen</div>
+          <div class="logo-sub">Cerebrovaskulære sygdomme</div>
+        </div>
+      </a>
+    </div>
+    <nav class="nav"></nav>
+    <div class="nav-progress">
+      <div class="progress-label">Fremgang: 0%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">
+        <a href="/index.html">Dashboard</a>
+        <span>›</span>
+        <a href="/grundlag/begreber.html">Grundlag</a>
+        <span>›</span>
+        <strong>Begreber og klassifikation</strong>
+      </div>
+      <span class="week-badge">Uge 1</span>
+    </div>
+
+    <div class="page-inner">
+
+      <div class="page-header">
+        <div class="page-label">Grundlag · Modul 1.1</div>
+        <h1>Begreber og klassifikation</h1>
+        <p>Forstå hvad stroke er, hvordan vi klassificerer det, og de nøglebegreber du skal have på plads fra dag ét.</p>
+      </div>
+
+      <div class="goals-box">
+        <h3>Læringsmål</h3>
+        <ul>
+          <li>Definere stroke og TIA korrekt med den nye, vævsbaserede definition</li>
+          <li>Klassificere iskæmisk stroke i de 4 TOAST-kategorier og forklare deres kliniske kendetegn</li>
+          <li>Skelne mellem iskæmisk stroke og ICH på klinisk og billeddiagnostisk grundlag</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+
+        <h2>Hvad er stroke?</h2>
+
+        <p>Stroke (apopleksi) er en pludselig opstået neurologisk dysfunktion forårsaget af fokal cerebral iskæmi eller blødning. WHO's klassiske definition kræver symptomer der varer mere end 24 timer eller fører til død — men denne tidsdefinition er i dag erstattet af en <strong>vævsbaseret definition</strong>.</p>
+
+        <div class="definition-box">
+          <dt>Stroke (nuværende definition)</dt>
+          <dd>En akut fokal neurologisk dysfunktion forårsaget af cerebral iskæmi eller blødning, med objektive tegn på hjerneskade på billediagnostik — uanset symptomvarighed.</dd>
+        </div>
+
+        <div class="definition-box">
+          <dt>TIA — transitorisk iskæmisk attak</dt>
+          <dd>En forbigående episode af neurologisk dysfunktion pga. fokal brain- eller retinal iskæmi, <em>uden</em> tegn på akut infarkt på MR-DWI. Varighed typisk &lt;1 time — men definitionen er vævsbaseret, ikke tidsbaseret.</dd>
+        </div>
+
+        <div class="warning-box">
+          <strong>Klinisk faldgrube</strong>
+          Den gamle "24-timers-regel" er forældet. En patient med symptomer i 30 minutter, men DWI-forandringer på MR, har haft et <em>stroke</em> — ikke en TIA. Brug altid billediagnostik til at afgøre det.
+        </div>
+
+        <h2>De to overordnede typer</h2>
+
+        <p>Stroke opdeles i to fundamentalt forskellige typer med <em>modsatrettede behandlingsprincipper</em>:</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Egenskab</th>
+              <th>Iskæmisk stroke (~85%)</th>
+              <th>ICH (~15%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mekanisme</strong></td>
+              <td>Arterieoklusion → iltmangel</td>
+              <td>Bristet arterie → blødning i parenkym</td>
+            </tr>
+            <tr>
+              <td><strong>CT akut</strong></td>
+              <td>Normal de første timer</td>
+              <td>Hyperdens (hvid) straks</td>
+            </tr>
+            <tr>
+              <td><strong>Hovedpine</strong></td>
+              <td>Sjælden ved debut</td>
+              <td>Hyppig og kraftig</td>
+            </tr>
+            <tr>
+              <td><strong>Bevidsthed</strong></td>
+              <td>Sjælden påvirkning initialt</td>
+              <td>Hyppig — pga. trykstigning</td>
+            </tr>
+            <tr>
+              <td><strong>Akut behandling</strong></td>
+              <td>tPA + trombektomi (rekanalisering)</td>
+              <td>Blodtrykskontrol, <em>ingen</em> tPA</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="warning-box">
+          <strong>Afgørende pointe</strong>
+          Du kan <em>aldrig</em> skelne klinisk mellem iskæmisk stroke og ICH med tilstrækkelig sikkerhed. CT non-kontrast er obligatorisk inden enhver behandlingsbeslutning.
+        </div>
+
+        <h2>TOAST-klassifikation — iskæmisk stroke</h2>
+
+        <p>Iskæmisk stroke klassificeres i 4 ætiologiske kategorier (TOAST-systemet). Hvilken kategori patienten tilhører styrer behandling og sekundær profylakse.</p>
+
+        <div class="toast-grid">
+          <div class="toast-card" style="background:var(--purple-light)">
+            <span class="toast-pct" style="color:var(--purple)">~30%</span>
+            <h4 style="color:var(--purple)">1. Storkarssygdom (LAD)</h4>
+            <p style="color:#3C3489">Aterosklerose i karotis eller intrakranielle arterier. Ofte TIA forud. Karotisstenose på duplex.</p>
+          </div>
+          <div class="toast-card" style="background:var(--red-light)">
+            <span class="toast-pct" style="color:var(--red)">~25%</span>
+            <h4 style="color:var(--red)">2. Kardioembolisme (CE)</h4>
+            <p style="color:#5a1a1a">Trombe fra hjertet — oftest atrieflimren. Pludseligt maksimalt deficit. Stort kortikalt infarkt.</p>
+          </div>
+          <div class="toast-card" style="background:var(--amber-light)">
+            <span class="toast-pct" style="color:var(--amber)">~25%</span>
+            <h4 style="color:var(--amber)">3. Smakarssygdom (SAD)</h4>
+            <p style="color:#4a2800">Lipohyalinose i dybe perforerende arterier → lakunærinfarkt &lt;15 mm. Rene syndromer.</p>
+          </div>
+          <div class="toast-card" style="background:var(--gray-light)">
+            <span class="toast-pct" style="color:var(--gray)">~20%</span>
+            <h4 style="color:var(--gray)">4. Kryptogen / UDE</h4>
+            <p style="color:#3a3a38">Ingen klar årsag trods udredning — eller to mulige årsager. Særlig hyppig hos unge.</p>
+          </div>
+        </div>
+
+        <div class="key-concept">
+          <strong>Klinisk nøglepointe</strong>
+          TOAST-kategorien bestemmer sekundær profylakse: LAD og SAD → trombocythæmning, CE (AF) → antikoagulation (NOAK). Forkert klassifikation = forkert behandling.
+        </div>
+
+        <h2>Tre faser i strokeforløbet</h2>
+
+        <p>Forstå faserne — de svarer til uge 1–3 i kursusplanen og til de konkrete kliniske opgaver på afdelingen:</p>
+
+        <dl style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
+          <div class="definition-box">
+            <dt>Akut fase (0–72 timer)</dt>
+            <dd>Rekanalisering (tPA, trombektomi), stabilisering, monitorering. Mål: redde penumbra. Hvert minut tæller — 1,9 mio. neuroner dør per minut ved komplet MCA-okklusion.</dd>
+          </div>
+          <div class="definition-box">
+            <dt>Subakut fase (dage–uger)</dt>
+            <dd>Strokeafsnit, komplikationsforebyggelse (pneumoni, DVT), tværfaglig plan. Hjerneskaden er stabiliseret — nu handler det om at bevare det resterende.</dd>
+          </div>
+          <div class="definition-box">
+            <dt>Rehabiliteringsfase (uger–måneder)</dt>
+            <dd>Neuroplasticitet er størst de første 4 uger. Intensiv rehabilitering i dette vindue giver bedst funktionelt resultat. Sekundær profylakse startes.</dd>
+          </div>
+        </dl>
+
+      </div><!-- /prose -->
+
+      <div class="sources">
+        <strong>Kilder:</strong>
+        <span class="src-tag src-oxford">Oxford Textbook kap. 1 + 4 + 5</span>
+        <span class="src-tag src-eso">ESO Guidelines 2021 — definitioner</span>
+        <span class="src-tag src-nnbv">NNBV — cerebrovask. sygdomme</span>
+      </div>
+
+      <hr class="divider">
+
+      <h2 style="margin-bottom:1rem">Test dig selv — begreber</h2>
+
+      <div class="quiz-wrap">
+
+        <div class="quiz-q" data-correct="b">
+          <div class="quiz-q-text">En 68-årig mand får pludselig talebesvær og højresidig svaghed. Symptomerne er væk efter 45 minutter. MR-DWI viser et lille kortikalt infarkt i venstre MCA-territorium. Hvad er den korrekte diagnose?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">TIA — symptomerne forsvandt inden 1 time</div>
+            <div class="quiz-opt" data-val="b">Stroke — MR-DWI viser infarkt uanset symptomvarighed</div>
+            <div class="quiz-opt" data-val="c">TIA — den gamle 24-timers-definition gælder stadig</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Den nye, vævsbaserede TIA-definition kræver <em>fravær</em> af DWI-forandringer. Har patienten DWI-forandringer, er det et stroke — uanset om symptomerne er forsvundet. Denne patient har haft et stroke.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="c">
+          <div class="quiz-q-text">En 72-årig kvinde med kendt atrieflimren indlægges med akut venstre hemiparese og hemihypæstesi. CT er normal. Hvad er den mest sandsynlige TOAST-kategori?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Storkarssygdom (LAD) — pga. alder og vaskulære risikofaktorer</div>
+            <div class="quiz-opt" data-val="b">Smakarssygdom (SAD) — pga. det klassiske motorisk-sensoriske billede</div>
+            <div class="quiz-opt" data-val="c">Kardioembolisme (CE) — atrieflimren er hyppigste årsag til CE-stroke</div>
+            <div class="quiz-opt" data-val="d">Kryptogen — CT er normal, så vi kan ikke klassificere</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Atrieflimren er den hyppigste årsag til kardioembolisk stroke. Normal CT udelukker ICH, men siger ikke noget om stroketypen — billediagnostik af karrene og hjertet er nødvendig. Prognosen og profylaksen (NOAK) er anderledes end ved andre typer.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="b">
+          <div class="quiz-q-text">Hvilken enkeltforskel er <em>mest afgørende</em> for valg af akut behandling: iskæmisk stroke vs. ICH?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Tilstedeværelse af hovedpine</div>
+            <div class="quiz-opt" data-val="b">CT-fund: hyperdensitet (hvid) bekræfter ICH, normal CT = iskæmisk mistanke</div>
+            <div class="quiz-opt" data-val="c">Sværhedsgraden af den neurologiske udfald (NIHSS)</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Kliniske tegn (hovedpine, bevidsthedssvækkelse) kan antyde ICH men er ikke diagnostiske. CT non-kontrast er obligatorisk og afgørende: ICH ses som hyperdens område straks. tPA ved ICH er livsfarligt — det er den vigtigste kontraindikation.
+          </div>
+        </div>
+
+        <div class="quiz-score">
+          <div class="score-num">0/3</div>
+          <div class="score-label"></div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="/index.html" class="btn btn-outline">← Dashboard</a>
+        <a href="/grundlag/patofysiologi-iskæmisk.html" class="btn btn-primary">Næste: Patofysiologi — iskæmisk →</a>
+      </div>
+
+    </div><!-- /page-inner -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script src="/assets/nav.js"></script>
+<script src="/assets/script.js"></script>
+</body>
+</html>
