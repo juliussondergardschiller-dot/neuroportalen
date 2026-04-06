@@ -4,221 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Begreber og klassifikation — Neuroportalen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
-  <style>
-    .def-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 1rem 0;
-    }
-    @media (max-width: 640px) { .def-grid { grid-template-columns: 1fr; } }
-
-    .def-box {
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-    }
-    .def-box dt {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 6px;
-    }
-    .def-box dd {
-      font-size: 14px;
-      line-height: 1.65;
-      margin: 0;
-    }
-    .def-dansk {
-      background: var(--teal-light);
-      border: 1px solid rgba(29,158,117,.25);
-    }
-    .def-dansk dt { color: var(--teal-dark); }
-    .def-dansk dd { color: var(--teal-dark); }
-
-    .def-intl {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-    }
-    .def-intl dt { color: var(--text-muted); }
-    .def-intl dd { color: var(--text); }
-
-    .toast-list {
-      list-style: none;
-      margin: 1rem 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .toast-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 14px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-    .toast-num {
-      font-weight: 700;
-      font-size: 12px;
-      min-width: 20px;
-      flex-shrink: 0;
-      color: var(--text-hint);
-      padding-top: 1px;
-    }
-    .toast-profylakse {
-      display: inline;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 1px 7px;
-      border-radius: 4px;
-      margin-left: 4px;
-    }
-    .tp-tromb { background: var(--blue-light); color: var(--blue); }
-    .tp-ak    { background: var(--green-light); color: var(--green); }
-    .tp-ind   { background: var(--gray-light); color: var(--gray); }
-
-    .faser-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 1rem 0;
-    }
-    @media (max-width: 640px) { .faser-grid { grid-template-columns: 1fr; } }
-    .fase-card {
-      border-radius: var(--radius);
-      padding: 1rem;
-    }
-    .fase-card h4 {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .fase-card p { font-size: 13px; line-height: 1.55; margin: 0; }
-    .fase-card ul { font-size: 13px; line-height: 1.55; margin: 6px 0 0 1rem; padding: 0; }
-    .fase-card li { margin-bottom: 2px; }
-
-    .fase-akut    { background: var(--red-light);   border: 1px solid #F09595; }
-    .fase-akut h4 { color: var(--red); }
-    .fase-sub     { background: var(--amber-light); border: 1px solid #EF9F27; }
-    .fase-sub h4  { color: var(--amber); }
-    .fase-rehab   { background: var(--green-light); border: 1px solid #97C459; }
-    .fase-rehab h4{ color: var(--green); }
-
-    .src-inline {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 5px;
-      border-radius: 3px;
-      vertical-align: middle;
-      margin-left: 2px;
-    }
-    .src-n { background: var(--teal-light);   color: var(--teal-dark); }
-    .src-o { background: var(--purple-light); color: var(--purple); }
-
-    .husk-list {
-      list-style: none;
-      margin: 0.5rem 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .husk-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      line-height: 1.55;
-      padding: 8px 12px;
-      background: var(--purple-light);
-      border-radius: var(--radius-sm);
-      color: #3C3489;
-    }
-    .husk-list li::before {
-      content: "★";
-      font-size: 13px;
-      color: var(--purple);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .fallgruber-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 1rem 0;
-    }
-    .fallgruber-item {
-      border-left: 3px solid var(--red);
-      background: var(--red-light);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 0.75rem 1rem;
-      font-size: 14px;
-      color: #4a1a1a;
-    }
-    .fallgruber-item strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      color: var(--red);
-    }
-
-    .sources-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-top: 2rem;
-      font-size: 13px;
-    }
-    .sources-box h3 {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .sources-box ol {
-      margin: 0 0 0 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .sources-box li { line-height: 1.55; }
-    .sources-box li span { color: var(--text-muted); font-size: 12px; }
-
-    .rf-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin: 0.75rem 0;
-    }
-    @media (max-width: 500px) { .rf-grid { grid-template-columns: 1fr; } }
-    .rf-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 8px 12px;
-      font-size: 13px;
-    }
-    .rf-box strong {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-  </style>
 </head>
 <body>
 
@@ -247,7 +33,7 @@
       <div class="breadcrumb">
         <a href="/index.html">Dashboard</a>
         <span>›</span>
-        <a href="/grundlag/begreber.html">Grundlag</a>
+        <span>Grundlag</span>
         <span>›</span>
         <strong>Begreber og klassifikation</strong>
       </div>
@@ -259,73 +45,73 @@
       <div class="page-header">
         <div class="page-label">Grundlag · Modul 1.1</div>
         <h1>Begreber og klassifikation</h1>
-        <p>Definitioner, inddeling og klinisk ramme — grundlaget for alt det der følger i dette kursus.</p>
+        <p>Definitioner, inddeling og klinisk ramme — grundlaget for alt det, der følger.</p>
       </div>
 
       <div class="goals-box">
         <h3>Læringsmål</h3>
         <ul>
-          <li>Definere akut iskæmisk stroke (AIS) og TCI/TIA korrekt, og forklare forholdet mellem den tidsbaserede og den billedbaserede definition</li>
-          <li>Klassificere iskæmisk stroke i TOAST-kategorier og forklare, hvordan klassifikationen styrer valg af profylakse</li>
-          <li>Beskrive de tre faser i strokeforløbet og forklare, hvad der kendetegner intro-lægens rolle i hver fase</li>
+          <li>Definere akut iskæmisk stroke og TCI/TIA korrekt og forklare forholdet mellem tidsbaseret og billedbaseret definition</li>
+          <li>Klassificere iskæmisk stroke i TOAST-kategorier og forklare, hvad klassifikationen betyder for valg af profylakse</li>
+          <li>Beskrive de tre faser i strokeforløbet og hvad der kendetegner indsatsen i hver fase</li>
         </ul>
       </div>
 
       <div class="prose">
 
+        <!-- OVERBLIK -->
         <h2>Kort overblik</h2>
 
-        <p>Stroke er en af de hyppigste årsager til alvorligt erhvervet handicap og den næsthyppigste årsag til demens. Hvert år rammes ca. <strong>12.500 danskere</strong> af stroke. Af disse udgøres ca. <strong>85 % af akut iskæmisk stroke (AIS)</strong> og ca. <strong>10–15 % af intracerebral hæmoragi (ICH)</strong>. <span class="src-inline src-n">nNBV</span></p>
+        <p>Stroke er en af de hyppigste årsager til alvorligt erhvervet handicap. Hvert år rammes ca. <strong>12.500 danskere</strong> — heraf udgøres ca. <strong>85 % af akut iskæmisk stroke (AIS)</strong> og ca. <strong>10–15 % af intracerebral hæmoragi (ICH)</strong>. <span class="src-inline src-n">nNBV</span></p>
 
-        <p>Halvdelen af dem, der overlever AIS, har blivende følgesymptomer — parese, afasi, træthed, depression. De to typer kræver helt forskellig akutbehandling. Det er baggrunden for, at du aldrig må behandle en strokepatient, før du har foretaget CT eller MR. <span class="src-inline src-n">nNBV</span></p>
+        <p>De to typer kræver modsatrettet behandling. Forveksler man dem, kan man slå patienten ihjel. Det er baggrunden for, at billediagnostik er obligatorisk inden enhver behandlingsstart.</p>
 
+        <!-- HVAD ER AIS -->
         <h2>Hvad er akut iskæmisk stroke?</h2>
 
-        <p>nNBV definerer <strong>akut iskæmisk stroke (AIS)</strong> som: <span class="src-inline src-n">nNBV</span></p>
+        <p>nNBV definerer akut iskæmisk stroke som: <span class="src-inline src-n">nNBV</span></p>
 
         <div class="key-concept">
-          <strong>Definition — AIS (nNBV)</strong>
+          <strong>Definition — AIS</strong>
           Pludselig debut af fokalt symptom fra centralnervesystemet af formodet iskæmisk vaskulær genese med en varighed over 24 timer.
         </div>
 
-        <p>AIS og TCI er <strong>kliniske diagnoser</strong>. Det indebærer, at der skal være overensstemmelse mellem de kliniske fund og billediagnostikken. CT eller MR foretages akut for at skelne AIS fra ICH — ikke primært for at bekræfte infarktet i sig selv. <span class="src-inline src-n">nNBV</span></p>
+        <p>AIS og TCI er <strong>kliniske diagnoser</strong>. Det indebærer, at der skal være overensstemmelse mellem kliniske fund og billediagnostik. CT eller MR foretages akut primært for at skelne AIS fra ICH — og for at danne grundlag for behandlingsbeslutning. <span class="src-inline src-n">nNBV</span></p>
 
+        <!-- HVAD ER TCI/TIA -->
         <h2>Hvad er TCI/TIA?</h2>
 
-        <p>nNBV bruger betegnelsen <strong>transitorisk cerebral iskæmi (TCI)</strong>, parallelt med TIA. Der anvendes to definitioner: <span class="src-inline src-n">nNBV</span></p>
+        <p>nNBV anvender betegnelsen <strong>transitorisk cerebral iskæmi (TCI)</strong> parallelt med TIA. Dokumentet angiver to definitioner: <span class="src-inline src-n">nNBV</span></p>
 
         <div class="def-grid">
           <dl class="def-box def-dansk">
-            <dt>Tidsbaseret definition — bruges i dansk klinisk praksis</dt>
-            <dd>Pludselig debut af fokalt symptom fra CNS af formodet iskæmisk vaskulær genese med <strong>fuld remission af symptomer inden for 24 timer</strong>.</dd>
+            <dt>Tidsbaseret — dansk klinisk praksis</dt>
+            <dd>Pludselig debut af fokalt symptom fra CNS af formodet iskæmisk vaskulær genese med <strong>fuld remission inden for 24 timer</strong>.</dd>
           </dl>
           <dl class="def-box def-intl">
-            <dt>Billedbaseret definition — bruges primært internationalt og i forskning</dt>
-            <dd>Forbigående episode af neurologisk dysfunktion forårsaget af fokal iskæmi i hjernen, medulla eller retina, billeddiagnostisk <strong>uden cerebral infarkt</strong>.</dd>
+            <dt>Billedbaseret — international og forskning</dt>
+            <dd>Forbigående neurologisk dysfunktion forårsaget af fokal iskæmi, billeddiagnostisk <strong>uden cerebral infarkt</strong>.</dd>
           </dl>
         </div>
 
         <div class="info-box">
-          <strong>Hvilken definition gælder i Danmark?</strong>
-          nNBV angiver, at den tidsbaserede definition suppleret med billeddiagnostik til udelukkelse af anden patologi anvendes i dansk klinisk praksis. Den billedbaserede definition bruges fortrinsvist i USA og i forskningsmæssig sammenhæng. Kend begge — og vær opmærksom på, hvilken kontekst du befinder dig i.
+          <strong>To definitioner — kend begge</strong>
+          nNBV angiver, at den tidsbaserede definition suppleret med billeddiagnostik anvendes i dansk klinisk praksis. Den billedbaserede bruges fortrinsvist i USA og i forskningsmæssig sammenhæng. En patient med kortvarige symptomer og DWI-forandring er TCI i Danmark — men apopleksi efter den internationale definition.
         </div>
 
         <div class="key-concept">
           <strong>TCI er en akuttilstand</strong>
-          Ubehandlet er risikoen for efterfølgende apopleksi ca. 10 %. Halvdelen af denne risiko ligger inden for de første to døgn. Akut udredning og behandling reducerer risikoen markant — fra ca. 10 % til ca. 2 % i de første tre måneder. <span class="src-inline src-n">nNBV</span>
+          Ubehandlet er risikoen for efterfølgende apopleksi ca. 10 % — halvdelen af risikoen ligger inden for de første to døgn. Akut udredning og behandling reducerer risikoen markant. <span class="src-inline src-n">nNBV</span>
         </div>
 
-        <h2>Iskæmisk stroke vs. ICH</h2>
+        <!-- ISKÆMISK VS ICH -->
+        <h2>Iskæmisk apopleksi vs. ICH</h2>
 
-        <p>Det kliniske billede ved AIS og ICH kan <strong>ikke skelnes fra hinanden bedside</strong>, men alene efter udførelse af CT eller MR af cerebrum. <span class="src-inline src-n">nNBV</span> De to typer kræver modsatrettede behandlinger — tPA ved ICH er livsfarligt.</p>
+        <p>Det kliniske billede ved AIS og ICH <strong>kan ikke skelnes bedside</strong>. CT eller MR er nødvendig inden behandlingsstart. <span class="src-inline src-n">nNBV</span></p>
 
         <table class="compare-table">
           <thead>
-            <tr>
-              <th></th>
-              <th>Iskæmisk stroke (AIS)</th>
-              <th>Intracerebral hæmoragi (ICH)</th>
-            </tr>
+            <tr><th></th><th>Iskæmisk stroke (AIS)</th><th>Intracerebral hæmoragi (ICH)</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -335,13 +121,13 @@
             </tr>
             <tr>
               <td><strong>CT akut</strong></td>
-              <td>Oftest normal i de første timer</td>
+              <td>Oftest normal de første timer</td>
               <td>Hyperdens (hvid) straks</td>
             </tr>
             <tr>
-              <td><strong>Typiske fund</strong></td>
-              <td>TCI kan gå forud. Variabel debut.</td>
-              <td>Svær hypertension, kvalme, opkastninger, hovedpine, bevidsthedspåvirkning, hurtig progression <span class="src-inline src-n">nNBV</span></td>
+              <td><strong>Ledsagefund</strong></td>
+              <td>Variabel debut, TCI kan gå forud</td>
+              <td>Svær hypertension, kvalme, opkastning, hovedpine, bevidsthedspåvirkning, hurtig progression <span class="src-inline src-n">nNBV</span></td>
             </tr>
             <tr>
               <td><strong>Akut behandling</strong></td>
@@ -351,16 +137,55 @@
           </tbody>
         </table>
 
-        <p>Tidlige iskæmiske forandringer på CT — fx ophævet grå-hvid differentiering eller hyperdens MCA-tegn — kan ses inden for de første timer, men CT er ofte normal tidligt i forløbet ved AIS. MR-DWI er mere sensitiv og kan vise infarkt fra minutter til timer. <span class="src-inline src-o">Oxford</span></p>
+        <p>CT er sensitiv for ICH straks — men oftest normal ved AIS de første timer. MR-DWI er mere sensitiv, men kan også være falsk negativ tidligt, særligt i den bagre cirkulation. <span class="src-inline src-o">Oxford</span> Billeddiagnostik anvendes til at skelne, ikke primært til at bekræfte diagnosen.</p>
 
         <div class="warning-box">
-          <strong>CT non-kontrast er altid obligatorisk inden behandlingsstart</strong>
-          Ingen kliniske fund kan skelne AIS fra ICH med tilstrækkelig sikkerhed. Billediagnostik er ikke til forhandling.
+          <strong>Billediagnostik er ikke til forhandling</strong>
+          Ingen kliniske fund alene er tilstrækkelige til at skelne AIS fra ICH. CT non-kontrast er obligatorisk inden enhver behandlingsbeslutning. <span class="src-inline src-n">nNBV</span>
         </div>
 
+        <!-- TOAST -->
+        <h2>TOAST-klassifikation</h2>
+
+        <p>Iskæmisk stroke inddeles ætiologisk i fem kategorier. Klassifikationen er klinisk vigtig, fordi den direkte bestemmer valg af sekundær profylakse. Kombinationer kan forekomme. <span class="src-inline src-n">nNBV</span></p>
+
+        <ul class="toast-list">
+          <li>
+            <span class="toast-num">1</span>
+            <span><strong>Storkarssygdom</strong> — trombose/stenose (&gt;50 %) i præ- eller intracerebrale kar, arterie-til-arterie emboli. Typisk: karotisstenose, TCI forud.<br>
+            <span class="toast-profylakse tp-tromb">Trombocythæmning</span></span>
+          </li>
+          <li>
+            <span class="toast-num">2</span>
+            <span><strong>Kardioembolisk</strong> — atrieflimren, mekanisk hjerteklap, nyligt AMI, kardiomyopati, endokarditis, PFO m.fl. Typisk: pludseligt deficit, stort kortikalt infarkt.<br>
+            <span class="toast-profylakse tp-ak">Antikoagulation (NOAK foretrukket)</span></span>
+          </li>
+          <li>
+            <span class="toast-num">3</span>
+            <span><strong>Småkarssygdom</strong> — lakunærinfarkt ved trombotisk okklusion af små kar (fx ved hypertension eller diabetes). Typisk: rent motorisk eller sensorisk syndrom, lille subkortikalt infarkt.<br>
+            <span class="toast-profylakse tp-tromb">Trombocythæmning</span></span>
+          </li>
+          <li>
+            <span class="toast-num">4</span>
+            <span><strong>Anden specificeret årsag</strong> — arteriedissektion, trombofili, vaskulitis og andre sjældne årsager. Særlig relevant hos yngre uden vaskulære risikofaktorer.<br>
+            <span class="toast-profylakse tp-ind">Individuel vurdering</span></span>
+          </li>
+          <li>
+            <span class="toast-num">5</span>
+            <span><strong>Kryptogent stroke</strong> — årsagen er ukendt eller usikker <em>efter</em> fyldestgørende udredning. Dette er en restdiagnose — ikke en diagnose der stilles ved inkomplet udredning.<br>
+            <span class="toast-profylakse tp-ind">Profylakse individuelt</span></span>
+          </li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Forkert klassifikation = forkert profylakse</strong>
+          En kardioembolisk patient behandlet med trombocythæmning frem for antikoagulation har markant højere recidivrisiko. Grundig ætiologisk udredning er essentiel. <span class="src-inline src-n">nNBV</span>
+        </div>
+
+        <!-- TRE FASER -->
         <h2>De tre faser i strokeforløbet</h2>
 
-        <p>Kursusplanen strukturerer læringsmålene ud fra de tre kliniske faser. Her er hvad der kendetegner intro-lægens opgave i hver:</p>
+        <p>Strokebehandling struktureres i tre faser. Indsatsen skifter karakter fra fase til fase, og opgaverne for den behandlende læge ændrer sig tilsvarende.</p>
 
         <div class="faser-grid">
           <div class="fase-card fase-akut">
@@ -369,239 +194,182 @@
               <li>Billediagnostik — skelne AIS fra ICH</li>
               <li>Behandlingsbeslutning: tPA og/eller trombektomi</li>
               <li>Stabilisering af vitalparametre</li>
-              <li>Indlæggelse hurtigst muligt på strokeafsnit, trombolysecenter eller EVT-center</li>
+              <li>Indlæggelse hurtigst muligt</li>
             </ul>
           </div>
           <div class="fase-card fase-sub">
             <h4>Subakutfase (dage–uger)</h4>
             <ul>
-              <li>Indlæggelse på strokeafsnit</li>
-              <li>Systematisk observation og komplikationsforebyggelse (pneumoni, DVT)</li>
-              <li>Tværfaglig plan og rehabilitering startes tidligt</li>
+              <li>Strokeafsnit og tværfaglig indsats</li>
+              <li>Komplikationsforebyggelse (pneumoni, DVT)</li>
               <li>Opstart af sekundær profylakse</li>
+              <li>Ætiologisk udredning afsluttes</li>
             </ul>
           </div>
           <div class="fase-card fase-rehab">
             <h4>Rehabiliteringsfase (uger–måneder)</h4>
             <ul>
-              <li>Tværfaglig genoptræning (fysio, ergo, logo)</li>
-              <li>Neuroplasticitet størst i de første uger</li>
+              <li>Tværfaglig genoptræning</li>
+              <li>Neuroplasticitet størst de første uger</li>
               <li>Fortsat sekundær profylakse</li>
-              <li>Håndtering af senkomplikationer (depression, træthed, epilepsi)</li>
+              <li>Håndtering af senkomplikationer</li>
             </ul>
           </div>
         </div>
 
         <p>Indlæggelse på organiseret strokeafsnit reducerer mortalitet, funktionstab og medicinske komplikationer — uafhængigt af om patienten har fået tPA. <span class="src-inline src-n">nNBV</span></p>
 
-        <h2>Patofysiologi — kort</h2>
+        <!-- PATOFYSIOLOGI — KUN OVERBLIK -->
+        <h2>Patofysiologi — overblik</h2>
 
-        <p>AIS og TCI skyldes nedsat arteriel blodforsyning til et område af hjernen. Den akutte behandling er kritisk tidsafhængig: <strong>infarktkernen ekspanderer over tid på bekostning af den iskæmiske penumbra</strong> — vitalt hjernevæv med midlertidigt funktionstab pga. kritisk lav blodforsyning. Behandlingen skal starte så tidligt som muligt for at redde dette væv. <span class="src-inline src-n">nNBV</span></p>
+        <p>AIS og TCI skyldes nedsat arteriel blodforsyning. Infarktkernen er irreversibelt skadet fra starten. Den omkringliggende <strong>iskæmiske penumbra</strong> er truet, men kan reddes ved hurtig reperfusion. Det er dette væv, tPA og trombektomi forsøger at redde. <span class="src-inline src-o">Oxford</span></p>
 
         <div class="key-concept">
           <strong>Tid er hjerne</strong>
-          For hvert 30. minut EVT-behandling forsinkes, falder sandsynligheden for at patienten forbliver uafhængig af andre med 12 %. <span class="src-inline src-n">nNBV</span> Penumbra-konceptet er rationale bag tPA og trombektomi: det er det truede, men endnu ikke irreversibelt skadede væv vi behandler. <span class="src-inline src-o">Oxford</span>
+          For hvert 30. minut EVT-behandling forsinkes, falder sandsynligheden for at patienten forbliver uafhængig af andre med 12 %. <span class="src-inline src-n">nNBV</span> Patofysiologien uddybes på siden om iskæmisk patofysiologi.
         </div>
 
-        <h2>TOAST-klassifikation — ætiologi og profylaksevalg</h2>
-
-        <p>Iskæmisk stroke inddeles efter TOAST-klassifikationen i fem ætiologiske kategorier. Klassifikationen er afgørende, fordi den direkte styrer valg af sekundær profylakse. <span class="src-inline src-n">nNBV</span> Kombinationer af årsager kan forekomme.</p>
-
-        <ul class="toast-list">
-          <li>
-            <span class="toast-num">1</span>
-            <span>
-              <strong>Storkarssygdom</strong> — trombose/stenose (&gt;50 %) i præ- eller intracerebrale kar samt arterie-til-arterie emboli. Typisk: TCI forud, karotisstenose.<br>
-              <span class="toast-profylakse tp-tromb">Trombocythæmning</span>
-            </span>
-          </li>
-          <li>
-            <span class="toast-num">2</span>
-            <span>
-              <strong>Kardioembolisk</strong> — atrieflimren/flagren, hjerteklap, nyligt AMI, kardiomyopati, endokarditis, PFO m.fl. Typisk: pludseligt maksimalt deficit, stort kortikalt infarkt.<br>
-              <span class="toast-profylakse tp-ak">Antikoagulation (NOAK foretrukket)</span>
-            </span>
-          </li>
-          <li>
-            <span class="toast-num">3</span>
-            <span>
-              <strong>Småkarssygdom</strong> — trombotisk okklusion af hjernens små kar, lakunærinfarkt (fx ved hypertension eller diabetes). Typisk: rene syndromer (motorisk, sensorisk), lille subkortikalt infarkt.<br>
-              <span class="toast-profylakse tp-tromb">Trombocythæmning</span>
-            </span>
-          </li>
-          <li>
-            <span class="toast-num">4</span>
-            <span>
-              <strong>Anden specificeret årsag</strong> — arteriedissektion, hyperkoagulation/trombofili, sjældne årsager. Særlig relevant ved unge patienter uden vaskulære risikofaktorer.<br>
-              <span class="toast-profylakse tp-ind">Individuel vurdering</span>
-            </span>
-          </li>
-          <li>
-            <span class="toast-num">5</span>
-            <span>
-              <strong>Kryptogent stroke</strong> — årsagen er fortsat ukendt eller usikker <em>efter</em> fyldestgørende udredning. Kryptogent stroke er en restdiagnose — ikke en diagnose man stiller ved inkomplet udredning.<br>
-              <span class="toast-profylakse tp-ind">Profylakse individuelt</span>
-            </span>
-          </li>
-        </ul>
-
-        <div class="warning-box">
-          <strong>Forkert klassifikation = forkert profylakse</strong>
-          En patient med kardioembolisk stroke behandlet med trombocythæmning alene frem for antikoagulation har markant højere recidivrisiko. Grundig ætiologisk udredning er essentiel og har direkte klinisk konsekvens. <span class="src-inline src-n">nNBV</span>
-        </div>
-
+        <!-- RISIKOFAKTORER -->
         <h2>Risikofaktorer</h2>
 
-        <p>Risikofaktorer for AIS og TCI kan opdeles i modificerbare og ikke-modificerbare: <span class="src-inline src-n">nNBV</span></p>
+        <p>Risikofaktorerne ved stroke ligner dem ved anden kardiovaskulær sygdom — og mange er behandlelige: <span class="src-inline src-n">nNBV</span></p>
 
         <div class="rf-grid">
           <div class="rf-box">
-            <strong>Vigtigste modificerbare</strong>
-            Arteriel hypertension · Atrieflimren · Rygning · Diabetes mellitus · Hyperkolesterolæmi · Fysisk inaktivitet · Overvægt · Alkoholoverforbrug
+            <strong>Modificerbare</strong>
+            Hypertension · Atrieflimren · Rygning · Diabetes mellitus · Hyperkolesterolæmi · Fysisk inaktivitet · Overvægt · Alkoholoverforbrug
           </div>
           <div class="rf-box">
             <strong>Ikke-modificerbare</strong>
-            Alder (kraftigste faktor) · Mandligt køn · Tidligere AIS/TCI · Genetiske og inflammatoriske protrombotiske tilstande
+            Alder · Mandligt køn · Tidligere AIS/TCI · Genetiske og inflammatoriske tilstande
           </div>
         </div>
 
-        <p>80 % af AIS-patienter er over 60 år. Median alder er 72 år. Risikofaktorerne er dermed i høj grad de samme som ved anden kardiovaskulær sygdom — og mange er behandlelige. <span class="src-inline src-n">nNBV</span></p>
+        <p>80 % af AIS-patienter er over 60 år. Median alder er 72 år. <span class="src-inline src-n">nNBV</span></p>
 
+        <!-- KLINISK BETYDNING -->
         <h2>Klinisk betydning</h2>
 
-        <p>NIHSS (National Institute of Health Stroke Scale) indgår centralt i den akutte vurdering af strokepatienter — særligt ved vurdering af indikation for trombolyse og trombektomi. Du skal kunne udføre NIHSS sikkert. <span class="src-inline src-n">nNBV</span></p>
+        <p>NIHSS (National Institutes of Health Stroke Scale) indgår centralt i den akutte vurdering — særligt ved vurdering af trombolyse- og trombektomiindikation. Du skal kunne udføre NIHSS sikkert. <span class="src-inline src-n">nNBV</span></p>
 
-        <p>Grundig ætiologisk udredning er essentiel. Den bestemmer direkte valg af behandling og forebyggelse af recidivstroke — som er hyppigst umiddelbart efter de første symptomer. Udredningen baseres på anamnese, risikofaktorer, kliniske symptomer og billediagnostik. Der skal være overensstemmelse mellem klinik og billeddiagnostikken, inden diagnosen stilles. <span class="src-inline src-n">nNBV</span></p>
+        <p>Grundig ætiologisk udredning er essentiel og bestemmer direkte valg af behandling. Recidivrisikoen er størst umiddelbart efter de første symptomer — og risikoen reduceres markant ved korrekt og hurtig udredning. <span class="src-inline src-n">nNBV</span></p>
 
+        <!-- FALDGRUBER -->
         <h2>Faldgruber</h2>
 
         <div class="fallgruber-list">
           <div class="fallgruber-item">
-            <strong>CT er normal tidligt ved AIS</strong>
-            CT er oftest normal i de første timer ved iskæmisk stroke. En normal CT udelukker ICH — men <em>ikke</em> iskæmisk stroke. MR-DWI er mere sensitiv, men kan også være falsk negativ tidligt — særligt ved lille infarkt eller posterior circulation. <span class="src-inline src-o">Oxford</span>
+            <strong>Normal CT udelukker ikke AIS</strong>
+            CT er sensitiv for ICH straks. Men ved AIS er CT oftest normal de første timer. Normal CT bekræfter, at det ikke er en blødning — intet andet.
           </div>
           <div class="fallgruber-item">
-            <strong>Man kan ikke skelne AIS fra ICH klinisk</strong>
-            Svær hypertension, hovedpine og bevidsthedspåvirkning er hyppigere ved ICH — men ingen af disse fund er diagnostiske. Klinisk skelnen er ikke tilstrækkelig. Billediagnostik er obligatorisk inden behandlingsstart. <span class="src-inline src-n">nNBV</span>
+            <strong>AIS og ICH kan ikke skelnes klinisk</strong>
+            Svær hypertension, opkastning og bevidsthedspåvirkning ses hyppigere ved ICH — men ingen fund er diagnostiske. Billeddiagnostik er altid nødvendig. <span class="src-inline src-n">nNBV</span>
           </div>
           <div class="fallgruber-item">
-            <strong>TCI er ikke ufarlig</strong>
-            Fordi symptomerne er gået over, er tilstanden ikke sikret. Risikoen for apopleksi de næste to døgn er reel. TCI er en akuttilstand og kræver akut udredning og behandling. <span class="src-inline src-n">nNBV</span>
+            <strong>TCI er ikke ufarlig — symptomerne er bare gået over</strong>
+            Risikoen for apopleksi de næste to døgn er reel. TCI kræver akut udredning og behandling. <span class="src-inline src-n">nNBV</span>
           </div>
           <div class="fallgruber-item">
             <strong>Kryptogent stroke er en restdiagnose</strong>
-            Diagnosen forudsætter fyldestgørende udredning, herunder minimum 72 timers rytmeovervågning og relevant kardiovaskulær billeddiagnostik. Kryptogent stroke ved inkomplet udredning er ikke en diagnose — det er et hul i udredningen. <span class="src-inline src-n">nNBV</span>
+            Forudsætter fyldestgørende udredning — herunder tilstrækkelig rytmeovervågning og relevant kardiovaskulær billeddiagnostik. Diagnosen kan ikke stilles ved inkomplet udredning. <span class="src-inline src-n">nNBV</span>
           </div>
           <div class="fallgruber-item">
-            <strong>Tidsbaseret og billedbaseret TCI-definition er ikke synonyme</strong>
-            En patient med kortvarige symptomer og DWI-forandringer er en TCI i dansk klinisk praksis (symptomvarighed under 24 timer), men en apopleksi efter den internationale billedbaserede definition. Kend begge og vær opmærksom på konteksten. <span class="src-inline src-n">nNBV</span>
+            <strong>De to TCI-definitioner er ikke synonyme</strong>
+            En patient med kortvarige symptomer og DWI-forandring er TCI i dansk klinisk praksis, men apopleksi efter den internationale billedbaserede definition. Kend begge — og vær opmærksom på konteksten.
           </div>
         </div>
 
+        <!-- HUSK DETTE -->
         <h2>Husk dette</h2>
 
         <ul class="husk-list">
           <li>AIS og ICH kan ikke skelnes klinisk — CT eller MR er altid nødvendig inden behandlingsstart</li>
-          <li>TCI er en akuttilstand: risikoen for stroke er størst i de første to døgn — udred akut</li>
+          <li>TCI er en akuttilstand: risikoen for apopleksi er størst de første to døgn — udred akut</li>
           <li>TOAST-kategorien bestemmer profylaksen: kardioembolisk → NOAK, storkar og lakunær → trombocythæmning</li>
-          <li>Kryptogent stroke kræver fyldestgørende udredning — inkl. rytmeovervågning ≥72 timer — inden diagnosen stilles</li>
-          <li>De tre faser (akut, subakut, rehabilitering) strukturerer din kliniske rolle som intro-læge</li>
+          <li>Kryptogent stroke er en restdiagnose — forudsætter fyldestgørende udredning</li>
+          <li>De tre faser (akut, subakut, rehabilitering) strukturerer indsatsen og opgaverne forskelligt</li>
         </ul>
 
       </div><!-- /prose -->
 
       <hr class="divider">
 
+      <!-- QUIZ -->
       <h2 style="margin-bottom:1rem">Test dig selv</h2>
 
       <div class="quiz-wrap">
 
         <div class="quiz-q" data-correct="c">
-          <div class="quiz-q-text">En 65-årig kvinde vågner om morgenen med udtalt venstresidigt kraftnedsættelse og talebesvær. Symptomerne forsvinder fuldstændigt i løbet af 2 timer. MR-DWI viser ingen forandringer. Hvad er den korrekte diagnose i dansk klinisk praksis — og hvad er næste skridt?</div>
+          <div class="quiz-q-text">En 65-årig kvinde vågner med udtalt venstresidig kraftnedsættelse og talebesvær. Symptomerne forsvinder fuldstændigt i løbet af 90 minutter. MR-DWI viser ingen forandringer. Hvad er den korrekte diagnose i dansk klinisk praksis?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Akut iskæmisk stroke — tPA bør overvejes omgående</div>
-            <div class="quiz-opt" data-val="b">Apopleksi — da DWI er negativ er diagnosen sikker</div>
-            <div class="quiz-opt" data-val="c">TCI/TIA — akut udredning er nødvendig, risikoen for stroke de næste dage er reel</div>
-            <div class="quiz-opt" data-val="d">Migræne med aura — kan afvente planlagt udredning</div>
+            <div class="quiz-opt" data-val="a">Akut iskæmisk stroke — symptomer med pludselig debut er per definition AIS</div>
+            <div class="quiz-opt" data-val="b">Apopleksi — selvom DWI er negativ, taler klinikken for infarkt</div>
+            <div class="quiz-opt" data-val="c">TCI/TIA — fuld remission inden 24 timer, og DWI er negativ</div>
+            <div class="quiz-opt" data-val="d">Migræne med aura — bør afvente ambulant udredning</div>
           </div>
           <div class="quiz-feedback">
-            Symptomer med fuld remission inden 24 timer klassificeres som TCI efter den tidsbaserede definition, der bruges i dansk klinisk praksis. DWI-negativt fund understøtter diagnosen, men TCI er en akuttilstand. Ubehandlet er risikoen for efterfølgende apopleksi ca. 10 % — halvdelen inden for de første to døgn. Akut udredning reducerer recidivrisikoen markant.
+            I dansk klinisk praksis bruges den tidsbaserede definition: symptomer med fuld remission inden 24 timer klassificeres som TCI. Den billedbaserede definition (ingen infarkt på DWI) bruges internationalt og understøtter her diagnosen — men er ikke den operationelle i dansk praksis. TCI er en akuttilstand og kræver akut udredning: risikoen for efterfølgende apopleksi er reel og størst de første to døgn.
           </div>
         </div>
 
         <div class="quiz-q" data-correct="b">
-          <div class="quiz-q-text">En 78-årig mand bringes ind med pludseligt venstresidigt hemiparese. Han er somnolent, blodrykket er 230/120 mmHg, og han har svær hovedpine og har kastet op. Hvad er det vigtigste næste skridt, og hvad er begrundelsen?</div>
+          <div class="quiz-q-text">En 74-årig mand indlægges med pludseligt venstresidigt hemiparese. Blodtryk 230/120 mmHg, somnolent, svær hovedpine, har kastet op. Hvad er det vigtigste næste skridt?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Starte tPA straks — billedet passer på stor MCA-okklusion</div>
+            <div class="quiz-opt" data-val="a">Give tPA straks — billedet passer på stor MCA-okklusion og tid er hjerne</div>
             <div class="quiz-opt" data-val="b">CT non-kontrast inden behandlingsbeslutning — klinisk skelnen mellem AIS og ICH er ikke mulig</div>
-            <div class="quiz-opt" data-val="c">Sænke blodtrykket akut — hypertensionen er den umiddelbare trussel</div>
-            <div class="quiz-opt" data-val="d">MR-DWI — CT er for usensitiv til at udelukke stroke</div>
+            <div class="quiz-opt" data-val="c">Starte blodtrykssænkende behandling — hypertension og somnolens taler for ICH</div>
+            <div class="quiz-opt" data-val="d">MR-DWI — CT er for usensitiv i akutfasen</div>
           </div>
           <div class="quiz-feedback">
-            Svær hypertension, opkastning, bevidsthedspåvirkning og kraftig hovedpine er hyppigere ved ICH end ved AIS — men ingen af disse fund er diagnostiske. Klinisk skelnen er ikke tilstrækkelig. CT non-kontrast viser ICH som hyperdens (hvid) område straks og er obligatorisk inden enhver behandlingsbeslutning. tPA ved ICH er en livsfarlig fejlbehandling.
+            Svær hypertension, opkastning og bevidsthedspåvirkning er hyppigere ved ICH end AIS — men ingen af disse fund er diagnostiske. CT non-kontrast viser ICH som hyperdens (hvid) straks og er obligatorisk inden enhver behandlingsbeslutning. tPA ved ICH er livsfarligt. Klinisk skelnen alene er aldrig tilstrækkelig.
           </div>
         </div>
 
         <div class="quiz-q" data-correct="b">
-          <div class="quiz-q-text">En 71-årig mand med kendt atrieflimren indlægges med akut afasi og højresidig hemiparese. MR-DWI viser et stort kortikalt infarkt i venstre MCA-territorium. Hvilken TOAST-kategori passer bedst, og hvad er konsekvensen for profylakse?</div>
+          <div class="quiz-q-text">En 71-årig mand med atrieflimren indlægges med akut afasi og højresidig hemiparese. MR-DWI viser et stort kortikalt infarkt i venstre MCA-territorium. Hvilken TOAST-kategori passer bedst, og hvad er profylaksen?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Storkarssygdom — behandles med trombocythæmning og statin</div>
-            <div class="quiz-opt" data-val="b">Kardioembolisk — behandles med antikoagulation (NOAK foretrukket frem for vitamin K-antagonist)</div>
-            <div class="quiz-opt" data-val="c">Småkarssygdom — behandles med trombocythæmning og blodtrykskontrol</div>
-            <div class="quiz-opt" data-val="d">Kryptogent — udredning er utilstrækkelig til at klassificere</div>
+            <div class="quiz-opt" data-val="a">Storkarssygdom — trombocythæmning og statin</div>
+            <div class="quiz-opt" data-val="b">Kardioembolisk — antikoagulation (NOAK foretrukket)</div>
+            <div class="quiz-opt" data-val="c">Småkarssygdom — trombocythæmning og blodtrykskontrol</div>
+            <div class="quiz-opt" data-val="d">Kryptogent — profylaksen afventer fuld udredning</div>
           </div>
           <div class="quiz-feedback">
-            Atrieflimren er listet som kardiel embolikilde i TOAST-kategorien for kardioembolisk stroke. Et stort kortikalt infarkt hos en patient med atrieflimren giver klar mistanke om kardioembolisk årsag. Profylaksen er antikoagulation — NOAK foretrækkes frem for vitamin K-antagonister ved non-valvulær atrieflimren. Trombocythæmning alene er utilstrækkeligt og giver markant højere recidivrisiko.
+            Atrieflimren er en kardiel embolikilde nævnt eksplicit i TOAST-kategorien for kardioembolisk stroke. Et stort kortikalt infarkt hos en patient med atrieflimren er det klassiske billede. Profylaksen er antikoagulation — NOAK foretrækkes frem for vitamin K-antagonister ved non-valvulær atrieflimren. Trombocythæmning alene er utilstrækkeligt og giver markant højere recidivrisiko.
           </div>
         </div>
 
         <div class="quiz-q" data-correct="c">
-          <div class="quiz-q-text">En 54-årig kvinde indlægges med en to timer gammel apopleksi og er akut tPA-behandlet. Det er nu dag 4. Hun er neurologisk stabil. Hvad er intro-lægens primære opgaver i denne fase?</div>
+          <div class="quiz-q-text">Det er dag 5 efter en 68-årig kvindes iskæmiske apopleksi. Hun er neurologisk stabil og tPA-behandlet dag 0. Hun er nu på strokeafsnittet. Hvad kendetegner primært indsatsen i denne fase?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Vurdere om tPA-behandling kan gentages</div>
-            <div class="quiz-opt" data-val="b">Afvente spontan bedring — rehabilitering starter først i forbindelse med udskrivelse</div>
-            <div class="quiz-opt" data-val="c">Komplikationsforebyggelse, opstart af sekundær profylakse og koordinering af tværfaglig plan</div>
-            <div class="quiz-opt" data-val="d">Overflytte til neurointensiv afdeling</div>
+            <div class="quiz-opt" data-val="a">Vurdere om tPA-behandling kan gives igen ved forværring</div>
+            <div class="quiz-opt" data-val="b">Afvente spontan bedring — rehabilitering starter ved udskrivelse</div>
+            <div class="quiz-opt" data-val="c">Komplikationsforebyggelse, opstart af sekundær profylakse og tværfaglig rehabilitering</div>
+            <div class="quiz-opt" data-val="d">Konferere med neurointensiv om intensivering af behandling</div>
           </div>
           <div class="quiz-feedback">
-            Dag 4 er subakutfasen. Her handler det om at forebygge komplikationer (pneumoni, DVT er hyppige og forværrer prognosen), opstarte sekundær profylakse og koordinere tværfaglig rehabilitering. Tidlig rehabilitering er vigtig, da neuroplasticiteten er størst de første uger. Intro-lægens rolle er medicinsk opfølgning og koordinering — ikke eskalering af akutbehandling.
-          </div>
-        </div>
-
-        <div class="quiz-q" data-correct="a">
-          <div class="quiz-q-text">En 42-årig mand uden kendte risikofaktorer indlægges med pludselig ensidig nakke- og øresmerte efterfulgt af Horners syndrom på samme side og kontralateral hemiparese. Der er ingen atrieflimren, normal ekkokardiografi og ingen lakunærmønster. Hvilken TOAST-kategori er mest sandsynlig?</div>
-          <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Anden specificeret årsag — fx halskardissektion</div>
-            <div class="quiz-opt" data-val="b">Kryptogent stroke — der er ingen årsag fundet</div>
-            <div class="quiz-opt" data-val="c">Kardioembolisk — Horners syndrom kan ses ved kardiale embolier</div>
-            <div class="quiz-opt" data-val="d">Storkarssygdom — hypertensiv aterosklerose</div>
-          </div>
-          <div class="quiz-feedback">
-            Ung patient uden risikofaktorer, ensidigt nakkesmerter og Horners syndrom ipsilateralt med kontralateral hemiparese er et klassisk billede ved halskardissektion — den hyppigste årsag til stroke hos yngre uden aterosklerose. Dette er TOAST-kategori 4 (anden specificeret årsag). Diagnosen stilles ved CT- eller MR-angiografi af halskar. Dissektion kontraindicerer ikke trombolysebehandling.
+            Dag 5 er subakutfasen. Her handler det om at forebygge hyppige komplikationer som pneumoni og DVT, opstarte sekundær profylakse og koordinere tværfaglig rehabilitering — som skal starte tidligt, fordi neuroplasticiteten er størst de første uger. Indlæggelse på strokeafsnit reducerer mortalitet og funktionstab uafhængigt af tPA-behandling.
           </div>
         </div>
 
         <div class="quiz-score">
-          <div class="score-num">0/5</div>
+          <div class="score-num">0/4</div>
           <div class="score-label"></div>
         </div>
 
       </div><!-- /quiz-wrap -->
 
+      <!-- KILDER -->
       <div class="sources-box">
         <h3>Kilder</h3>
         <ol>
           <li>
             <strong>nNBV — Cerebrovaskulære sygdomme</strong> (nnbv.dk)<br>
-            <span>Afsnit: Om iskæmisk stroke (definitioner, forekomst, patofysiologi, organisering) · Transitorisk cerebral iskæmi (definitioner, udredning, behandling) · Forebyggende behandling efter iskæmisk apopleksi og TCI (TOAST-klassifikation, profylaksevalg) · Om spontan intracerebral blødning (forekomst, symptomer) · Sjældnere årsager til stroke</span>
+            <span>Om iskæmisk stroke (definitioner, forekomst, TOAST, patofysiologi, organisering) · Transitorisk cerebral iskæmi (definitioner, udredning) · Forebyggende behandling efter iskæmisk apopleksi og TCI (TOAST og profylaksevalg) · Om spontan ICH (symptomer, forekomst)</span>
           </li>
           <li>
             <strong>Oxford Textbook of Stroke and Cerebrovascular Disease</strong>, red. Bo Norrving<br>
-            <span>Kapitel 4: Patofysiologi ved TIA og iskæmisk stroke (penumbra-konceptet, mekanismer) · Kapitel 5: Patofysiologi ved ICH · Kapitel 9: Diagnostik (CT og MR-fund i akutfasen)</span>
-          </li>
-          <li>
-            <strong>Praktiske oplysninger — apopleksikursus F2026</strong><br>
-            <span>Kursusstruktur og ugemål (faserne, NIHSS, kliniske færdigheder, eksamensforberedelse)</span>
+            <span>Kapitel 4: Patofysiologi ved TIA og iskæmisk stroke, penumbra-konceptet · Kapitel 5: Patofysiologi ved ICH · Kapitel 9: Diagnostik og billediagnostik i akutfasen</span>
           </li>
         </ol>
       </div>
