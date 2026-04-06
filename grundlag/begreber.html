@@ -9,47 +9,192 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
   <style>
-    .toast-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 1.25rem 0;
-    }
-    .toast-card {
-      border-radius: var(--radius);
-      padding: 1rem;
-      font-size: 14px;
-    }
-    .toast-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .toast-card p  { font-size: 12px; line-height: 1.5; opacity: .85; }
-    .toast-card .toast-pct {
-      font-size: 22px; font-weight: 700; margin-bottom: 4px; display: block;
-    }
-
     .definition-box {
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.1rem 1.25rem;
-      margin: 1.25rem 0;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
     }
     .definition-box dt {
       font-weight: 600;
-      font-size: 14px;
+      font-size: 12px;
       color: var(--teal-dark);
       margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
     .definition-box dd {
       font-size: 14px;
       color: var(--text);
-      line-height: 1.6;
-      margin-left: 0;
+      line-height: 1.65;
+      margin: 0;
     }
-    .definition-box + .definition-box { margin-top: 0.5rem; }
 
-    @media (max-width: 600px) {
-      .toast-grid { grid-template-columns: 1fr; }
+    .two-def {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 1rem 0;
     }
+    @media (max-width: 640px) { .two-def { grid-template-columns: 1fr; } }
+
+    .def-nnbv {
+      background: var(--teal-light);
+      border: 1px solid rgba(29,158,117,.25);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+    }
+    .def-nnbv dt {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--teal-dark);
+      margin-bottom: 6px;
+    }
+    .def-nnbv dd {
+      font-size: 14px;
+      color: var(--teal-dark);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .def-intl {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+    }
+    .def-intl dt {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .def-intl dd {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .toast-list {
+      list-style: none;
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .toast-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .toast-num {
+      font-weight: 700;
+      font-size: 13px;
+      width: 20px;
+      flex-shrink: 0;
+      color: var(--text-hint);
+      padding-top: 1px;
+    }
+
+    .faser-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 1rem 0;
+    }
+    @media (max-width: 640px) { .faser-grid { grid-template-columns: 1fr; } }
+
+    .fase-card {
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .fase-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .fase-card p {
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .fase-akut    { background: var(--red-light);   border: 1px solid #F09595; }
+    .fase-akut h4 { color: var(--red); }
+    .fase-sub     { background: var(--amber-light); border: 1px solid #EF9F27; }
+    .fase-sub h4  { color: var(--amber); }
+    .fase-rehab   { background: var(--green-light); border: 1px solid #97C459; }
+    .fase-rehab h4{ color: var(--green); }
+
+    .src-inline {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+    .src-n { background: var(--teal-light);   color: var(--teal-dark); }
+    .src-o { background: var(--purple-light); color: var(--purple); }
+    .src-e { background: var(--blue-light);   color: var(--blue); }
+
+    .fallgruber-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 1rem 0;
+    }
+    .fallgruber-item {
+      border-left: 3px solid var(--red);
+      background: var(--red-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.75rem 1rem;
+      font-size: 14px;
+      color: #4a1a1a;
+    }
+    .fallgruber-item strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--red);
+    }
+
+    .sources-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+      font-size: 13px;
+    }
+    .sources-box h3 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .sources-box ol {
+      margin: 0 0 0 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sources-box li { line-height: 1.55; }
+    .sources-box li span { color: var(--text-muted); font-size: 12px; }
   </style>
 </head>
 <body>
@@ -91,192 +236,245 @@
       <div class="page-header">
         <div class="page-label">Grundlag · Modul 1.1</div>
         <h1>Begreber og klassifikation</h1>
-        <p>Forstå hvad stroke er, hvordan vi klassificerer det, og de nøglebegreber du skal have på plads fra dag ét.</p>
+        <p>Definitioner, klassifikation og klinisk ramme — det du skal have på plads før første vagt.</p>
       </div>
 
       <div class="goals-box">
         <h3>Læringsmål</h3>
         <ul>
-          <li>Definere stroke og TIA korrekt med den nye, vævsbaserede definition</li>
-          <li>Klassificere iskæmisk stroke i de 4 TOAST-kategorier og forklare deres kliniske kendetegn</li>
-          <li>Skelne mellem iskæmisk stroke og ICH på klinisk og billeddiagnostisk grundlag</li>
+          <li>Definere apopleksi og TIA efter NNBV og forklare forholdet til den vævsbaserede definition</li>
+          <li>Klassificere iskæmisk apopleksi i TOAST-kategorier og koble til profylaksevalg</li>
+          <li>Beskrive de tre faser i strokeforløbet og deres kliniske indhold</li>
         </ul>
       </div>
 
       <div class="prose">
 
-        <h2>Hvad er stroke?</h2>
+        <h2>Hvad er apopleksi?</h2>
 
-        <p>Stroke (apopleksi) er en pludselig opstået neurologisk dysfunktion forårsaget af fokal cerebral iskæmi eller blødning. WHO's klassiske definition kræver symptomer der varer mere end 24 timer eller fører til død — men denne tidsdefinition er i dag erstattet af en <strong>vævsbaseret definition</strong>.</p>
+        <p>NNBV definerer <strong>apopleksi</strong> som en pludselig opstået fokal neurologisk dysfunktion af vaskulær årsag med symptomer der varer mere end 24 timer. <span class="src-inline src-n">NNBV</span> Diagnosen er klinisk og bekræftes med CT non-kontrast — primært for at udelukke blødning. <span class="src-inline src-n">NNBV</span></p>
 
-        <div class="definition-box">
-          <dt>Stroke (nuværende definition)</dt>
-          <dd>En akut fokal neurologisk dysfunktion forårsaget af cerebral iskæmi eller blødning, med objektive tegn på hjerneskade på billediagnostik — uanset symptomvarighed.</dd>
-        </div>
+        <p>Patienter med mistanke om apopleksi registreres ved ankomst som <strong>obs apopleksi</strong>. Det er en aktiv klinisk diagnose der forpligter til systematisk udredning: CT, EKG, blodprøver og NIHSS-scoring. Det er ikke en ventediagnose. <span class="src-inline src-n">NNBV</span></p>
 
         <div class="definition-box">
-          <dt>TIA — transitorisk iskæmisk attak</dt>
-          <dd>En forbigående episode af neurologisk dysfunktion pga. fokal brain- eller retinal iskæmi, <em>uden</em> tegn på akut infarkt på MR-DWI. Varighed typisk &lt;1 time — men definitionen er vævsbaseret, ikke tidsbaseret.</dd>
+          <dt>Vævsbaseret definition — international</dt>
+          <dd>ESO og AHA/ASA definerer apopleksi som påvisning af akut infarkt på billediagnostik uanset symptomvarighed. <span class="src-inline src-e">ESO</span> Denne definition bruges i forskning og international litteratur — den er ikke operationel i dansk journalpraksis.</dd>
         </div>
 
-        <div class="warning-box">
-          <strong>Klinisk faldgrube</strong>
-          Den gamle "24-timers-regel" er forældet. En patient med symptomer i 30 minutter, men DWI-forandringer på MR, har haft et <em>stroke</em> — ikke en TIA. Brug altid billediagnostik til at afgøre det.
+        <h2>Hvad er TIA?</h2>
+
+        <div class="two-def">
+          <dl class="def-nnbv">
+            <dt>NNBV — gældende i dansk praksis</dt>
+            <dd>Forbigående fokal neurologisk dysfunktion af vaskulær årsag med fuldstændig remission inden 24 timer. Varer symptomerne mere end 24 timer, klassificeres hændelsen som apopleksi — uanset sværhedsgrad. <span class="src-inline src-n">NNBV</span></dd>
+          </dl>
+          <dl class="def-intl">
+            <dt>Vævsbaseret definition — international</dt>
+            <dd>Forbigående symptomer uden infarkt på MR-DWI uanset varighed. En patient med 20 minutters symptomer og DWI-forandringer er en apopleksi efter denne definition. <span class="src-inline src-e">ESO</span></dd>
+          </dl>
         </div>
 
-        <h2>De to overordnede typer</h2>
+        <div class="info-box">
+          <strong>To definitioner er i brug</strong>
+          I dansk journalpraksis registreres en patient med kortvarige symptomer og DWI-forandringer typisk som TIA, da DWI ikke altid er tilgængeligt akut og 24-timerskriteriet er operationelt. <span class="src-inline src-n">NNBV</span> Brug NNBV-definitionen i klinikken og ved journalskrivning.
+        </div>
 
-        <p>Stroke opdeles i to fundamentalt forskellige typer med <em>modsatrettede behandlingsprincipper</em>:</p>
+        <h2>Afgørende klinisk pointe</h2>
+
+        <div class="key-concept">
+          <strong>TIA er en medicinsk akutsituation</strong>
+          10–15 % af TIA-patienter får apopleksi inden for tre måneder — halvdelen inden for 48 timer. <span class="src-inline src-o">Oxford</span> TIA skal udredes samme dag. <span class="src-inline src-n">NNBV</span>
+        </div>
+
+        <h2>Iskæmisk apopleksi vs. ICH</h2>
+
+        <p>De to typer kræver modsatrettede behandlinger. CT non-kontrast er obligatorisk inden behandlingsstart — ingen kliniske tegn er pålidelige nok til at skelne de to. <span class="src-inline src-n">NNBV</span></p>
 
         <table class="compare-table">
           <thead>
             <tr>
-              <th>Egenskab</th>
-              <th>Iskæmisk stroke (~85%)</th>
-              <th>ICH (~15%)</th>
+              <th></th>
+              <th>Iskæmisk apopleksi</th>
+              <th>ICH</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Mekanisme</strong></td>
-              <td>Arterieoklusion → iltmangel</td>
-              <td>Bristet arterie → blødning i parenkym</td>
-            </tr>
             <tr>
               <td><strong>CT akut</strong></td>
               <td>Normal de første timer</td>
               <td>Hyperdens (hvid) straks</td>
             </tr>
             <tr>
-              <td><strong>Hovedpine</strong></td>
-              <td>Sjælden ved debut</td>
-              <td>Hyppig og kraftig</td>
+              <td><strong>Debut</strong></td>
+              <td>Variabel, TIA kan gå forud</td>
+              <td>Kraftig debut, hyppig hovedpine</td>
             </tr>
             <tr>
               <td><strong>Bevidsthed</strong></td>
               <td>Sjælden påvirkning initialt</td>
-              <td>Hyppig — pga. trykstigning</td>
+              <td>Hyppig påvirkning</td>
             </tr>
             <tr>
-              <td><strong>Akut behandling</strong></td>
-              <td>tPA + trombektomi (rekanalisering)</td>
-              <td>Blodtrykskontrol, <em>ingen</em> tPA</td>
+              <td><strong>Behandling</strong></td>
+              <td>tPA og/eller trombektomi</td>
+              <td>Blodtrykskontrol — trombolyse kontraindiceret</td>
             </tr>
           </tbody>
         </table>
 
+        <p>Tidlige iskæmiske forandringer — fx ophævet grå-hvid differentiering eller hyperdens MCA-tegn — kan ses inden for de første timer, men CT er oftest normal de første 6 timer ved iskæmisk apopleksi. <span class="src-inline src-o">Oxford</span></p>
+
         <div class="warning-box">
-          <strong>Afgørende pointe</strong>
-          Du kan <em>aldrig</em> skelne klinisk mellem iskæmisk stroke og ICH med tilstrækkelig sikkerhed. CT non-kontrast er obligatorisk inden enhver behandlingsbeslutning.
+          <strong>Klinisk skelnen mellem iskæmisk og hæmoragisk er upålidelig</strong>
+          Ingen symptomer er diagnostiske for den ene type. CT non-kontrast er altid nødvendig inden behandlingsstart.
         </div>
 
-        <h2>TOAST-klassifikation — iskæmisk stroke</h2>
+        <h2>TOAST-klassifikation</h2>
 
-        <p>Iskæmisk stroke klassificeres i 4 ætiologiske kategorier (TOAST-systemet). Hvilken kategori patienten tilhører styrer behandling og sekundær profylakse.</p>
+        <p>Iskæmisk apopleksi inddeles i fem kategorier efter årsag. <span class="src-inline src-o">Oxford</span> <span class="src-inline src-e">ESO</span></p>
 
-        <div class="toast-grid">
-          <div class="toast-card" style="background:var(--purple-light)">
-            <span class="toast-pct" style="color:var(--purple)">~30%</span>
-            <h4 style="color:var(--purple)">1. Storkarssygdom (LAD)</h4>
-            <p style="color:#3C3489">Aterosklerose i karotis eller intrakranielle arterier. Ofte TIA forud. Karotisstenose på duplex.</p>
-          </div>
-          <div class="toast-card" style="background:var(--red-light)">
-            <span class="toast-pct" style="color:var(--red)">~25%</span>
-            <h4 style="color:var(--red)">2. Kardioembolisme (CE)</h4>
-            <p style="color:#5a1a1a">Trombe fra hjertet — oftest atrieflimren. Pludseligt maksimalt deficit. Stort kortikalt infarkt.</p>
-          </div>
-          <div class="toast-card" style="background:var(--amber-light)">
-            <span class="toast-pct" style="color:var(--amber)">~25%</span>
-            <h4 style="color:var(--amber)">3. Smakarssygdom (SAD)</h4>
-            <p style="color:#4a2800">Lipohyalinose i dybe perforerende arterier → lakunærinfarkt &lt;15 mm. Rene syndromer.</p>
-          </div>
-          <div class="toast-card" style="background:var(--gray-light)">
-            <span class="toast-pct" style="color:var(--gray)">~20%</span>
-            <h4 style="color:var(--gray)">4. Kryptogen / UDE</h4>
-            <p style="color:#3a3a38">Ingen klar årsag trods udredning — eller to mulige årsager. Særlig hyppig hos unge.</p>
-          </div>
-        </div>
+        <ul class="toast-list">
+          <li><span class="toast-num">1</span><span><strong>Storkarssygdom</strong> — aterosklerose i store ekstra- eller intrakranielle arterier</span></li>
+          <li><span class="toast-num">2</span><span><strong>Kardioembolisk</strong> — embolus fra hjerte, hyppigst ved atrieflimren</span></li>
+          <li><span class="toast-num">3</span><span><strong>Lakunærinfarkt</strong> — okklusion af dybe penetrerende arterier, infarkt under 15 mm</span></li>
+          <li><span class="toast-num">4</span><span><strong>Anden specificeret årsag</strong> — fx arteriedissektion, vaskulitis eller genetisk betinget sygdom</span></li>
+          <li><span class="toast-num">5</span><span><strong>Kryptogen</strong> — ingen årsag fundet trods adekvat udredning</span></li>
+        </ul>
 
         <div class="key-concept">
-          <strong>Klinisk nøglepointe</strong>
-          TOAST-kategorien bestemmer sekundær profylakse: LAD og SAD → trombocythæmning, CE (AF) → antikoagulation (NOAK). Forkert klassifikation = forkert behandling.
+          <strong>Klinisk betydning</strong>
+          Klassifikationen styrer profylaksen. <span class="src-inline src-n">NNBV</span> Storkarssygdom og lakunærinfarkt → trombocythæmning. Kardioembolisk apopleksi ved atrieflimren → NOAK. <span class="src-inline src-n">NNBV</span> Symptomatisk karotisstenose over 70 % → karotisendarterektomi inden for to uger. <span class="src-inline src-n">NNBV</span> Forkert klassifikation giver forkert profylakse. <span class="src-inline src-e">ESO</span>
         </div>
 
-        <h2>Tre faser i strokeforløbet</h2>
+        <h2>De tre faser i strokeforløbet</h2>
 
-        <p>Forstå faserne — de svarer til uge 1–3 i kursusplanen og til de konkrete kliniske opgaver på afdelingen:</p>
+        <div class="faser-grid">
+          <div class="fase-card fase-akut">
+            <h4>Akutfase (0–72 timer)</h4>
+            <p>Billediagnostik, behandlingsbeslutning (tPA/trombektomi) og stabilisering på strokeafsnit. <span class="src-inline src-n">NNBV</span> Hvert minut tæller — hjerneceller dør kontinuerligt ved iskæmi. <span class="src-inline src-o">Oxford</span></p>
+          </div>
+          <div class="fase-card fase-sub">
+            <h4>Subakutfase (dage–uger)</h4>
+            <p>Fokus på komplikationsforebyggelse (pneumoni, DVT), tværfaglig plan og opstart af sekundær profylakse. <span class="src-inline src-n">NNBV</span></p>
+          </div>
+          <div class="fase-card fase-rehab">
+            <h4>Rehabiliteringsfase (uger–måneder)</h4>
+            <p>Varetages primært af det tværfaglige team. Intro-lægens rolle: sikre profylakse, håndtere komplikationer og koordinere med rehabiliteringsteamet. <span class="src-inline src-n">NNBV</span></p>
+          </div>
+        </div>
 
-        <dl style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
-          <div class="definition-box">
-            <dt>Akut fase (0–72 timer)</dt>
-            <dd>Rekanalisering (tPA, trombektomi), stabilisering, monitorering. Mål: redde penumbra. Hvert minut tæller — 1,9 mio. neuroner dør per minut ved komplet MCA-okklusion.</dd>
+        <h2>Klinisk betydning</h2>
+
+        <p>Du møder obs apopleksi fra første vagt. NIHSS-scoring er obligatorisk dokumentation — du skal kunne udføre den. <span class="src-inline src-n">NNBV</span> Klassifikationen bestemmer direkte behandling og profylakse.</p>
+
+        <h2>Faldgruber</h2>
+
+        <div class="fallgruber-list">
+          <div class="fallgruber-item">
+            <strong>Normal CT udelukker ikke iskæmisk apopleksi</strong>
+            CT er normal de første 6 timer ved iskæmisk apopleksi. En normal CT udelukker ICH — intet andet. <span class="src-inline src-o">Oxford</span>
           </div>
-          <div class="definition-box">
-            <dt>Subakut fase (dage–uger)</dt>
-            <dd>Strokeafsnit, komplikationsforebyggelse (pneumoni, DVT), tværfaglig plan. Hjerneskaden er stabiliseret — nu handler det om at bevare det resterende.</dd>
+          <div class="fallgruber-item">
+            <strong>MR-DWI kan være falsk negativ</strong>
+            Ved lille infarkt eller posterior circulation-apopleksi kan MR-DWI være negativ de første 6–24 timer. En normal MR udelukker ikke apopleksi i den akutte fase. <span class="src-inline src-o">Oxford</span>
           </div>
-          <div class="definition-box">
-            <dt>Rehabiliteringsfase (uger–måneder)</dt>
-            <dd>Neuroplasticitet er størst de første 4 uger. Intensiv rehabilitering i dette vindue giver bedst funktionelt resultat. Sekundær profylakse startes.</dd>
+          <div class="fallgruber-item">
+            <strong>TIA er en akutsituation</strong>
+            Risikoen for apopleksi de næste 48 timer er reel. Udred samme dag. <span class="src-inline src-n">NNBV</span>
           </div>
-        </dl>
+          <div class="fallgruber-item">
+            <strong>Kryptogen er en restdiagnose</strong>
+            Udredningen skal være fuldstændig — herunder langtids-Holter og ekkokardiografi — inden diagnosen stilles. <span class="src-inline src-n">NNBV</span>
+          </div>
+          <div class="fallgruber-item">
+            <strong>Forkert klassifikation giver forkert profylakse</strong>
+            En kardioembolisk patient behandlet med aspirin frem for NOAK har markant højere recidivrisiko. <span class="src-inline src-e">ESO</span>
+          </div>
+        </div>
 
       </div><!-- /prose -->
 
-      <div class="sources">
-        <strong>Kilder:</strong>
-        <span class="src-tag src-oxford">Oxford Textbook kap. 1 + 4 + 5</span>
-        <span class="src-tag src-eso">ESO Guidelines 2021 — definitioner</span>
-        <span class="src-tag src-nnbv">NNBV — cerebrovask. sygdomme</span>
-      </div>
-
       <hr class="divider">
 
-      <h2 style="margin-bottom:1rem">Test dig selv — begreber</h2>
+      <h2 style="margin-bottom:1rem">Test dig selv</h2>
 
       <div class="quiz-wrap">
 
-        <div class="quiz-q" data-correct="b">
-          <div class="quiz-q-text">En 68-årig mand får pludselig talebesvær og højresidig svaghed. Symptomerne er væk efter 45 minutter. MR-DWI viser et lille kortikalt infarkt i venstre MCA-territorium. Hvad er den korrekte diagnose?</div>
-          <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">TIA — symptomerne forsvandt inden 1 time</div>
-            <div class="quiz-opt" data-val="b">Stroke — MR-DWI viser infarkt uanset symptomvarighed</div>
-            <div class="quiz-opt" data-val="c">TIA — den gamle 24-timers-definition gælder stadig</div>
-          </div>
-          <div class="quiz-feedback">
-            <strong>Korrekt.</strong> Den nye, vævsbaserede TIA-definition kræver <em>fravær</em> af DWI-forandringer. Har patienten DWI-forandringer, er det et stroke — uanset om symptomerne er forsvundet. Denne patient har haft et stroke.
-          </div>
-        </div>
-
         <div class="quiz-q" data-correct="c">
-          <div class="quiz-q-text">En 72-årig kvinde med kendt atrieflimren indlægges med akut venstre hemiparese og hemihypæstesi. CT er normal. Hvad er den mest sandsynlige TOAST-kategori?</div>
+          <div class="quiz-q-text">En 67-årig mand får pludselig talebesvær og højresidig kraftnedsættelse. Symptomerne forsvinder fuldstændigt efter 40 minutter. MR-DWI viser et lille kortikalt infarkt i venstre MCA-territorium. Hvad er den korrekte diagnose i dansk journalpraksis?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Storkarssygdom (LAD) — pga. alder og vaskulære risikofaktorer</div>
-            <div class="quiz-opt" data-val="b">Smakarssygdom (SAD) — pga. det klassiske motorisk-sensoriske billede</div>
-            <div class="quiz-opt" data-val="c">Kardioembolisme (CE) — atrieflimren er hyppigste årsag til CE-stroke</div>
-            <div class="quiz-opt" data-val="d">Kryptogen — CT er normal, så vi kan ikke klassificere</div>
+            <div class="quiz-opt" data-val="a">Apopleksi — DWI viser infarkt, og den vævsbaserede definition er gældende i Danmark</div>
+            <div class="quiz-opt" data-val="b">Obs apopleksi — diagnosen kan ikke stilles uden yderligere udredning</div>
+            <div class="quiz-opt" data-val="c">TIA — symptomerne varede under 24 timer og remitterede fuldstændigt</div>
+            <div class="quiz-opt" data-val="d">Kryptogen apopleksi — årsagen er ukendt</div>
           </div>
           <div class="quiz-feedback">
-            <strong>Korrekt.</strong> Atrieflimren er den hyppigste årsag til kardioembolisk stroke. Normal CT udelukker ICH, men siger ikke noget om stroketypen — billediagnostik af karrene og hjertet er nødvendig. Prognosen og profylaksen (NOAK) er anderledes end ved andre typer.
+            I dansk journalpraksis er NNBV's tidsbaserede definition operationel: symptomer under 24 timer med fuld remission klassificeres som TIA. Den vævsbaserede definition — hvor DWI-forandringer er afgørende — bruges i international litteratur, men er ikke gældende standard i dansk journalskrivning. Begge definitioner er i brug — kend dem begge og vid hvilken du bruger.
           </div>
         </div>
 
         <div class="quiz-q" data-correct="b">
-          <div class="quiz-q-text">Hvilken enkeltforskel er <em>mest afgørende</em> for valg af akut behandling: iskæmisk stroke vs. ICH?</div>
+          <div class="quiz-q-text">En 71-årig hypertensiv mand indlægges med pludselig venstresidigt hemiparese og svær hovedpine. Han er somnolent ved ankomst. GCS er 12. Hvad er det vigtigste næste skridt?</div>
           <div class="quiz-options">
-            <div class="quiz-opt" data-val="a">Tilstedeværelse af hovedpine</div>
-            <div class="quiz-opt" data-val="b">CT-fund: hyperdensitet (hvid) bekræfter ICH, normal CT = iskæmisk mistanke</div>
-            <div class="quiz-opt" data-val="c">Sværhedsgraden af den neurologiske udfald (NIHSS)</div>
+            <div class="quiz-opt" data-val="a">Give tPA straks — klinisk billede passer på stor MCA-okklusion</div>
+            <div class="quiz-opt" data-val="b">CT non-kontrast inden behandlingsbeslutning — klinisk skelnen mellem iskæmisk og ICH er upålidelig</div>
+            <div class="quiz-opt" data-val="c">Starte blodtrykssænkning — hypertension og somnolens taler for ICH</div>
+            <div class="quiz-opt" data-val="d">Rekvirere MR-DWI — CT er for usensitiv i akutfasen</div>
           </div>
           <div class="quiz-feedback">
-            <strong>Korrekt.</strong> Kliniske tegn (hovedpine, bevidsthedssvækkelse) kan antyde ICH men er ikke diagnostiske. CT non-kontrast er obligatorisk og afgørende: ICH ses som hyperdens område straks. tPA ved ICH er livsfarligt — det er den vigtigste kontraindikation.
+            Ingen kliniske tegn — heller ikke kraftig hovedpine eller bevidsthedssvækkelse — er pålidelige nok til at skelne iskæmisk apopleksi fra ICH. tPA ved ICH er livsfarligt og absolut kontraindiceret. CT non-kontrast er obligatorisk inden behandlingsstart og viser ICH som hyperdens område straks.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="b">
+          <div class="quiz-q-text">En 69-årig kvinde med kendt atrieflimren indlægges med akut afasi og højresidig hemiparese. MR-DWI viser et stort kortikalt infarkt i venstre MCA-territorium. Hvad er den mest sandsynlige TOAST-kategori — og hvad er konsekvensen for profylakse?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Storkarssygdom — behandles med trombocythæmning og statin</div>
+            <div class="quiz-opt" data-val="b">Kardioembolisk — behandles med NOAK</div>
+            <div class="quiz-opt" data-val="c">Lakunærinfarkt — behandles med trombocythæmning og blodtrykskontrol</div>
+            <div class="quiz-opt" data-val="d">Kryptogen — kræver fuld udredning inden profylaksestart</div>
+          </div>
+          <div class="quiz-feedback">
+            Atrieflimren er den hyppigste årsag til kardioembolisk apopleksi. Et stort kortikalt infarkt i ét territorium hos en patient med AF er klassisk præsentation. Profylaksen er NOAK — ikke aspirin. En patient med kardioembolisk apopleksi behandlet med aspirin alene har markant højere recidivrisiko.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="b">
+          <div class="quiz-q-text">Det er dag 4 efter en 74-årig mands iskæmiske apopleksi. Han er stabil og tPA-behandlet, men endnu ikke mobiliseret. Hvad er intro-lægens primære opgave nu?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Revurdere tPA-indikation og overveje supplerende trombolyse</div>
+            <div class="quiz-opt" data-val="b">Opstart af sekundær profylakse, komplikationsforebyggelse og koordinering med tværfagligt team</div>
+            <div class="quiz-opt" data-val="c">Afvente spontan bedring — rehabilitering starter først efter udskrivelse</div>
+            <div class="quiz-opt" data-val="d">Konferere med neurointensiv om eskalering af behandling</div>
+          </div>
+          <div class="quiz-feedback">
+            Dag 4 er subakutfasen. Komplikationer som pneumoni og DVT er hyppige og forværrer prognosen — manglende mobilisering er en selvstændig risikofaktor. Sekundær profylakse skal opstartes under indlæggelsen, og det tværfaglige team koordineres tidligt. Intro-lægens rolle er koordinering og medicinsk opfølgning.
           </div>
         </div>
 
         <div class="quiz-score">
-          <div class="score-num">0/3</div>
+          <div class="score-num">0/4</div>
           <div class="score-label"></div>
         </div>
+
+      </div><!-- /quiz-wrap -->
+
+      <div class="sources-box">
+        <h3>Kilder</h3>
+        <ol>
+          <li>
+            <strong>NNBV — Cerebrovaskulære sygdomme</strong> (nnbv.dk)<br>
+            <span>Definition af apopleksi og TIA, obs apopleksi-diagnosen og udredningskrav, CT som obligatorisk første undersøgelse, profylaksevalg, NIHSS-krav, karotisendarterektomi-indikation og timing</span>
+          </li>
+          <li>
+            <strong>Oxford Textbook of Stroke and Cerebrovascular Disease</strong>, red. Bo Norrving<br>
+            <span>TIA-recidivrisiko, patofysiologi ved iskæmisk apopleksi og ICH, CT-fund i akutfasen, TOAST-klassifikationens baggrund, komplikationer i subakutfasen</span>
+          </li>
+          <li>
+            <strong>ESO Clinical Guidelines</strong> (eso-stroke.org)<br>
+            <span>Vævsbaseret TIA-definition, TOAST-klassifikation, evidens for NOAK ved kardioembolisk apopleksi med atrieflimren</span>
+          </li>
+        </ol>
       </div>
 
       <div class="nav-buttons">
