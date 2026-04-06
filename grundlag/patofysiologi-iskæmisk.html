@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patofysiologi — iskæmisk stroke · Neuroportalen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+
+    /* ── PENUMBRA ILLUSTRATION ── */
+    .penumbra-wrap {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .penumbra-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .brain-circle {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      flex-shrink: 0;
+    }
+    .circle-outer {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-mid {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #FED7AA;
+      border: 2px solid #EA580C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-core {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #7F1D1D;
+      border: 2px solid #450a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-core span {
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .penumbra-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      min-width: 200px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .legend-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .legend-text strong { display: block; font-weight: 600; font-size: 13px; }
+    .legend-text span   { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+    .penumbra-message {
+      background: var(--teal-light);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 13px;
+      color: var(--teal-dark);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ── MECHANISM CARDS ── */
+    .mechanism-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 1.5rem 0 0;
+    }
+    .mech-tab {
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid var(--border-med);
+      background: var(--bg);
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .mech-tab:hover { border-color: var(--border-med); color: var(--text); }
+    .mech-tab.active {
+      border-color: transparent;
+      color: white;
+    }
+    .mech-tab.t1.active { background: #534AB7; }
+    .mech-tab.t2.active { background: #A32D2D; }
+    .mech-tab.t3.active { background: #854F0B; }
+    .mech-tab.t4.active { background: #5F5E5A; }
+
+    .mech-panel {
+      display: none;
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-top: 0.75rem;
+      animation: fadein .2s ease;
+    }
+    .mech-panel.active { display: block; }
+    @keyframes fadein { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+
+    .mech-panel.m1 { background: #EEEDFE; border: 1px solid #AFA9EC; }
+    .mech-panel.m2 { background: #FCEBEB; border: 1px solid #F09595; }
+    .mech-panel.m3 { background: #FAEEDA; border: 1px solid #EF9F27; }
+    .mech-panel.m4 { background: #F1EFE8; border: 1px solid #B4B2A9; }
+
+    .mech-panel h3 { font-size: 15px; font-weight: 700; margin-bottom: 0.5rem; }
+    .mech-panel .mech-pct {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+    }
+    .m1 .mech-pct { background: #534AB7; color: white; }
+    .m2 .mech-pct { background: #A32D2D; color: white; }
+    .m3 .mech-pct { background: #854F0B; color: white; }
+    .m4 .mech-pct { background: #5F5E5A; color: white; }
+
+    .mech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .mech-item {
+      background: rgba(255,255,255,.6);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      font-size: 13px;
+    }
+    .mech-item strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; opacity: .7; }
+
+    .mech-panel p { font-size: 14px; line-height: 1.65; }
+
+    /* ── CASCADE BOX ── */
+    .cascade {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 1.25rem 0;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .cascade-step {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .cascade-arrow {
+      font-size: 16px;
+      color: var(--text-hint);
+      padding: 0 2px;
+    }
+    .cascade-step.danger { background: var(--red-light); border-color: #F09595; color: var(--red); }
+    .cascade-step.warn   { background: var(--amber-light); border-color: #EF9F27; color: var(--amber); }
+    .cascade-step.safe   { background: var(--green-light); border-color: #97C459; color: var(--green); }
+
+    @media (max-width: 600px) {
+      .mech-grid { grid-template-columns: 1fr; }
+      .penumbra-visual { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menu-toggle">☰</button>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">
+      <a href="/index.html" class="logo-mark">
+        <div class="logo-icon">N</div>
+        <div>
+          <div class="logo-text">Neuroportalen</div>
+          <div class="logo-sub">Cerebrovaskulære sygdomme</div>
+        </div>
+      </a>
+    </div>
+    <nav class="nav"></nav>
+    <div class="nav-progress">
+      <div class="progress-label">Fremgang: 0%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">
+        <a href="/index.html">Dashboard</a>
+        <span>›</span>
+        <a href="/grundlag/begreber.html">Grundlag</a>
+        <span>›</span>
+        <strong>Patofysiologi — iskæmisk</strong>
+      </div>
+      <span class="week-badge">Uge 1</span>
+    </div>
+
+    <div class="page-inner">
+
+      <div class="page-header">
+        <div class="page-label">Grundlag · Modul 1.2</div>
+        <h1>Patofysiologi — iskæmisk stroke</h1>
+        <p>Fra karokklusion til neuronal celledød — og hvorfor hvert minut tæller.</p>
+      </div>
+
+      <div class="goals-box">
+        <h3>Læringsmål</h3>
+        <ul>
+          <li>Forklare penumbra-konceptet og dets direkte kliniske konsekvens (tPA, trombektomi)</li>
+          <li>Beskrive de 4 TOAST-mekanismer og koble dem til typisk anamnese og klinisk præsentation</li>
+          <li>Beregne neurontab ved MCA-okklusion og bruge det i argumentation for hurtig behandling</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+
+        <h2>Hvad sker der i hjernen ved iskæmisk stroke?</h2>
+
+        <p>Iskæmisk stroke opstår, når en arterie okkluderes og blodforsyningen til et hjerneområde ophører. Neuroner tåler iltmangel i <strong>4–6 minutter</strong> — herefter starter irreversibel celledød. Det er den hurtigste biologiske krise du vil møde i klinikken.</p>
+
+        <div class="key-concept">
+          <strong>Tid er hjerne — konkrete tal</strong>
+          Ved komplet MCA-okklusion dør <strong>1,9 millioner neuroner per minut</strong>. For hvert minut fra symptomstart til rekanalisering mistes gennemsnitlig 3,6 dage af en sund levetid. En times forsinkelse svarer til 20 år aldring af hjernen.
+        </div>
+
+        <h2>Penumbra — det væv vi kan redde</h2>
+
+        <p>Det iskæmiske område er <em>ikke</em> uniformt. Rundt om den nekrotiske kerne findes en zone af truet, men levedygtigt væv: <strong>penumbra</strong>. Det er her tPA og trombektomi gør en forskel.</p>
+
+      </div>
+
+      <!-- PENUMBRA VISUAL -->
+      <div class="penumbra-wrap">
+        <div class="penumbra-visual">
+          <div class="brain-circle">
+            <div class="circle-outer">
+              <div class="circle-mid">
+                <div class="circle-core">
+                  <span>Infarkt&shy;kerne</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="penumbra-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#7F1D1D"></div>
+              <div class="legend-text">
+                <strong>Infarktkerne</strong>
+                <span>CBF &lt;10 ml/100g/min. Irreversibel celledød inden for minutter. Kan ikke reddes.</span>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#EA580C"></div>
+              <div class="legend-text">
+                <strong>Penumbra</strong>
+                <span>CBF 10–20 ml/100g/min. Elektrisk stille men metabolisk aktiv. Kan reddes ved rekanalisering.</span>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#F59E0B"></div>
+              <div class="legend-text">
+                <strong>Oligæmi</strong>
+                <span>CBF 20–50 ml/100g/min. Lavt flow, men overlever uden behandling. Truet ved hypotension.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="penumbra-message">
+          Penumbra vokser ind i infarktkerne for hvert minut uden behandling — det er rationale bag tPA og trombektomi
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <p>Penumbra kan identificeres in vivo med <strong>DWI/PWI-mismatch</strong> på MR: DWI viser kerne (allerede nekrotisk), PWI viser samlet hypoperfunderet område. Differencen er penumbra — det potentielt reddelige væv.</p>
+
+        <div class="info-box">
+          <strong>Klinisk implikation</strong>
+          DWI/FLAIR-mismatch bruges i Danmark (NNBV) til at udvide behandlingsvinduet ved wake-up stroke og sent ankomne patienter op til 4,5 timer (tPA) og 6–24 timer (trombektomi). Se modul 3.2 og 3.3.
+        </div>
+
+        <h2>Den iskæmiske kaskade</h2>
+
+        <p>Når blodflow svigter, udløses en biologisk kædereaktion der eskalerer hjerneskaden:</p>
+      </div>
+
+      <div class="cascade">
+        <div class="cascade-step danger">Arterieoklusion</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step danger">ATP-svigt</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step danger">Na⁺/K⁺-pumpe svigter</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step warn">Celleødem</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step warn">Glutamat-frigivelse</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step danger">Excitotoksicitet</div>
+        <div class="cascade-arrow">→</div>
+        <div class="cascade-step danger">Celledød</div>
+      </div>
+
+      <div class="warning-box">
+        <strong>Hyperglykæmi og feber accelererer kaskaden</strong>
+        Blodsukker &gt;11 mmol/L og temperatur &gt;37,5°C øger excitotoksiciteten og udvider infarktkerne. Det er præcis derfor fysiologisk monitorering på strokeafsnittet er behandling — ikke bare observation.
+      </div>
+
+      <div class="prose">
+        <h2>De 4 mekanismer — TOAST-klassifikation</h2>
+        <p>Iskæmisk stroke er ikke én sygdom men fire med forskellig årsag, præsentation og behandling. Klik på hver mekanisme:</p>
+      </div>
+
+      <!-- MECHANISM TABS -->
+      <div class="mechanism-tabs">
+        <button class="mech-tab t1 active" onclick="showMech(1)">1 · Storkarssygdom</button>
+        <button class="mech-tab t2"         onclick="showMech(2)">2 · Kardioembolisme</button>
+        <button class="mech-tab t3"         onclick="showMech(3)">3 · Smakarssygdom</button>
+        <button class="mech-tab t4"         onclick="showMech(4)">4 · Kryptogen</button>
+      </div>
+
+      <div class="mech-panel m1 active" id="mech1">
+        <h3>Storkarssygdom (Large Artery Disease, LAD)</h3>
+        <span class="mech-pct">~30% af iskæmisk stroke</span>
+        <p>Aterosklerose i a. carotis interna eller intrakranielle arterier → plakvulnerabilitet → lokal trombose <em>eller</em> embolus videre distalt (artery-to-artery embolism). Processen er kronisk — plaques opbygges over år, men rupturerer akut.</p>
+        <div class="mech-grid">
+          <div class="mech-item">
+            <strong>Typisk anamnese</strong>
+            TIA forud for stroke i samme hemisfære. Symptomerne varierer (fluktuererer). Auskultation: evt. karotislyde.
+          </div>
+          <div class="mech-item">
+            <strong>Billediagnostik</strong>
+            CTA/MRA: karotisstenose eller intrakraniel stenose. DWI: kortikalt infarkt i én arteriestrøm.
+          </div>
+          <div class="mech-item">
+            <strong>Profylakse</strong>
+            Trombocythæmning (aspirin/clopidogrel), statin, blodtrykskontrol. CEA ved stenose &gt;70%.
+          </div>
+          <div class="mech-item">
+            <strong>Særligt</strong>
+            Intrakraniel aterosklerose hyppigere hos asiater. ECST/NASCET-kriterierne for CEA-indikation.
+          </div>
+        </div>
+      </div>
+
+      <div class="mech-panel m2" id="mech2">
+        <h3>Kardioembolisme (Cardioembolic, CE)</h3>
+        <span class="mech-pct">~25% af iskæmisk stroke</span>
+        <p>Trombe dannet i hjertet rejser op og okkluderer en hjernearterie. <strong>Atrieflimren</strong> er den hyppigste årsag — stase i venstre aurikel → trombedannelse. Andre: venstre ventrikeltrombus, mekanisk hjerteklap, infektiøs endokarditis, PFO.</p>
+        <div class="mech-grid">
+          <div class="mech-item">
+            <strong>Typisk anamnese</strong>
+            Pludseligt maksimalt neurologisk deficit (trombe rammer uden forvarsel). Evt. kendt AF, hjertesvigt. Fravær af TIA forud.
+          </div>
+          <div class="mech-item">
+            <strong>Billediagnostik</strong>
+            DWI: territorielt kortikalt infarkt — ofte stort. Multipel-territoriums-infarkter = klassisk CE-mønster.
+          </div>
+          <div class="mech-item">
+            <strong>Udredning</strong>
+            EKG (AF?), Holter-monitorering 72t, transthorakal/transøsofageal ekkokardiografi. CHADS₂-score.
+          </div>
+          <div class="mech-item">
+            <strong>Profylakse</strong>
+            NOAK (apixaban, rivaroxaban) ved AF — markant bedre end aspirin. Start timing: afhænger af infarktets størrelse.
+          </div>
+        </div>
+      </div>
+
+      <div class="mech-panel m3" id="mech3">
+        <h3>Smakarssygdom / Lakunærinfarkt (Small Artery Disease, SAD)</h3>
+        <span class="mech-pct">~25% af iskæmisk stroke</span>
+        <p>Lipohyalinose og fibrinoid nekrose i de dybe penetrerende arterier (diameter 50–400 μm) → okklusion → lille subkortikalt infarkt (&lt;15 mm). Klassisk lokalisation: basalganglier, capsula interna, thalamus, pons.</p>
+        <div class="mech-grid">
+          <div class="mech-item">
+            <strong>Risikofaktorer</strong>
+            Hypertension (vigtigste), diabetes. Kronisk tilstand — ikke pludseligt opståede plaques.
+          </div>
+          <div class="mech-item">
+            <strong>Kliniske syndromer</strong>
+            Rene syndromer: ren motorisk hemiparese, ren sensorisk stroke, ataktisk hemiparese, dysartri-klodset hånd.
+          </div>
+          <div class="mech-item">
+            <strong>Billediagnostik</strong>
+            DWI: lille (&lt;15 mm) subkortikalt infarkt. Ingen kortikal involvering. Evt. ældre lakuner i white matter.
+          </div>
+          <div class="mech-item">
+            <strong>Profylakse</strong>
+            Trombocythæmning, men vigtigst: aggressiv blodtrykskontrol og diabetesbehandling.
+          </div>
+        </div>
+      </div>
+
+      <div class="mech-panel m4" id="mech4">
+        <h3>Kryptogen / Ubestemt (Cryptogenic, UDE)</h3>
+        <span class="mech-pct">~20% af iskæmisk stroke</span>
+        <p>Årsagen forbliver ukendt trods adekvat udredning — eller to mulige årsager identificeres. Andelen er faldet fra 30–40% til ~20% med bedre billediagnostik og Holter-monitorering. Særlig hyppig hos yngre patienter.</p>
+        <div class="mech-grid">
+          <div class="mech-item">
+            <strong>Hyppige årsager man leder efter</strong>
+            Paroksystisk AF (kræver langtids-Holter), PFO med paradoksal emboli, aortaaterosklerose, koagulopati.
+          </div>
+          <div class="mech-item">
+            <strong>Hos unge (&lt;50 år)</strong>
+            Arteriedissektion (a. carotis/vertebralis), CADASIL, antifosfolipid-syndrom, kræft-associeret hyperkoagulopati.
+          </div>
+          <div class="mech-item">
+            <strong>Udredning</strong>
+            Udvidet: langtids-Holter (2–4 uger), TEE, koagulationsprofil, screeningsblodprøver for sjældne årsager.
+          </div>
+          <div class="mech-item">
+            <strong>Profylakse</strong>
+            Aspirin som default. Individuelt vurderet — afhænger af mistænkt årsag. PFO-lukning i udvalgte tilfælde.
+          </div>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2rem">
+
+        <h2>Kollateralcirkulationen — kroppens eget forsvar</h2>
+
+        <p>Willis-cirklen og leptomeningeale anastomoser kan levere kompensatorisk blodforsyning til det iskæmiske område. En veludviklet kollateralcirkulation er den vigtigste prædiktor for om penumbra overlever ved langsom okklusion. Det forklarer, at total okklusion af MCA hos visse patienter kun giver mildt deficit.</p>
+
+        <div class="key-concept">
+          <strong>Klinisk relevans for trombektomi</strong>
+          CT-perfusion (CTP) og kollateral-status på CTA bruges i Danmark til at udvide behandlingsvinduet. God kollateral = stor penumbra = kandidat til trombektomi selv 6–24 timer efter symptomdebut (DAWN/DEFUSE3-kriterierne).
+        </div>
+
+      </div>
+
+      <div class="sources">
+        <strong>Kilder:</strong>
+        <span class="src-tag src-oxford">Oxford Textbook kap. 4</span>
+        <span class="src-tag src-eso">ESO Guidelines 2021 — patofysiologi</span>
+        <span class="src-tag src-nnbv">NNBV — cerebrovask. sygdomme</span>
+      </div>
+
+      <hr class="divider">
+
+      <h2 style="margin-bottom:1rem">Test dig selv</h2>
+
+      <div class="quiz-wrap">
+
+        <div class="quiz-q" data-correct="b">
+          <div class="quiz-q-text">En 58-årig hypertensiv mand indlægges med akut debut af ren motorisk venstresidigt hemiparese uden talebesvær eller synsfeltsudfald. MR-DWI viser et 8 mm infarkt i højre capsula interna. Hvilken TOAST-mekanisme er mest sandsynlig?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Kardioembolisme — pga. det pludselige debut</div>
+            <div class="quiz-opt" data-val="b">Smakarssygdom (SAD) — lakunærinfarkt i capsula interna</div>
+            <div class="quiz-opt" data-val="c">Storkarssygdom — pga. hypertensionstilstand</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Ren motorisk hemiparese + lille (&lt;15 mm) infarkt i capsula interna = klassisk lakunærinfarkt fra smakarssygdom. Hypertension er den vigtigste risikofaktor. Kortikal involvering (afasi, hemianopsi, neglect) taler imod SAD og for LAD eller CE.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="c">
+          <div class="quiz-q-text">Hvad er den kliniske konsekvens af penumbra-konceptet for behandling?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Penumbra viser at iskæmisk stroke ikke hastebehandles — hjernen kan kompensere</div>
+            <div class="quiz-opt" data-val="b">Penumbra er kun relevant ved stor MCA-okklusion, ikke lakunærinfarkt</div>
+            <div class="quiz-opt" data-val="c">Penumbra er det levedygtige væv der kan reddes ved rekanalisering — det er rationale bag tPA og trombektomi</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Penumbra er kernekonceptet bag al akut rekanalisationsbehandling. Infarktkerne kan ikke reddes, men penumbra kan — hvis vi når at genåbne arterien. Jo hurtigere, jo mere penumbra overlever, jo bedre funktionelt outcome.
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="a">
+          <div class="quiz-q-text">En 75-årig kvinde med DWI-forandringer i multiple vaskulære territorier bilateralt (anteriort og posteriort). Hvad er den mest sandsynlige strokemekanisme?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" data-val="a">Kardioembolisme — multipel-territoriums-mønster er klassisk for cardioemboli</div>
+            <div class="quiz-opt" data-val="b">Bilateral storkarssygdom i begge karotider</div>
+            <div class="quiz-opt" data-val="c">Smakarssygdom med bilateral lacunærinfarkt</div>
+          </div>
+          <div class="quiz-feedback">
+            <strong>Korrekt.</strong> Infarkter i multiple vaskulære territorier — særligt bilateral og anterior + posterior — er næsten patognomonisk for kardioembolisme. En enkelt embolus kan fragmentere og ramme flere arterier, eller gentagne emboli afgår. LAD og SAD producerer typisk infarkter i ét territorium.
+          </div>
+        </div>
+
+        <div class="quiz-score">
+          <div class="score-num">0/3</div>
+          <div class="score-label"></div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="/grundlag/begreber.html" class="btn btn-outline">← Begreber og klassifikation</a>
+        <a href="/grundlag/patofysiologi-ich.html" class="btn btn-primary">Næste: Patofysiologi — ICH →</a>
+      </div>
+
+    </div><!-- /page-inner -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script src="/assets/nav.js"></script>
+<script src="/assets/script.js"></script>
+<script>
+function showMech(n) {
+  document.querySelectorAll('.mech-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.mech-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mech' + n).classList.add('active');
+  document.querySelectorAll('.mech-tab')[n-1].classList.add('active');
+}
+</script>
+</body>
+</html>
