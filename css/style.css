@@ -704,7 +704,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4/3;
-  background: var(--color-mist);
+  background: var(--color-bone);
 }
 
 .hero__image img {
