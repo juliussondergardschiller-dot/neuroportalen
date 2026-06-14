@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REDIGER: Titel og beskrivelse for denne artikel -->
+  <title>Artikeltitel — Neuroportalen</title>
+  <meta name="description" content="Kort beskrivelse af artiklens indhold.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <!-- ============================================================
+       ARTIKEL-HEADER
+       REDIGER: Kicker, titel, undertitel og meta-info herunder
+       ============================================================ -->
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+
+      <!-- Meta: kategori + læsetid -->
+      <div class="article-meta">
+        <!-- REDIGER: Kategori-badge tekst og farve -->
+        <span class="kicker" style="margin-bottom:0;">Lokalisation</span>
+        <!-- REDIGER: Læsetid -->
+        <span class="read-time">⏱ 12 min læsning</span>
+      </div>
+
+      <!-- REDIGER: Artikelens hovedtitel -->
+      <h1 style="max-width: 780px;">Hvor sidder læsionen? — En systematisk tilgang til lokalisation</h1>
+
+      <!-- REDIGER: Undertitel / ingress -->
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Lokalisationsevnen er neurologiens vigtigste kliniske færdighed. Her gennemgår vi
+        den systematiske tilgang — fra symptom til anatomisk niveau.
+      </p>
+
+      <!-- REDIGER: Forfatter og dato -->
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <!-- BILLEDE: Udskift src med profilbillede -->
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <!-- REDIGER: Dato -->
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ARTIKEL INDHOLD + SIDEBAR
+       ============================================================ -->
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+
+        <!-- ARTIKEL BRØDTEKST -->
+        <article class="article-body">
+
+          <!-- VIDEO EMBED (valgfrit — fjern hvis ikke relevant) -->
+          <!-- REDIGER: Udskift YouTube-ID -->
+          <div class="video-placeholder" style="margin-bottom: 40px;">
+            <img src="/assets/images/lokalisation.jpg" alt="Video thumbnail" onerror="this.style.background='var(--color-mist)'">
+            <div class="video-play">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+
+          <!-- KLINISK RELEVANS-BOKS -->
+          <div class="clinical-box">
+            <h4>Klinisk relevans</h4>
+            <!-- REDIGER: Klinisk relevans-tekst -->
+            <p>
+              Lokalisationsevnen er det der adskiller den neurologiske tilgang fra andre specialer.
+              Svar altid på to spørgsmål i denne rækkefølge: <em>Hvor sidder læsionen?</em> — derefter:
+              <em>Hvad er læsionen?</em>
+            </p>
+          </div>
+
+          <!-- ── SELVE ARTIKLENS INDHOLD ── -->
+          <!-- REDIGER: Al tekst herunder er artiklens indhold -->
+
+          <h2 id="introduktion">Introduktion</h2>
+          <p>
+            Det første og vigtigste spørgsmål i enhver neurologisk udredning er ikke
+            <em>hvad</em> patienten fejler — men <em>hvor</em> i nervesystemet problemet sidder.
+            Det er lokalisationsprincippet, og det er grundlaget for alt det følgende.
+          </p>
+          <p>
+            [PLACEHOLDER — indsæt artiklens indhold her. Se strukturen nedenfor som guide.]
+          </p>
+
+          <h2 id="systematik">Den systematiske tilgang</h2>
+          <p>
+            [PLACEHOLDER — beskriv den systematiske tilgang til lokalisation]
+          </p>
+
+          <h3 id="central-perifer">Central versus perifer</h3>
+          <p>
+            [PLACEHOLDER — gennemgå distinktionen central/perifer]
+          </p>
+
+          <h3 id="niveau">Anatomisk niveau</h3>
+          <p>
+            [PLACEHOLDER — gennemgå niveauer: cortex, subkortikalt, hjernestamme, cerebellum, rygmarv, perifer nerve, neuromuskulær overgang, muskel]
+          </p>
+
+          <h2 id="ovre-nedre">Øvre vs. nedre motorneuron</h2>
+          <p>
+            [PLACEHOLDER — gennemgå ØMN vs. NMN fund og betydning]
+          </p>
+
+          <!-- DISCLAIMER-BOKS -->
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger følges
+            lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside>
+
+          <!-- INDHOLDSFORTEGNELSE -->
+          <div class="toc">
+            <h5>Indhold</h5>
+            <!-- REDIGER: Hold i overensstemmelse med dine h2/h3 id'er ovenfor -->
+            <ul>
+              <li><a href="#introduktion">Introduktion</a></li>
+              <li><a href="#systematik">Den systematiske tilgang</a></li>
+              <li><a href="#central-perifer">Central versus perifer</a></li>
+              <li><a href="#niveau">Anatomisk niveau</a></li>
+              <li><a href="#ovre-nedre">Øvre vs. nedre motorneuron</a></li>
+            </ul>
+          </div>
+
+          <!-- RELATEREDE ARTIKLER -->
+          <!-- REDIGER: Udskift med rigtige relaterede artikler -->
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Undersøgelse</span>
+                <h4><a href="/undersoegelse.html">Den neurologiske undersøgelse</a></h4>
+              </div>
+            </div>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Sygdomme</span>
+                <h4><a href="/sygdomme.html">Apopleksi — klinisk gestalt</a></h4>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+</body>
+</html>

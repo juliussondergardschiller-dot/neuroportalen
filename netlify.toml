@@ -1,0 +1,41 @@
+# Netlify configuration
+# Alle URL'er uden .html-extension virker
+[[redirects]]
+  from = "/lokalisation"
+  to = "/lokalisation.html"
+  status = 200
+
+[[redirects]]
+  from = "/undersoegelse"
+  to = "/undersoegelse.html"
+  status = 200
+
+[[redirects]]
+  from = "/sygdomme"
+  to = "/sygdomme.html"
+  status = 200
+
+[[redirects]]
+  from = "/traen"
+  to = "/traen.html"
+  status = 200
+
+[[redirects]]
+  from = "/basal-viden"
+  to = "/basal-viden.html"
+  status = 200
+
+[[redirects]]
+  from = "/om-os"
+  to = "/om-os.html"
+  status = 200
+
+[[redirects]]
+  from = "/kontakt"
+  to = "/kontakt.html"
+  status = 200
+
+[[redirects]]
+  from = "/artikel-skabelon"
+  to = "/artikel-skabelon.html"
+  status = 200

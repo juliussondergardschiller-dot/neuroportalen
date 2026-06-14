@@ -3,173 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neuroportalen — Cerebrovaskulære sygdomme</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  <title>Neuroportalen — Forstå neurologien. Fra første dag.</title>
+  <meta name="description" content="Gratis, dansk læringsplatform i neurologi for medicinstuderende og yngre læger.">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<button class="menu-toggle" id="menu-toggle">☰</button>
+  <!-- GLOBAL TOPBAR -->
+  <div id="topbar"></div>
 
-<div class="layout">
-  <aside class="sidebar">
-    <div class="logo">
-      <a href="/index.html" class="logo-mark">
-        <div class="logo-icon">N</div>
+  <!-- GLOBAL NAVIGATION -->
+  <div id="navbar"></div>
+
+  <!-- ============================================================
+       HERO-SEKTION
+       ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <div class="kicker">Det danske neurologi-univers</div>
+          <h1>Forstå neurologien.<br>Fra første dag.</h1>
+          <p class="hero__subtitle">
+            Et gratis læringsuniversum til medicinstuderende og yngre læger — bygget til dem der vil forstå neurologien, ikke blot bestå eksamen.
+          </p>
+          <div class="hero__actions">
+            <a href="/lokalisation.html" class="btn btn--primary">Kom i gang</a>
+            <a href="/om-os.html" class="btn btn--ghost">Om Neuroportalen</a>
+          </div>
+        </div>
+
+        <!-- HERO BILLEDE: Udskift src med dit billede -->
+        <div class="hero__image">
+          <img src="/assets/images/hero.jpg" alt="Illustration af nervesystemet">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEKTION 1 — LOKALISATION
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="split">
         <div>
-          <div class="logo-text">Neuroportalen</div>
-          <div class="logo-sub">Cerebrovaskulære sygdomme</div>
+          <div class="kicker">Klinisk værktøj</div>
+          <h2>Hvor i nervesystemet sidder læsionen?</h2>
+          <h4 class="mt-16 mb-16">Sådan går du systematisk til værks i klinikken</h4>
+          <p>
+            Lokalisationsevnen er neurologiens kernefærdighed. Lær at stille det vigtigste spørgsmål systematisk — og forstå den anatomi der gør svaret muligt. Fra cortex til perifer nerve, trin for trin.
+          </p>
+          <a href="/lokalisation.html" class="btn btn--primary mt-24">Start lektionen</a>
         </div>
-      </a>
-    </div>
-    <nav class="nav">
-      <!-- udfyldes af nav.js -->
-    </nav>
-    <div class="nav-progress">
-      <div class="progress-label">Fremgang: 0%</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
-    </div>
-  </aside>
 
-  <div class="main">
-    <div class="topbar">
-      <div class="breadcrumb">
-        <strong>Dashboard</strong>
-      </div>
-      <span class="week-badge">Apopleksikursus F2026</span>
-    </div>
-
-    <div class="page-inner">
-
-      <div class="hero">
-        <h1>Cerebrovaskulære sygdomme</h1>
-        <p>Læringsportal til apopleksikursus på medicinstudiet. Fra basal patofysiologi til klinisk beslutningstagning — på intro-læge niveau.</p>
-        <div class="hero-meta">
-          <span>⏱ 8 uger</span>
-          <span>📋 15 moduler</span>
-          <span>🎯 Mundtlig eksamen</span>
+        <!-- VIDEO PLACEHOLDER: Udskift src -->
+        <div class="video-placeholder">
+          <img src="/assets/images/video_placeholder.png" alt="Videolektion om lokalisation">
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- ============================================================
+       SEKTION 2 — NEUROLOGISK UNDERSØGELSE
+       ============================================================ -->
+  <section class="section section--mist">
+    <div class="container">
+      <div class="split split--reverse">
+        <!-- VIDEO PLACEHOLDER: Udskift src -->
+        <div class="video-placeholder">
+          <img src="/assets/images/video_placeholder.png" alt="Videolektion om neurologisk undersøgelse">
+        </div>
+
+        <div>
+          <div class="kicker">Klinisk færdighed</div>
+          <h2>Mestre den neurologiske undersøgelse</h2>
+          <h4 class="mt-16 mb-16">Forstå hvad du leder efter — og hvorfor</h4>
+          <p>
+            Den neurologiske undersøgelse er ikke en huskeliste — det er en systematisk afsøgning af nervesystemet. Her gennemgår vi hvert trin med forklaring af den bagvedliggende patofysiologi.
+          </p>
+          <a href="/undersoegelse.html" class="btn btn--primary mt-24">Start lektionen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEKTION 3 — SYGDOMSGRUPPER
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
       <div class="section-header">
-        <h2>Ugeplan — kursusstruktur</h2>
+        <div class="kicker">Sygdomslære</div>
+        <h2>De vigtigste sygdomsgrupper i neurologi</h2>
+        <p>
+          Fra apopleksi til neuroimmunologi — hver gruppe præsenteret som en klinisk gestalt med præsentation, faldgruber, første håndgreb og udredning.
+        </p>
       </div>
 
-      <a href="/grundlag/begreber.html" class="week-card">
-        <div class="week-num">1</div>
-        <div class="week-info">
-          <h3>Grundlag — patofysiologi og begreber</h3>
-          <p>Hvad er stroke? TOAST, penumbra, iskæmisk vs. ICH, anatomi</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+      <!-- SYGDOMSGRUPPER: Tilføj eller fjern grupper her -->
+      <div class="disease-grid">
 
-      <a href="/klinisk/fast.html" class="week-card">
-        <div class="week-num">2</div>
-        <div class="week-info">
-          <h3>Klinisk genkendelse og TIA</h3>
-          <p>FAST/BEFAST, ABCD²-score, TIA-udredning, differentialdiagnoser</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Apopleksi: hjerne med blodprop/kredsløb -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/></svg>
+          Apopleksi
+        </a>
 
-      <a href="/akut/diagnostik.html" class="week-card">
-        <div class="week-num">3</div>
-        <div class="week-info">
-          <h3>Akut udredning og behandling</h3>
-          <p>CT/MR, tPA-indikationer og KI, trombektomi, ICH-behandling</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Epilepsi: lyn -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          Epilepsi
+        </a>
 
-      <a href="/klinisk/syndromer.html" class="week-card">
-        <div class="week-num">4</div>
-        <div class="week-info">
-          <h3>Lokalisationssyndromer</h3>
-          <p>MCA, ACA, PCA, Wallenberg, lakunære syndromer, kargebet-atlas</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Bevægeforstyrrelser: tremor/bevægelse -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
+          Bevægeforstyrrelser
+        </a>
 
-      <a href="/strokeafsnittet/faerdigheder.html" class="week-card">
-        <div class="week-num">5</div>
-        <div class="week-info">
-          <h3>Kliniske færdigheder</h3>
-          <p>Neurologisk us., NIHSS-scoring, anamnese, morgenkonference</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Neuromuskulære: nerve-muskel signalveje -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+          Neuromuskulære sygdomme
+        </a>
 
-      <a href="/strokeafsnittet/monitorering.html" class="week-card">
-        <div class="week-num">6</div>
-        <div class="week-info">
-          <h3>Strokeafsnittet — subakut pleje</h3>
-          <p>Fysiologisk monitorering, komplikationer, tværfaglig plan</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Neuroimmunologi: skjold/immunforsvar -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          Neuroimmunologi
+        </a>
 
-      <a href="/forebyggelse/sekundaer.html" class="week-card">
-        <div class="week-num">7</div>
-        <div class="week-info">
-          <h3>Forebyggelse og profylakse</h3>
-          <p>Antitrombotisk behandling, NOAK, blodtryk, statin, CEA</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Hovedpine: smerte/alarm -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+          Hovedpine
+        </a>
 
-      <a href="/eksamen/cases.html" class="week-card">
-        <div class="week-num">8</div>
-        <div class="week-info">
-          <h3>Eksamensforberedelse</h3>
-          <p>Kliniske cases, stor quiz, quick reference til print</p>
-        </div>
-        <span class="week-arrow">›</span>
-      </a>
+        <!-- Demens: pære/kognition -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+          Demens
+        </a>
 
+        <!-- Neuroonkologi: tumor/celle -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0012 15a9.065 9.065 0 00-6.23-.693L5 14.5"/></svg>
+          Neuroonkologi
+        </a>
+
+        <!-- Neuroinfektioner: bakterie/virus -->
+        <a href="/sygdomme.html" class="disease-pill">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75c1.148 0 2.278.08 3.383.237 1.037.146 1.866.966 1.866 2.013 0 3.728-2.35 6.75-5.25 6.75S6.75 18.728 6.75 15c0-1.047.83-1.867 1.866-2.013A24.204 24.204 0 0112 12.75zm0 0c2.883 0 5.647.508 8.207 1.44m-8.207-1.44c-2.883 0-5.647.508-8.208 1.44M12 12.75a2.25 2.25 0 002.248-2.354M12 12.75a2.25 2.25 0 01-2.248-2.354M12 8.25c.995 0 1.971-.08 2.922-.236.403-.066.74-.358.795-.762a3.778 3.778 0 00-.399-2.25M12 8.25c-.995 0-1.97-.08-2.922-.236-.402-.066-.74-.358-.795-.762a3.734 3.734 0 01.4-2.253M12 8.25a2.25 2.25 0 00-2.248 2.146M12 8.25a2.25 2.25 0 012.248 2.146"/></svg>
+          Neuroinfektioner
+        </a>
+
+      </div>
+
+      <div class="mt-40 text-center">
+        <a href="/sygdomme.html" class="btn btn--outline">Se alle sygdomsgrupper</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEKTION 4 — TRÆN (QUIZZER & CASES)
+       Mist-baggrund med bone-boks ovenpå
+       ============================================================ -->
+  <section class="section section--mist">
+    <div class="container">
+      <div style="background: var(--color-bone); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 56px 48px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center;">
+        <div>
+          <div class="kicker">Klinisk træning</div>
+          <h2>Test dig selv med kliniknære cases og quizzer</h2>
+          <p style="margin-top: 12px; max-width: 520px;">
+            Cases og quizzer der tvinger dig til at ræsonnere — ikke bare genkende. Den kliniske dømmekraft der ikke kan læres fra en bog alene.
+          </p>
+        </div>
+        <div style="flex-shrink: 0;">
+          <a href="/traen.html" class="btn btn--primary">Gå til cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEKTION 5 — BASAL VIDEN
+       ============================================================ -->
+  <section class="section">
+    <div class="container">
       <div class="section-header">
-        <h2>Kliniske redskaber</h2>
+        <div class="kicker">Fundament</div>
+        <h2>Basal viden — forstå før du husker</h2>
+        <p>
+          Neuroanatomi, neurofysiologi og farmakologi — forankret i klinisk relevans og forklaret så det sidder fast.
+        </p>
       </div>
 
-      <div class="tools-grid">
-        <a href="/klinisk/tia.html#abcd2" class="tool-card">
-          <span class="tool-icon">🧮</span>
-          <div class="tool-name">ABCD²-score</div>
-          <div class="tool-desc">TIA-risikostratificering</div>
-        </a>
-        <a href="/akut/tpa.html#beregner" class="tool-card">
-          <span class="tool-icon">💊</span>
-          <div class="tool-name">tPA-dosis</div>
-          <div class="tool-desc">0,9 mg/kg beregner</div>
-        </a>
-        <a href="/grundlag/patofysiologi-ich.html#score" class="tool-card">
-          <span class="tool-icon">📊</span>
-          <div class="tool-name">ICH-score</div>
-          <div class="tool-desc">Prognostisk beregner</div>
-        </a>
-        <a href="/strokeafsnittet/faerdigheder.html#nihss" class="tool-card">
-          <span class="tool-icon">🔍</span>
-          <div class="tool-name">NIHSS</div>
-          <div class="tool-desc">Interaktiv scoring</div>
-        </a>
-        <a href="/eksamen/reference.html" class="tool-card">
-          <span class="tool-icon">📋</span>
-          <div class="tool-name">Quick reference</div>
-          <div class="tool-desc">Syndromer og doser</div>
-        </a>
+      <div class="grid-3">
+        <!-- Neuroanatomi: hjerne -->
+        <div class="card">
+          <div class="card__icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+          </div>
+          <h3>Neuroanatomi</h3>
+          <p>Hjernens struktur og funktion — fra cortex til rygmarv.</p>
+          <a href="/basal-viden.html" class="card__link">
+            Læs mere
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <!-- Neurofysiologi: lyn -->
+        <div class="card">
+          <div class="card__icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <h3>Neurofysiologi</h3>
+          <p>Aktionspotentialer, synapser og signalveje — mekanismerne bag klinikken.</p>
+          <a href="/basal-viden.html" class="card__link">
+            Læs mere
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+        <!-- Neurofarmakologi: pille/kapsel -->
+        <div class="card">
+          <div class="card__icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0012 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+          </div>
+          <h3>Neurofarmakologi</h3>
+          <p>De vigtigste medikamenter i neurologi — virkningsmekanisme og indikationer.</p>
+          <a href="/basal-viden.html" class="card__link">
+            Læs mere
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="sources" style="margin-top:1rem">
-        <strong>Kilder:</strong>
-        <span class="src-tag src-oxford">Oxford Textbook of Stroke</span>
-        <span class="src-tag src-eso">ESO Guidelines 2021</span>
-        <span class="src-tag src-nnbv">NNBV — dansk kontekst</span>
-      </div>
+  <!-- GLOBAL FOOTER -->
+  <div id="footer"></div>
 
-    </div><!-- /page-inner -->
-  </div><!-- /main -->
-</div><!-- /layout -->
-
-<script src="/assets/nav.js"></script>
-<script src="/assets/script.js"></script>
+  <script src="/js/components.js"></script>
 </body>
 </html>
