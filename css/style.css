@@ -448,7 +448,7 @@ p:last-child { margin-bottom: 0; }
 /* ── VIDEO EMBED PLACEHOLDER ── */
 .video-placeholder {
   position: relative;
-  background: var(--color-bone);
+  background: transparent;
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 16/9;
@@ -668,8 +668,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .disease-pill svg {
-  width: 18px;
-  height: 18px;
+  width: 36px;
+  height: 36px;
   stroke: var(--color-periwinkle);
   flex-shrink: 0;
 }
@@ -704,7 +704,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4/3;
-  background: var(--color-bone);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
