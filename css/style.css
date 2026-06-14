@@ -641,6 +641,10 @@ p:last-child { margin-bottom: 0; }
   gap: 16px;
 }
 
+.disease-grid--10 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .disease-pill {
   display: flex;
   align-items: center;
@@ -780,6 +784,8 @@ p:last-child { margin-bottom: 0; }
 
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
 
+  .disease-grid--10 { grid-template-columns: repeat(3, 1fr); }
+
   .footer__grid { grid-template-columns: 1fr 1fr; }
 
   .article-layout { grid-template-columns: 1fr; }
@@ -788,16 +794,16 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 720px) {
   :root { --section-gap: 64px; }
 
-  .navbar__nav, .navbar__search { display: none; }
+  .navbar__nav { display: none; }
   .navbar__hamburger { display: flex; }
 
   .grid-3, .grid-2 { grid-template-columns: 1fr; }
 
+  .disease-grid--10 { grid-template-columns: repeat(2, 1fr); }
+
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
 
   .hero { padding: 64px 0 48px; }
-
-  .disease-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
