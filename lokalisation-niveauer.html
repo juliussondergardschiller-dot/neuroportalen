@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De anatomiske niveauer – Neuroportalen</title>
+  <meta name="description" content="Overblik over nervesystemets niveauer fra cortex til muskel: hvad hvert niveau 'lyder som', når det rammes.">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .compare { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 15px; }
+    .compare caption {
+      text-align: left; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); margin-bottom: 12px;
+    }
+    .compare th, .compare td {
+      text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--color-border); vertical-align: top;
+    }
+    .compare thead th {
+      font-family: var(--font-body); font-weight: 700;
+      background: var(--color-mist); color: var(--color-indigo);
+    }
+    .compare tbody th {
+      font-family: var(--font-body); font-weight: 600;
+      color: var(--color-text-muted); width: 22%;
+    }
+    .placeholder-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); background: var(--color-mist);
+      border: 1px dashed var(--color-periwinkle); border-radius: 20px;
+      padding: 5px 12px; margin-top: 12px;
+    }
+    .takeaway { list-style: none; margin: 1.2em 0; }
+    .takeaway li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 16px; }
+    .takeaway li::before {
+      content: ""; position: absolute; left: 0; top: 8px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--color-periwinkle); box-shadow: 0 0 0 4px var(--color-mist);
+    }
+  </style>
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-meta">
+        <span class="kicker" style="margin-bottom:0;">Lokalisation · Kapitel 4</span>
+        <span class="read-time">⏱ 7 min læsning</span>
+      </div>
+      <h1 style="max-width: 800px;">De anatomiske niveauer: overblik</h1>
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Fra cortex til muskel har nervesystemet ti niveauer. Hvert niveau har sin egen
+        signatur, når det rammes. Her er kortet.
+      </p>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+        <article class="article-body">
+
+          <div class="clinical-box">
+            <h4>Klinisk relevans</h4>
+            <p>
+              Hvert niveau på neuroaksen har et kendetegn, du kan lære at genkende. Tabellen
+              nedenfor er det kort, du bør have i hovedet, når du undersøger en patient.
+            </p>
+          </div>
+
+          <h2 id="princip">Princippet</h2>
+          <p>
+            Du kender forken (centralt vs. perifert) og det motoriske spor (ØMN vs. NMN) fra
+            de foregående kapitler. Nu spørger du: <b>hvilken etage</b> på neuroaksen forklarer
+            fundene? Svaret finder du ved at se på, hvilke funktioner der svigter sammen.
+          </p>
+          <p>
+            Et kortikalt problem giver typisk motoriske og sensoriske udfald på samme kropshalvdel
+            plus "højere" funktioner som sprog eller opmærksomhed. Et spinalt problem giver bilaterale
+            udfald med et sensorisk niveau og påvirket blære/tarm. Et perifert problem følger en
+            bestemt rod eller nerve. Hvert niveau efterlader sit eget fingeraftryk.
+          </p>
+
+          <h2 id="tabel">Niveauerne i overblik</h2>
+
+          <table class="compare">
+            <caption>Nervesystemets niveauer og deres signaturer</caption>
+            <thead>
+              <tr><th scope="col">Niveau</th><th scope="col">Ledetråde</th><th scope="col">Kapitel</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cortex</th><td>Kontralateral svaghed/føleudfald, afasi, neglekt, synsfeltsudfald, epileptiske anfald</td><td><a href="/lokalisation-storhjernen.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 5</a></td></tr>
+              <tr><th scope="row">Subkortikalt</th><td>Rent motorisk eller rent sensorisk kontralateralt udfald, ingen kortikale tegn</td><td><a href="/lokalisation-storhjernen.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 5</a></td></tr>
+              <tr><th scope="row">Basalganglier</th><td>Bevægeforstyrrelser: tremor, rigiditet, bradykinesi, chorea, dystoni</td><td><a href="/lokalisation-storhjernen.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 5</a></td></tr>
+              <tr><th scope="row">Hjernestamme</th><td>Krydsede udfald (ipsilateral kranienerve + kontralaterale lange baner), vertigo, nystagmus, dysfagi</td><td><a href="/lokalisation-hjernestammen.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 6</a></td></tr>
+              <tr><th scope="row">Cerebellum</th><td>Ataksi, dysmetri, intentionstremor, bred gang, nystagmus. Ingen parese, ingen føleudfald</td><td><a href="/lokalisation-hjernestammen.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 6</a></td></tr>
+              <tr><th scope="row">Rygmarv</th><td>Bilaterale motoriske/sensoriske udfald, sensorisk niveau, blære/tarmpåvirkning</td><td><a href="/lokalisation-rygmarven.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 7</a></td></tr>
+              <tr><th scope="row">Nerverod</th><td>Smerter og udfald i ét dermatom/myotom, nedsat refleks i det segment</td><td><a href="/lokalisation-perifert.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 8</a></td></tr>
+              <tr><th scope="row">Perifer nerve</th><td>Udfald i én nerves forsyningsområde (motorisk, sensorisk eller begge)</td><td><a href="/lokalisation-perifert.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 8</a></td></tr>
+              <tr><th scope="row">NMJ</th><td>Udtrættelig svaghed (forværres ved brug), normal følesans, normale reflekser</td><td><a href="/lokalisation-perifert.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 8</a></td></tr>
+              <tr><th scope="row">Muskel</th><td>Symmetrisk, proksimal svaghed, bevarede reflekser, ingen føleudfald</td><td><a href="/lokalisation-perifert.html" style="color:var(--color-periwinkle);font-weight:600;">Kap. 8</a></td></tr>
+            </tbody>
+          </table>
+
+          <span class="placeholder-note">Indsæt illustration: nervesystemet i sagittalsnit med niveauerne markeret</span>
+
+          <h2 id="brug">Hvordan du bruger tabellen</h2>
+          <p>
+            Gå igennem dine fund og match dem mod tabellen. Ofte peger flere fund mod samme niveau.
+            Kan ét niveau forklare alt, er det som regel svaret. Kræver det to eller flere niveauer,
+            tænk da multifokalt (fx dissemineret sygdom eller systemisk årsag).
+          </p>
+          <p>
+            De følgende kapitler folder hvert niveau ud med flere detaljer, kliniske eksempler og
+            de vigtigste faldgruber.
+          </p>
+
+          <h2 id="opsummering">Opsummering</h2>
+          <ul class="takeaway">
+            <li>Ti niveauer fra cortex til muskel, hvert med sin signatur.</li>
+            <li>Brug følgesymptomerne til at pege på den rigtige etage.</li>
+            <li>Forsøg at samle alle fund i ét niveau. Kan det ikke lade sig gøre, tænk multifokalt.</li>
+          </ul>
+          <p style="margin-top: 24px;">
+            <a href="/lokalisation-storhjernen.html" class="btn btn--primary">
+              Videre til kapitel 5: Storhjernen
+            </a>
+          </p>
+
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger
+            følges lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+        </article>
+
+        <aside>
+          <div class="toc">
+            <h5>Indhold</h5>
+            <ul>
+              <li><a href="#princip">Princippet</a></li>
+              <li><a href="#tabel">Niveauerne i overblik</a></li>
+              <li><a href="#brug">Hvordan du bruger tabellen</a></li>
+              <li><a href="#opsummering">Opsummering</a></li>
+            </ul>
+          </div>
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 3</span>
+                <h4><a href="/lokalisation-omn-nmn.html">Øvre vs. nedre motorneuron</a></h4>
+              </div>
+            </div>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 5</span>
+                <h4><a href="/lokalisation-storhjernen.html">Storhjernen</a></h4>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+</body>
+</html>

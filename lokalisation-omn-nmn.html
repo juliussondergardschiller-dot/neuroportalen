@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Øvre vs. nedre motorneuron – Neuroportalen</title>
+  <meta name="description" content="Forstå de motoriske signaturfund: spasticitet, hyperrefleksi, atrofi og fascikulationer. Hvad hvert fund betyder, og hvorfor det opstår.">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .figure { margin: 2.4em 0; }
+    .figure svg { width: 100%; height: auto; display: block; }
+    .figure__frame {
+      background: var(--color-white); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 28px 28px 20px;
+    }
+    .figure__caption { font-size: 13px; color: var(--color-text-muted); margin-top: 14px; line-height: 1.55; }
+    .figure__caption b { color: var(--color-indigo); font-weight: 700; }
+    .placeholder-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); background: var(--color-mist);
+      border: 1px dashed var(--color-periwinkle); border-radius: 20px;
+      padding: 5px 12px; margin-top: 12px;
+    }
+    .compare { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 15px; }
+    .compare caption {
+      text-align: left; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); margin-bottom: 12px;
+    }
+    .compare th, .compare td {
+      text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--color-border); vertical-align: top;
+    }
+    .compare thead th {
+      font-family: var(--font-body); font-weight: 700;
+      background: var(--color-mist); color: var(--color-indigo);
+    }
+    .compare thead th:first-child { background: transparent; color: var(--color-text-muted); }
+    .compare tbody th {
+      font-family: var(--font-body); font-weight: 600;
+      color: var(--color-text-muted); width: 26%;
+    }
+    .takeaway { list-style: none; margin: 1.2em 0; }
+    .takeaway li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 16px; }
+    .takeaway li::before {
+      content: ""; position: absolute; left: 0; top: 8px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--color-periwinkle); box-shadow: 0 0 0 4px var(--color-mist);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <!-- HEADER -->
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-meta">
+        <span class="kicker" style="margin-bottom:0;">Lokalisation · Kapitel 3</span>
+        <span class="read-time">⏱ 8 min læsning</span>
+      </div>
+      <h1 style="max-width: 800px;">Øvre vs. nedre motorneuron</h1>
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Du kender forken fra kapitel 2. Her folder vi den ud: hvad hvert motorisk fund
+        betyder, hvorfor det opstår, og hvordan du bruger det ved sengen.
+      </p>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDHOLD + SIDEBAR -->
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <div class="clinical-box">
+            <h4>Klinisk relevans</h4>
+            <p>
+              ØMN- og NMN-tegn er det vigtigste motoriske værktøj til at skelne centralt fra perifert.
+              Husk at mønsteret tæller mere end det enkelte fund.
+            </p>
+          </div>
+
+          <!-- ── 1 ── -->
+          <h2 id="to-neuroner">De to neuroner</h2>
+          <p>
+            Det motoriske signal rejser fra cortex til muskel via to neuroner i serie.
+            Det <b>øvre motorneuron (ØMN)</b> har sin cellekrop i motorcortex og sender sit axon
+            ned gennem capsula interna, hjernestammen og tractus corticospinalis til rygmarven.
+            Det <b>nedre motorneuron (NMN)</b> har sin cellekrop i rygmarvens forhorn (eller
+            hjernestammens motoriske kerner for kranienerverne) og sender sit axon ud til musklen.
+          </p>
+          <p>
+            Når ØMN rammes, mister NMN sin hæmmende styring ovenfra. Når NMN rammes, mister
+            musklen sit eneste motoriske input. Det giver to modsatrettede signaturer.
+          </p>
+
+          <div class="figure">
+            <div class="figure__frame">
+              <svg viewBox="0 0 760 300" role="img" aria-label="Øvre motorneuron fra cortex til rygmarv, nedre motorneuron fra forhorn til muskel">
+                <!-- ØMN -->
+                <circle cx="100" cy="50" r="18" fill="var(--color-periwinkle)" opacity="0.9"/>
+                <text x="100" y="55" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="11" font-weight="700" fill="#fff">ØMN</text>
+                <text x="100" y="28" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="var(--color-text-muted)">Motorcortex</text>
+                <line x1="100" y1="68" x2="100" y2="170" stroke="var(--color-periwinkle)" stroke-width="3"/>
+                <text x="120" y="126" font-family="Hanken Grotesk, sans-serif" font-size="11.5" fill="var(--color-periwinkle)" font-weight="600">Tractus corticospinalis</text>
+                <!-- synapse -->
+                <circle cx="100" cy="185" r="14" fill="var(--color-indigo)" opacity="0.9"/>
+                <text x="100" y="190" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="10" font-weight="700" fill="#fff">NMN</text>
+                <text x="145" y="188" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="var(--color-text-muted)">Forhornet</text>
+                <!-- NMN axon -->
+                <line x1="100" y1="199" x2="100" y2="260" stroke="var(--color-indigo)" stroke-width="3"/>
+                <!-- muskel -->
+                <ellipse cx="100" cy="275" rx="34" ry="14" fill="var(--color-indigo)" opacity="0.6"/>
+                <text x="100" y="280" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="11" font-weight="700" fill="#fff">Muskel</text>
+
+                <!-- annotations right side -->
+                <rect x="320" y="30" width="420" height="80" rx="8" fill="var(--color-mist)"/>
+                <text x="340" y="54" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" fill="var(--color-periwinkle)">ØMN-læsion</text>
+                <text x="340" y="74" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-ink)">NMN mister hæmning ovenfra → spasticitet, hyperrefleksi</text>
+                <text x="340" y="94" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-ink)">Positiv plantarrespons (Babinski)</text>
+
+                <rect x="320" y="155" width="420" height="80" rx="8" fill="#fff" stroke="var(--color-border)"/>
+                <text x="340" y="179" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" fill="var(--color-indigo)">NMN-læsion</text>
+                <text x="340" y="199" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-ink)">Musklen mister sit input → slap parese, atrofi, hyporefleksi</text>
+                <text x="340" y="219" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-ink)">Fascikulationer (spontan nerveaktivitet)</text>
+              </svg>
+            </div>
+            <p class="figure__caption">
+              <b>Figur 1.</b> De to neuroner i serie. Skaden giver modsatrettede fund afhængigt af, om det er det øvre eller det nedre neuron der rammes.
+            </p>
+          </div>
+
+          <!-- ── 2 ── -->
+          <h2 id="fund">Fundene og mekanismen bag</h2>
+
+          <h3 id="reflekser">Reflekser</h3>
+          <p>
+            De dybe senereflekser er en refleksbue: senen strækkes, afferenten sender signal til
+            forhornet, NMN sender signal til musklen. ØMN modulerer buen ovenfra, primært hæmmende.
+          </p>
+          <p>
+            Ved ØMN-læsion bortfalder hæmningen, og reflekserne bliver <b>øgede</b> (hyperrefleksi).
+            Ved NMN-læsion er selve buen brudt, og reflekserne bliver <b>nedsatte eller ophævede</b>.
+          </p>
+
+          <h3 id="tonus">Tonus</h3>
+          <p>
+            Muskeltonus er den passive modstand, du mærker, når du bevæger patientens led.
+            ØMN-læsion giver <b>spasticitet</b>: en hastighedsafhængig modstand, typisk mest udtalt
+            ved hurtig stræk ("clasp-knife"). NMN-læsion giver <b>slap</b> eller nedsat tonus.
+          </p>
+
+          <h3 id="babinski">Plantarrespons (Babinski)</h3>
+          <p>
+            Normalt krummer tæerne nedad, når du streger under foden. Ved ØMN-læsion vender
+            storetåen <b>opad</b>, mens de øvrige tæer vipper ud (positiv Babinski). Refleksen
+            er normalt hæmmet af ØMN, og frigøres når det skades. Det er det mest specifikke
+            enkelttegn på en central læsion.
+          </p>
+
+          <h3 id="atrofi">Atrofi og fascikulationer</h3>
+          <p>
+            Når NMN dør, mister muskelfibren sin trofiske nerveforbindelse. Det giver <b>tidlig og
+            udtalt atrofi</b>. Desuden kan det degenererende axon afgive spontane impulser, som
+            viser sig som <b>fascikulationer</b>: synlige, ufrivillige muskeltrækninger under huden.
+          </p>
+          <p>
+            Ved ren ØMN-læsion er atrofien <b>sparsom og sen</b> (ren inaktivitetsatrofi), og
+            fascikulationer ses ikke.
+          </p>
+
+          <h3 id="svaghed">Svaghedsmønster</h3>
+          <p>
+            ØMN-svaghed er pyramidalt fordelt: i armen er ekstensorerne svagere end fleksorerne,
+            i benet er det omvendt. Det giver det klassiske billede med en flekteret arm og et
+            stift, eksternderet ben (Wernicke-Mann-holdning). NMN-svaghed følger den ramte rod
+            eller nerve og er ikke bundet til det pyramidale mønster.
+          </p>
+
+          <!-- ── 3 ── -->
+          <h2 id="samlet">Samlet overblik</h2>
+
+          <table class="compare">
+            <caption>ØMN vs. NMN: fundene samlet</caption>
+            <thead>
+              <tr><th scope="col">Fund</th><th scope="col">ØMN (centralt)</th><th scope="col">NMN (perifert)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Reflekser</th><td>Øgede</td><td>Nedsatte / ophævede</td></tr>
+              <tr><th scope="row">Tonus</th><td>Spasticitet</td><td>Slap / nedsat</td></tr>
+              <tr><th scope="row">Plantarrespons</th><td>Opadvendt (Babinski +)</td><td>Nedadvendt (normal)</td></tr>
+              <tr><th scope="row">Atrofi</th><td>Sparsom, sen</td><td>Tidlig, udtalt</td></tr>
+              <tr><th scope="row">Fascikulationer</th><td>Nej</td><td>Kan ses</td></tr>
+              <tr><th scope="row">Klonus</th><td>Kan udløses</td><td>Nej</td></tr>
+              <tr><th scope="row">Svaghedsmønster</th><td>Pyramidalt fordelt</td><td>Følger rod / nerve</td></tr>
+            </tbody>
+          </table>
+
+          <!-- ── 4 ── -->
+          <h2 id="blandede">Når billedet er blandet</h2>
+          <p>
+            Enkelte sygdomme rammer begge neuroner. Den mest klassiske er <b>ALS</b>, hvor du
+            finder hyperrefleksi og spasticitet (ØMN) sammen med atrofi og fascikulationer (NMN)
+            i de samme regioner. Selve blandingen er et stærkt diagnostisk spor.
+          </p>
+          <p>
+            Husk også at <b>akutte centrale læsioner</b> (stor apopleksi, spinalt shock) kan
+            give forbigående slaphed i de første timer. Reflekser og tonus har brug for tid til at
+            ændre sig. Gentag undersøgelsen.
+          </p>
+
+          <!-- ── 5 ── -->
+          <h2 id="opsummering">Opsummering</h2>
+          <ul class="takeaway">
+            <li>Motorikken bygger på to neuroner i serie. Skaden giver modsatrettede fund.</li>
+            <li>ØMN: hyperrefleksi, spasticitet, positiv Babinski, pyramidal svaghed.</li>
+            <li>NMN: hyporefleksi, slap tonus, tidlig atrofi, fascikulationer.</li>
+            <li>Blanding af begge (fx ALS) er i sig selv et diagnostisk spor.</li>
+          </ul>
+          <p>
+            Du kan nu afgøre centralt vs. perifert ud fra motorikken. I næste kapitel samler vi
+            alle niveauer i ét overblik, så du kan pege på den rigtige etage.
+          </p>
+          <p style="margin-top: 24px;">
+            <a href="/lokalisation-niveauer.html" class="btn btn--primary">
+              Videre til kapitel 4: De anatomiske niveauer
+            </a>
+          </p>
+
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger
+            følges lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside>
+          <div class="toc">
+            <h5>Indhold</h5>
+            <ul>
+              <li><a href="#to-neuroner">De to neuroner</a></li>
+              <li><a href="#fund">Fundene og mekanismen</a></li>
+              <li><a href="#samlet">Samlet overblik</a></li>
+              <li><a href="#blandede">Blandet billede</a></li>
+              <li><a href="#opsummering">Opsummering</a></li>
+            </ul>
+          </div>
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 2</span>
+                <h4><a href="/lokalisation-central-perifer.html">Centralt eller perifert?</a></h4>
+              </div>
+            </div>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 4</span>
+                <h4><a href="/lokalisation-niveauer.html">De anatomiske niveauer</a></h4>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+</body>
+</html>

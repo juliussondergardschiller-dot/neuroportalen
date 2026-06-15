@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduktion til lokalisation – Neuroportalen</title>
+  <meta name="description" content="Lær den systematiske vej fra symptom til anatomisk niveau. De to spørgsmål, nervesystemets niveau-kort og en interaktiv beslutningsvej.">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- ============================================================
+       SIDE-SPECIFIKKE STILE
+       Kun til denne artikels figurer + interaktive flow.
+       Globale ting hører hjemme i /css/style.css.
+       ============================================================ -->
+  <style>
+    /* Figur-ramme */
+    .figure { margin: 2.4em 0; }
+    .figure svg { width: 100%; height: auto; display: block; }
+    .figure__frame {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 20px;
+    }
+    .figure__caption {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+    .figure__caption b { color: var(--color-indigo); font-weight: 700; }
+
+    /* Billed-/video-placeholder med tydelig "indsæt"-markering */
+    .placeholder-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-indigo);
+      background: var(--color-mist);
+      border: 1px dashed var(--color-periwinkle);
+      border-radius: 20px;
+      padding: 5px 12px;
+      margin-top: 12px;
+    }
+
+    /* Sammenligning ØMN / NMN */
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.6em 0;
+      font-size: 15px;
+    }
+    .compare caption {
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-indigo);
+      margin-bottom: 12px;
+    }
+    .compare th, .compare td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+    .compare thead th {
+      font-family: var(--font-body);
+      font-weight: 700;
+      background: var(--color-mist);
+      color: var(--color-indigo);
+    }
+    .compare thead th:first-child { background: transparent; color: var(--color-text-muted); }
+    .compare tbody th {
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      width: 34%;
+    }
+    .compare td b { color: var(--color-ink); }
+
+    /* Interaktivt lokalisations-flow */
+    .flow {
+      background: var(--color-mist);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 24px;
+      margin: 2.4em 0;
+    }
+    .flow__eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-indigo);
+    }
+    .flow__crumbs {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      min-height: 18px;
+      margin: 6px 0 18px;
+    }
+    .flow__crumbs span { color: var(--color-periwinkle); font-weight: 600; }
+    .flow__q {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--color-ink);
+      margin-bottom: 18px;
+    }
+    .flow__options { display: grid; gap: 10px; }
+    .flow__opt {
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-ink);
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    }
+    .flow__opt:hover { border-color: var(--color-periwinkle); background: #fff; }
+    .flow__opt:focus-visible { outline: 3px solid var(--color-periwinkle); outline-offset: 2px; }
+    .flow__opt:active { transform: translateY(1px); }
+
+    .flow__result { }
+    .flow__result h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      color: var(--color-indigo);
+      margin-bottom: 4px;
+    }
+    .flow__result .flow__level {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-periwinkle);
+      margin-bottom: 10px;
+    }
+    .flow__result p { font-size: 15px; margin-bottom: 14px; }
+    .flow__chapter {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      color: var(--color-periwinkle);
+    }
+    .flow__chapter svg { width: 15px; height: 15px; }
+    .flow__restart {
+      margin-top: 18px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      color: var(--color-text-muted);
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .flow__restart:hover { color: var(--color-indigo); }
+    .flow__restart svg { width: 15px; height: 15px; }
+
+    /* Takeaway-liste */
+    .takeaway { list-style: none; margin: 1.2em 0; }
+    .takeaway li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .takeaway li::before {
+      content: "";
+      position: absolute; left: 0; top: 8px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--color-periwinkle);
+      box-shadow: 0 0 0 4px var(--color-mist);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow__opt, .card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <!-- ============================================================
+       ARTIKEL-HEADER
+       ============================================================ -->
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+
+      <div class="article-meta">
+        <span class="kicker" style="margin-bottom:0;">Lokalisation · Kapitel 1</span>
+        <span class="read-time">⏱ 12 min læsning</span>
+      </div>
+
+      <h1 style="max-width: 800px;">Introduktion til lokalisation</h1>
+
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Lokalisationsevnen er den færdighed, der bærer hele den kliniske neurologi. Her bygger
+        vi den op fra grunden, fra et symptom til et sted i nervesystemet, og giver dig et
+        kort, du kan navigere efter resten af modulet.
+      </p>
+
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ARTIKEL INDHOLD + SIDEBAR
+       ============================================================ -->
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <!-- VIDEO
+               INDSÆT VIDEO: kort introduktion til lokalisation (2-4 min).
+               Udskift thumbnail-src med /assets/images/lokalisation.jpg når den findes,
+               og pak <div> ind i et <a> til YouTube/Vimeo eller et <iframe>-embed. -->
+          <div class="video-placeholder" style="margin-bottom: 12px;">
+            <img src="/assets/images/Neuro_overview.png" alt="Videolektion: introduktion til lokalisation"
+                 onerror="this.style.background='var(--color-mist)'">
+            <div class="video-play">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <span class="placeholder-note">Indsæt video: introduktion til lokalisation (2–4 min)</span>
+
+          <!-- KLINISK RELEVANS -->
+          <div class="clinical-box" style="margin-top: 32px;">
+            <h4>Klinisk relevans</h4>
+            <p>
+              Stil altid de to spørgsmål i denne rækkefølge. Først: <em>Hvor sidder læsionen?</em> Og
+              derefter: <em>Hvad er læsionen?</em> Rækkefølgen er ikke tilfældig. Når du først ved
+              <em>hvor</em>, bliver listen over mulige <em>hvad</em>’er kort og overskuelig.
+            </p>
+          </div>
+
+          <!-- ── 1 ── -->
+          <h2 id="to-spoergsmaal">De to spørgsmål</h2>
+          <p>
+            Neurologien kan virke uoverskuelig, fordi symptomerne er mange og ofte diffuse. Men
+            næsten al klinisk neurologi hviler på den samme enkle bevægelse: <b>først lokalisér,
+            så forklar.</b> Det anatomiske <em>hvor</em> kommer før det ætiologiske <em>hvad</em>.
+          </p>
+          <p>
+            Grunden er, at struktur og funktion hænger så tæt sammen i nervesystemet, at selve
+            stedet for skaden indsnævrer årsagerne dramatisk. Synstab fra en læsion på synsnerven
+            og synstab fra en læsion i occipitallappen ser forskellige ud ved undersøgelsen, og
+            de hører til hver sin verden af mulige årsager. Kender du stedet, er du allerede langt.
+          </p>
+          <p>
+            Når du kan svare på <em>hvor</em>, kan du lægge to lag mere oven på: <em>hvad</em>
+            (ætiologien) og <em>hvordan</em> (mekanisme, udredning og behandling). I dette modul
+            holder vi fokus på det første. Det er fundamentet, alt det øvrige bygger på.
+          </p>
+
+          <!-- ── 2 ── -->
+          <h2 id="kort">Nervesystemet som et kort</h2>
+          <p>
+            Grundidéen bag al lokalisation er, at en bestemt funktion svarer til et bestemt sted.
+            Hånden styres fra ét område, synet bearbejdes et andet, balancen et tredje. Når et
+            sted rammes, svigter netop de funktioner, det varetager, og en læsion efterlader
+            derfor et <b>mønster af udfald, der passer til stedet.</b> Tænk på det som et fingeraftryk.
+          </p>
+          <p>
+            Din opgave er at læse fingeraftrykket baglæns: fra hvilke funktioner der svigter, til
+            hvor de hører hjemme. Det betyder også, at du ikke behøver at kunne en lang liste af
+            sygdomme udenad for at komme i gang. Du skal kende <b>kortet</b>, altså nervesystemets
+            niveauer, og vide hvordan hvert niveau “lyder”, når det rammes.
+          </p>
+
+          <div class="figure">
+            <div class="figure__frame">
+              <!-- FIGUR 1: Niveau-kort (original, brand-farvet SVG) -->
+              <svg viewBox="0 0 760 620" role="img" aria-label="Nervesystemets niveauer fra cortex til muskel, opdelt i centralnervesystem og perifert nervesystem">
+                <!-- spine -->
+                <line x1="64" y1="86" x2="64" y2="540" stroke="var(--color-border)" stroke-width="3"/>
+                <!-- CNS bracket -->
+                <path d="M30 86 q-8 0 -8 8 v246 q0 8 8 8" fill="none" stroke="var(--color-periwinkle)" stroke-width="2"/>
+                <text x="14" y="220" transform="rotate(-90 14 220)" text-anchor="middle"
+                      font-family="Hanken Grotesk, sans-serif" font-size="12" font-weight="700"
+                      letter-spacing="1.5" fill="var(--color-periwinkle)">CENTRALT (CNS)</text>
+                <!-- PNS bracket -->
+                <path d="M30 388 q-8 0 -8 8 v136 q0 8 8 8" fill="none" stroke="var(--color-indigo)" stroke-width="2"/>
+                <text x="14" y="470" transform="rotate(-90 14 470)" text-anchor="middle"
+                      font-family="Hanken Grotesk, sans-serif" font-size="12" font-weight="700"
+                      letter-spacing="1.5" fill="var(--color-indigo)">PERIFERT (PNS)</text>
+
+                <!-- rows: cy = 90 + i*50 -->
+                <!-- helper boxes drawn manually -->
+                <!-- 1 Cortex -->
+                <circle cx="64" cy="90" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="90" x2="92" y2="90" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="71" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="89" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Cortex (storhjernebark)</text>
+                <text x="724" y="89" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">afasi · neglekt · synsfeltsudfald</text>
+                <!-- 2 Subkortikalt -->
+                <circle cx="64" cy="140" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="140" x2="92" y2="140" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="121" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="139" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Subkortikalt / hvid substans</text>
+                <text x="724" y="139" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">rent motorisk · lakunært</text>
+                <!-- 3 Basalganglier -->
+                <circle cx="64" cy="190" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="190" x2="92" y2="190" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="171" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="189" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Basalganglier</text>
+                <text x="724" y="189" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">bevægeforstyrrelser</text>
+                <!-- 4 Hjernestamme -->
+                <circle cx="64" cy="240" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="240" x2="92" y2="240" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="221" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="239" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Hjernestamme + kranienerver</text>
+                <text x="724" y="239" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">krydsede udfald</text>
+                <!-- 5 Cerebellum -->
+                <circle cx="64" cy="290" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="290" x2="92" y2="290" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="271" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="289" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Cerebellum</text>
+                <text x="724" y="289" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">ataksi · dysmetri</text>
+                <!-- 6 Rygmarv -->
+                <circle cx="64" cy="340" r="6.5" fill="var(--color-periwinkle)"/>
+                <line x1="70" y1="340" x2="92" y2="340" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="321" width="640" height="38" rx="8" fill="var(--color-mist)"/>
+                <text x="108" y="339" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Rygmarv</text>
+                <text x="724" y="339" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">sensorisk niveau · blære/tarm</text>
+
+                <!-- divider CNS|PNS -->
+                <line x1="40" y1="365" x2="744" y2="365" stroke="var(--color-border)" stroke-width="1.5" stroke-dasharray="3 5"/>
+
+                <!-- 7 Nerverod -->
+                <circle cx="64" cy="390" r="6.5" fill="var(--color-indigo)"/>
+                <line x1="70" y1="390" x2="92" y2="390" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="371" width="640" height="38" rx="8" fill="#fff" stroke="var(--color-border)"/>
+                <text x="108" y="389" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Nerverod</text>
+                <text x="724" y="389" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">dermatom + myotom</text>
+                <!-- 8 Perifer nerve -->
+                <circle cx="64" cy="440" r="6.5" fill="var(--color-indigo)"/>
+                <line x1="70" y1="440" x2="92" y2="440" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="421" width="640" height="38" rx="8" fill="#fff" stroke="var(--color-border)"/>
+                <text x="108" y="439" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Perifer nerve (plexus · nerve)</text>
+                <text x="724" y="439" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">nervens forsyningsområde</text>
+                <!-- 9 NMJ -->
+                <circle cx="64" cy="490" r="6.5" fill="var(--color-indigo)"/>
+                <line x1="70" y1="490" x2="92" y2="490" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="471" width="640" height="38" rx="8" fill="#fff" stroke="var(--color-border)"/>
+                <text x="108" y="489" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Neuromuskulær overgang</text>
+                <text x="724" y="489" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">udtrætning</text>
+                <!-- 10 Muskel -->
+                <circle cx="64" cy="540" r="6.5" fill="var(--color-indigo)"/>
+                <line x1="70" y1="540" x2="92" y2="540" stroke="var(--color-border)" stroke-width="2"/>
+                <rect x="92" y="521" width="640" height="38" rx="8" fill="#fff" stroke="var(--color-border)"/>
+                <text x="108" y="539" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="var(--color-ink)">Muskel</text>
+                <text x="724" y="539" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">proksimal · symmetrisk</text>
+              </svg>
+            </div>
+            <p class="figure__caption">
+              <b>Figur 1.</b> Nervesystemets niveauer fra cortex til muskel. Teksten til højre er
+              et stikord til, hvordan hvert niveau typisk “lyder”, når det rammes. Vi går niveauerne
+              grundigt igennem i kapitel 4–8.
+              <br><span class="placeholder-note">Kan suppleres med anatomisk illustration: Indsæt billede her</span>
+            </p>
+          </div>
+
+          <!-- ── 3 ── -->
+          <h2 id="akser">To akser: hvor på langs, og hvad på tværs</h2>
+          <p>
+            Lokalisation foregår i to retninger på én gang, og det hjælper at holde dem adskilt.
+          </p>
+          <p>
+            <b>Den længdegående (longitudinelle) akse</b> spørger: hvor langt nede ad neuroaksen
+            sidder problemet? Cortex, hjernestamme, rygmarv, perifer nerve, muskel. Det er “etagen”. Det er den, niveau-kortet i figur 1 viser.
+          </p>
+          <p>
+            <b>Den tværgående (transversale) akse</b> spørger: på den valgte etage, hvilke baner
+            eller strukturer er ramt? I rygmarven kan det fx være de motoriske baner fortil, bagstrengenes
+            stillings- og vibrationssans bagtil, eller den spinothalamiske bane for smerte og temperatur.
+            Det er “rummet på etagen”.
+          </p>
+          <p>
+            Når du har svar på begge akser, etagen og rummet, har du som regel lokalisationen.
+          </p>
+
+          <div class="figure">
+            <div class="figure__frame">
+              <!-- FIGUR 2: To akser (original, brand-farvet SVG) -->
+              <svg viewBox="0 0 760 360" role="img" aria-label="To akser i lokalisation: den longitudinelle akse langs neuroaksen og den transversale akse på tværs af et snit">
+                <!-- Panel A: longitudinel -->
+                <text x="40" y="40" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5" fill="var(--color-indigo)">LONGITUDINEL AKSE</text>
+                <text x="40" y="60" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-text-muted)">Hvilket niveau?</text>
+                <!-- arrow -->
+                <line x1="120" y1="90" x2="120" y2="310" stroke="var(--color-periwinkle)" stroke-width="3"/>
+                <path d="M120 318 l-7 -14 h14 z" fill="var(--color-periwinkle)"/>
+                <!-- ticks -->
+                <g font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-ink)">
+                  <circle cx="120" cy="100" r="5" fill="var(--color-periwinkle)"/><text x="138" y="105">Cortex</text>
+                  <circle cx="120" cy="150" r="5" fill="var(--color-periwinkle)"/><text x="138" y="155">Hjernestamme</text>
+                  <circle cx="120" cy="200" r="5" fill="var(--color-periwinkle)"/><text x="138" y="205">Rygmarv</text>
+                  <circle cx="120" cy="250" r="5" fill="var(--color-indigo)"/><text x="138" y="255">Perifer nerve</text>
+                  <circle cx="120" cy="300" r="5" fill="var(--color-indigo)"/><text x="138" y="305">Muskel</text>
+                </g>
+
+                <!-- divider -->
+                <line x1="430" y1="70" x2="430" y2="320" stroke="var(--color-border)" stroke-width="1.5" stroke-dasharray="3 5"/>
+
+                <!-- Panel B: transversal -->
+                <text x="500" y="40" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5" fill="var(--color-indigo)">TRANSVERSAL AKSE</text>
+                <text x="500" y="60" font-family="Hanken Grotesk, sans-serif" font-size="13" fill="var(--color-text-muted)">Hvilke baner / strukturer?</text>
+                <!-- schematic cross-section -->
+                <ellipse cx="600" cy="200" rx="90" ry="78" fill="var(--color-mist)" stroke="var(--color-border)" stroke-width="2"/>
+                <line x1="600" y1="122" x2="600" y2="278" stroke="var(--color-border)" stroke-width="1.5"/>
+                <line x1="510" y1="200" x2="690" y2="200" stroke="var(--color-border)" stroke-width="1.5"/>
+                <circle cx="565" cy="165" r="9" fill="var(--color-periwinkle)" opacity="0.85"/>
+                <circle cx="635" cy="165" r="9" fill="var(--color-indigo)" opacity="0.7"/>
+                <circle cx="565" cy="240" r="9" fill="var(--color-periwinkle)" opacity="0.55"/>
+                <circle cx="635" cy="240" r="9" fill="var(--color-indigo)" opacity="0.45"/>
+                <text x="600" y="305" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">motoriske og sensoriske baner i samme snit</text>
+              </svg>
+            </div>
+            <p class="figure__caption">
+              <b>Figur 2.</b> De to akser arbejder sammen. Den longitudinelle akse fortæller, hvor på
+              neuroaksen læsionen sidder. Den transversale akse fortæller, hvilke baner i netop dét
+              snit der er ramt. Snittet til højre er skematisk, ikke et anatomisk korrekt tværsnit.
+            </p>
+          </div>
+
+          <!-- ── 4 ── -->
+          <h2 id="vej">Vejen fra symptom til niveau</h2>
+          <p>
+            Her er en praktisk rækkefølge at tænke i. Den er ikke en facitliste, men et stillads,
+            der holder tankerne på sporet, indtil mønstrene sidder på rygraden.
+          </p>
+          <p>
+            <b>1. Er fundet neurogent?</b> Skel det fra fx ortopædiske, reumatologiske eller
+            funktionelle årsager, før du leder efter et niveau.
+          </p>
+          <p>
+            <b>2. Centralt eller perifert?</b> Det er den vigtigste enkeltskelnen i klinisk neurologi.
+            Læsioner i det øvre motorneuron (centralt) og det nedre motorneuron (perifert) giver
+            næsten modsatte signaturer:
+          </p>
+
+          <table class="compare">
+            <caption>Øvre vs. nedre motorneuron: signaturfund</caption>
+            <thead>
+              <tr><th scope="col">Fund</th><th scope="col">Øvre motorneuron (centralt)</th><th scope="col">Nedre motorneuron (perifert)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Reflekser</th><td><b>Øgede</b> (hyperrefleksi)</td><td><b>Nedsatte</b> (hyporefleksi)</td></tr>
+              <tr><th scope="row">Tonus</th><td>Øget (spasticitet)</td><td>Normal eller nedsat</td></tr>
+              <tr><th scope="row">Plantarrespons</th><td>Opadvendt (positiv)</td><td>Nedadvendt (normal)</td></tr>
+              <tr><th scope="row">Atrofi</th><td>Sparsom, sen</td><td>Tidlig og udtalt</td></tr>
+              <tr><th scope="row">Fascikulationer</th><td>Nej</td><td>Kan ses</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:14px; color:var(--color-text-muted);">
+            Vi går fundene grundigt igennem i kapitel 3. Her er de som appetitvækker og pejlemærke.
+          </p>
+
+          <p>
+            <b>3. Hvilket niveau?</b> Lad følgesymptomerne pege. Kortikale tegn som afasi og neglekt
+            peger opad mod storhjernen. Krydsede udfald, hvor en kranienerve på den ene side og lemmer
+            på den modsatte er ramt, peger mod hjernestammen. Et sensorisk niveau på kroppen med påvirket
+            blære og tarm peger mod rygmarven. Dermatom- og nervemønstre peger ud i det perifere.
+          </p>
+          <p>
+            <b>4. Hvilken side og hvilke baner?</b> Højre eller venstre, og hvilke konkrete systemer
+            (motorik, sensorik, koordination, synsbaner) der er involveret.
+          </p>
+          <p>
+            <b>5. Én læsion eller flere?</b> Forsøg først at samle alle fund i ét sted. Det er som
+            regel mest sandsynligt. Kan ét sted ikke forklare det hele, så tænk multifokalt, fx
+            dissemineret eller systemisk sygdom.
+          </p>
+
+          <p>Prøv vejen selv nedenfor:</p>
+
+          <!-- INTERAKTIVT FLOW -->
+          <div class="flow" id="locFlow" aria-live="polite">
+            <div class="flow__eyebrow">Interaktiv øvelse</div>
+            <div class="flow__crumbs" id="flowCrumbs"></div>
+            <div id="flowBody"></div>
+          </div>
+
+          <!-- ── 5 ── -->
+          <h2 id="faldgruber">Faldgruber</h2>
+          <p>
+            <b>Akutte centrale læsioner kan snyde.</b> I de første timer efter en stor apopleksi,
+            eller i spinalt shock efter en akut rygmarvslæsion, kan en central læsion se slap ud
+            med lav tonus og svage reflekser, før de klassiske øvre-motorneuron-tegn udvikler sig.
+            Tonus og reflekser tager tid om at ændre sig. Tidlig slaphed udelukker altså ikke en
+            central årsag.
+          </p>
+          <p>
+            <b>Nogle fund peger det forkerte sted hen.</b> De kaldes “false localizing signs”. Et
+            klassisk eksempel er n. abducens-parese ved forhøjet intrakranielt tryk, hvor selve
+            trykket, ikke en læsion ved nerven, giver udfaldet.
+          </p>
+          <p>
+            <b>Mønstre slår enkeltfund.</b> Et enkelt fund er sjældent nok til at lokalisere. Det
+            er kombinationen og fordelingen af fund, der giver svaret.
+          </p>
+          <!-- ── 5b ── -->
+          <h2 id="tempo">Fra <em>hvor</em> til <em>hvad</em>: tempo og symptomkvalitet</h2>
+          <p>
+            Når du har lokaliseret, er næste skridt at finde ætiologien. Her skifter
+            værktøjet: nu er det anamnesen, ikke undersøgelsen, der bærer.
+            Tre spørgsmål hjælper dig videre.
+          </p>
+          <p>
+            <b>Debut: hvor hurtigt kom symptomerne?</b> Hyperakut (sekunder til minutter)
+            peger mod vaskulært, epilepsi eller migræne. Akut (timer til dage) peger mod
+            infektion, inflammatorisk sygdom eller akut blødning. Subakut (uger til måneder)
+            peger mod malignitet eller vitaminmangel. Kronisk (over år) peger mod
+            neurodegenerativ sygdom.
+          </p>
+          <p>
+            <b>Udvikling: kom det på én gang eller gradvist?</b> Pludselig debut med fuldt
+            udfald fra start taler for vaskulær årsag. Gradvist vandrende symptomer (fx
+            over minutter) ses ved migræneaura og fokale epileptiske anfald.
+          </p>
+          <p>
+            <b>Kvalitet: positive eller negative symptomer?</b> Positive symptomer er noget
+            der er "tilkommet" (fx smerter, flimmerskotomer, ufrivillige bevægelser). Negative
+            symptomer er noget der er "trukket fra" (fx parese, følelsesløshed, synstab).
+          </p>
+          <p>
+            Tommelfingerreglen: akut debut med negative symptomer, der kommer på én gang,
+            taler for en vaskulær årsag. Den regel alene fanger en stor del af de akutte
+            neurologiske problemstillinger.
+          </p>
+
+          <div class="video-placeholder" style="aspect-ratio:16/9; margin-top: 24px;">
+            <img src="/assets/images/video_placeholder.png" alt="" onerror="this.style.background='var(--color-mist)'">
+          </div>
+          <span class="placeholder-note">Indsæt billede: CT/MR-eksempel på akut læsion (illustration af faldgrube)</span>
+
+          <!-- ── 6 ── -->
+          <h2 id="opsummering">Opsummering og næste skridt</h2>
+          <ul class="takeaway">
+            <li>Spørg altid <b>hvor</b> før <b>hvad</b>. Stedet indsnævrer årsagerne.</li>
+            <li>Et udfaldsmønster er et fingeraftryk af lokalisationen. Lær kortet, ikke listerne.</li>
+            <li>Tænk i to akser: <b>longitudinel</b> (hvilket niveau) og <b>transversal</b> (hvilke baner).</li>
+            <li>Den vigtigste enkeltskelnen er <b>centralt vs. perifert</b>, altså øvre vs. nedre motorneuron.</li>
+            <li>Saml fund i ét sted, hvis du kan. Ellers tænk multifokalt.</li>
+            <li>Tempo og kvalitet fører dig fra <b>hvor</b> til <b>hvad</b>: akut + negativt + på én gang = tænk vaskulært.</li>
+          </ul>
+          <p>
+            I næste kapitel går vi i dybden med den skelnen, alt andet hænger på: er læsionen
+            central eller perifer, og hvilke fund afslører det?
+          </p>
+          <p style="margin-top: 24px;">
+            <a href="/lokalisation-central-perifer.html" class="btn btn--primary">
+              Videre til kapitel 2: Centralt eller perifert?
+            </a>
+          </p>
+
+          <!-- DISCLAIMER -->
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger
+            følges lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside>
+          <div class="toc">
+            <h5>Indhold</h5>
+            <ul>
+              <li><a href="#to-spoergsmaal">De to spørgsmål</a></li>
+              <li><a href="#kort">Nervesystemet som et kort</a></li>
+              <li><a href="#akser">To akser: på langs og på tværs</a></li>
+              <li><a href="#vej">Vejen fra symptom til niveau</a></li>
+              <li><a href="#faldgruber">Faldgruber</a></li>
+              <li><a href="#tempo">Tempo og symptomkvalitet</a></li>
+              <li><a href="#opsummering">Opsummering og næste skridt</a></li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 2</span>
+                <h4><a href="/lokalisation-central-perifer.html">Centralt eller perifert?</a></h4>
+              </div>
+            </div>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Undersøgelse</span>
+                <h4><a href="/undersoegelse.html">Den neurologiske undersøgelse</a></h4>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+
+  <!-- ============================================================
+       INTERAKTIVT LOKALISATIONS-FLOW
+       Selvstændig vanilla-JS. Ren læringsmodel, ikke et klinisk værktøj.
+       Rediger 'nodes' for at ændre spørgsmål, valg og resultater.
+       ============================================================ -->
+  <script>
+  (function () {
+    var nodes = {
+      start: {
+        q: "Hvilket mønster har de motoriske fund?",
+        options: [
+          { label: "Øgede reflekser, øget tonus, ingen atrofi", to: "central" },
+          { label: "Nedsatte reflekser, atrofi, evt. fascikulationer", to: "perifer" },
+          { label: "Træthed der forværres ved gentagelse, normal sensorik", to: "nmj" },
+          { label: "Symmetrisk proksimal svaghed, normale reflekser", to: "muskel" }
+        ]
+      },
+      central: {
+        q: "Centralt mønster (øvre motorneuron). Hvilke følgesymptomer ser du?",
+        options: [
+          { label: "Afasi, neglekt eller synsfeltsudfald", to: "cortex" },
+          { label: "Krydsede udfald: kranienerve og lemmer modsat", to: "stamme" },
+          { label: "Sensorisk niveau på kroppen, blære/tarm påvirket", to: "rygmarv" },
+          { label: "Rent motorisk, ingen kortikale tegn", to: "subkortikal" }
+        ]
+      },
+      perifer: {
+        q: "Perifert mønster (nedre motorneuron). Hvordan er udfaldet fordelt?",
+        options: [
+          { label: "I et dermatom/myotom, ofte med nakke-/rygsmerter", to: "rod" },
+          { label: "I én nerves forsyningsområde", to: "nerve" },
+          { label: "Distalt og symmetrisk, handske/strømpe", to: "polyneuropati" }
+        ]
+      },
+      cortex: { result: true, level: "Storhjerne · cortex", title: "Kortikalt niveau",
+        text: "Kortikale tegn som afasi, neglekt og synsfeltsudfald peger på storhjernebarken. Side og territorium afgør resten.", chap: "Kapitel 5: Storhjernen", href: "/lokalisation-storhjernen.html" },
+      subkortikal: { result: true, level: "Subkortikalt · capsula interna", title: "Subkortikalt niveau",
+        text: "Rent motorisk udfald uden kortikale tegn passer ofte med en lille, dyb læsion, fx i capsula interna.", chap: "Kapitel 5: Storhjernen", href: "/lokalisation-storhjernen.html" },
+      stamme: { result: true, level: "Hjernestamme", title: "Hjernestamme-niveau",
+        text: "Krydsede udfald, hvor en kranienerve på den ene side og lange baner på den modsatte er ramt, er hjernestammens kendetegn.", chap: "Kapitel 6: Hjernestammen", href: "/lokalisation-hjernestammen.html" },
+      rygmarv: { result: true, level: "Rygmarv", title: "Spinalt niveau",
+        text: "Et sensorisk niveau på kroppen sammen med blære- og tarmpåvirkning peger på rygmarven. Akut myelopati er en red flag.", chap: "Kapitel 7: Rygmarven", href: "/lokalisation-rygmarven.html" },
+      rod: { result: true, level: "Nerverod · radikulopati", title: "Rod-niveau",
+        text: "Udfald i et dermatom og myotom, ofte med udstrålende smerter, peger på en nerverod.", chap: "Kapitel 8: Det perifere niveau", href: "/lokalisation-perifert.html" },
+      nerve: { result: true, level: "Perifer nerve · mononeuropati", title: "Perifer nerve",
+        text: "Udfald begrænset til én nerves område peger på en mononeuropati.", chap: "Kapitel 8: Det perifere niveau", href: "/lokalisation-perifert.html" },
+      polyneuropati: { result: true, level: "Perifer nerve · polyneuropati", title: "Polyneuropati",
+        text: "Distalt, symmetrisk udfald i handske-strømpe-fordeling peger på en polyneuropati.", chap: "Kapitel 8: Det perifere niveau", href: "/lokalisation-perifert.html" },
+      nmj: { result: true, level: "Neuromuskulær overgang", title: "Neuromuskulær overgang",
+        text: "Udtrættelig svaghed uden sensoriske udfald peger på den neuromuskulære overgang, fx myasthenia gravis.", chap: "Kapitel 8: Det perifere niveau", href: "/lokalisation-perifert.html" },
+      muskel: { result: true, level: "Muskel · myopati", title: "Muskel-niveau",
+        text: "Symmetrisk, proksimal svaghed med bevarede reflekser og sensorik peger på selve musklen.", chap: "Kapitel 8: Det perifere niveau", href: "/lokalisation-perifert.html" }
+    };
+
+    var flow = document.getElementById('locFlow');
+    if (!flow) return;
+    var body = document.getElementById('flowBody');
+    var crumbsEl = document.getElementById('flowCrumbs');
+    var crumbs = [];
+
+    function arrowSVG() {
+      return '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>';
+    }
+    function restartSVG() {
+      return '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M5 9a7 7 0 0111-3m3 8a7 7 0 01-11 3"/></svg>';
+    }
+
+    function renderCrumbs() {
+      crumbsEl.innerHTML = crumbs.length ? ('Dit spor: ' + crumbs.map(function (c) { return '<span>' + c + '</span>'; }).join(' › ')) : '';
+    }
+
+    function render(id) {
+      var node = nodes[id];
+      if (!node) return;
+      if (node.result) {
+        body.innerHTML =
+          '<div class="flow__result">' +
+            '<div class="flow__level">Sandsynligt niveau</div>' +
+            '<h4>' + node.title + '</h4>' +
+            '<p>' + node.text + '</p>' +
+            '<a class="flow__chapter" href="' + node.href + '">Læs mere i ' + node.chap + ' ' + arrowSVG() + '</a>' +
+            '<br><button class="flow__restart" type="button" id="flowRestart">' + restartSVG() + ' Start forfra</button>' +
+          '</div>';
+        document.getElementById('flowRestart').addEventListener('click', reset);
+        return;
+      }
+      var html = '<div class="flow__q">' + node.q + '</div><div class="flow__options">';
+      node.options.forEach(function (opt) {
+        html += '<button class="flow__opt" type="button" data-to="' + opt.to + '" data-label="' + opt.label + '">' + opt.label + '</button>';
+      });
+      html += '</div>';
+      if (crumbs.length) {
+        html += '<button class="flow__restart" type="button" id="flowRestart">' + restartSVG() + ' Start forfra</button>';
+      }
+      body.innerHTML = html;
+      Array.prototype.forEach.call(body.querySelectorAll('.flow__opt'), function (btn) {
+        btn.addEventListener('click', function () {
+          crumbs.push(this.getAttribute('data-label'));
+          renderCrumbs();
+          render(this.getAttribute('data-to'));
+        });
+      });
+      var rb = document.getElementById('flowRestart');
+      if (rb) rb.addEventListener('click', reset);
+    }
+
+    function reset() {
+      crumbs = [];
+      renderCrumbs();
+      render('start');
+    }
+
+    reset();
+  })();
+  </script>
+</body>
+</html>

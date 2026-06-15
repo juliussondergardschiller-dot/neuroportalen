@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storhjernen – Neuroportalen</title>
+  <meta name="description" content="Hemisfæresyndromer, afasi, neglekt og de vaskulære territorier. Lokalisér læsioner i storhjernen.">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .compare { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 15px; }
+    .compare caption {
+      text-align: left; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); margin-bottom: 12px;
+    }
+    .compare th, .compare td {
+      text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--color-border); vertical-align: top;
+    }
+    .compare thead th {
+      font-family: var(--font-body); font-weight: 700;
+      background: var(--color-mist); color: var(--color-indigo);
+    }
+    .compare tbody th {
+      font-family: var(--font-body); font-weight: 600;
+      color: var(--color-text-muted); width: 22%;
+    }
+    .placeholder-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); background: var(--color-mist);
+      border: 1px dashed var(--color-periwinkle); border-radius: 20px;
+      padding: 5px 12px; margin-top: 12px;
+    }
+    .takeaway { list-style: none; margin: 1.2em 0; }
+    .takeaway li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 16px; }
+    .takeaway li::before {
+      content: ""; position: absolute; left: 0; top: 8px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--color-periwinkle); box-shadow: 0 0 0 4px var(--color-mist);
+    }
+  </style>
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-meta">
+        <span class="kicker" style="margin-bottom:0;">Lokalisation · Kapitel 5</span>
+        <span class="read-time">⏱ 7 min læsning</span>
+      </div>
+      <h1 style="max-width: 800px;">Storhjernen</h1>
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Kortikale læsioner giver mere end bare svaghed. Afasi, neglekt og synsfeltsudfald er
+        de tegn der peger dig mod den rigtige hemisfære og den rigtige lap.
+      </p>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+        <article class="article-body">
+
+          <div class="clinical-box">
+            <h4>Klinisk relevans</h4>
+            <p>
+              Kortikale tegn er det der adskiller en hemisphærisk læsion fra en subkortikal.
+              Er der afasi, neglekt eller synsfeltsudfald, er du i storhjernen.
+            </p>
+          </div>
+
+          <h2 id="lapper">De fire lapper</h2>
+          <p>
+            <b>Frontallappen</b> står for motorik, planlægning og ekspressivt sprog (Brocas område
+            i den dominante hemisfære). Læsioner giver kontralateral svaghed, motorisk afasi eller
+            personlighedsændring.
+          </p>
+          <p>
+            <b>Parietallappen</b> bearbejder somatosensorik og rumlig opmærksomhed. Læsioner giver
+            kontralateralt føleudfald. I den ikke-dominante hemisfære giver det neglekt (patienten
+            ignorerer den modsatte side af rummet) og ofte anosognosi, hvor patienten ikke
+            erkender sit eget udfald.
+          </p>
+          <p>
+            <b>Temporallappen</b> rummer receptivt sprog (Wernickes område i den dominante
+            hemisfære) og hukommelse. Læsioner giver sensorisk afasi eller hukommelsesproblemer.
+          </p>
+          <p>
+            <b>Occipitallappen</b> er primær synscortex. Læsioner giver kontralateral homonym
+            hemianopsi (tab af det modsatte synsfelt i begge øjne).
+          </p>
+
+          <span class="placeholder-note">Indsæt illustration: de fire lapper med funktioner markeret</span>
+
+          <h2 id="afasi">Afasi i korte træk</h2>
+          <p>
+            <b>Brocas afasi</b> (motorisk): patienten forstår, men kan ikke producere flydende tale.
+            Talen er anstrengt med korte sætninger. Læsionen sidder frontalt i den dominante
+            hemisfære. <b>Wernickes afasi</b> (sensorisk): patienten taler flydende, men
+            indholdet giver ikke mening, og forståelsen er nedsat. Læsionen sidder temporalt.
+            <b>Global afasi</b> rammer begge dele og ses ved store mediainfarkt.
+          </p>
+
+          <h2 id="vaskulaer">Vaskulære territorier</h2>
+          <p>
+            Storhjernen forsynes af tre hovedarterier per side. Når du kender deres territorier,
+            kan du matche det kliniske billede med det ramte kar.
+          </p>
+
+          <table class="compare">
+            <caption>De tre hovedarterier og deres syndromer</caption>
+            <thead>
+              <tr><th scope="col">Arterie</th><th scope="col">Territorium</th><th scope="col">Typiske udfald</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">A. cerebri anterior (ACA)</th><td>Mediale frontal- og parietalregion</td><td>Kontralateral bensvaghed, personlighedsændring</td></tr>
+              <tr><th scope="row">A. cerebri media (MCA)</th><td>Laterale hemisfære inkl. capsula interna</td><td>Kontralateral ansigt/armsvaghed, afasi (dominant) eller neglekt (ikke-dominant), hemianopsi</td></tr>
+              <tr><th scope="row">A. cerebri posterior (PCA)</th><td>Occipital- og medial temporallap</td><td>Kontralateral homonym hemianopsi, hukommelsesudfald</td></tr>
+            </tbody>
+          </table>
+
+          <h2 id="subkortikalt">Subkortikalt og basalganglier</h2>
+          <p>
+            <b>Subkortikale læsioner</b> (capsula interna, hvid substans) giver typisk rent
+            motorisk eller rent sensorisk kontralateralt udfald uden kortikale tegn som afasi
+            eller neglekt. Det ses ved lakunære infarkter.
+          </p>
+          <p>
+            <b>Basalganglier</b> giver bevægeforstyrrelser: tremor i hvile, rigiditet og
+            bradykinesi (parkinsonisme) eller ufrivillige bevægelser som chorea og dystoni.
+            Bemærk at der ikke er parese eller føleudfald.
+          </p>
+
+          <h2 id="opsummering">Opsummering</h2>
+          <ul class="takeaway">
+            <li>Kortikale tegn (afasi, neglekt, synsfeltsudfald) peger mod storhjernen.</li>
+            <li>De fire lapper har hver sin funktionelle signatur.</li>
+            <li>Match udfaldene med de tre vaskulære territorier (ACA, MCA, PCA).</li>
+            <li>Subkortikalt: rent motorisk/sensorisk. Basalganglier: bevægeforstyrrelser.</li>
+          </ul>
+          <p style="margin-top: 24px;">
+            <a href="/lokalisation-hjernestammen.html" class="btn btn--primary">
+              Videre til kapitel 6: Hjernestammen
+            </a>
+          </p>
+
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger
+            følges lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+        </article>
+
+        <aside>
+          <div class="toc">
+            <h5>Indhold</h5>
+            <ul>
+              <li><a href="#lapper">De fire lapper</a></li>
+              <li><a href="#afasi">Afasi</a></li>
+              <li><a href="#vaskulaer">Vaskulære territorier</a></li>
+              <li><a href="#subkortikalt">Subkortikalt og basalganglier</a></li>
+              <li><a href="#opsummering">Opsummering</a></li>
+            </ul>
+          </div>
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 4</span>
+                <h4><a href="/lokalisation-niveauer.html">De anatomiske niveauer</a></h4>
+              </div>
+            </div>
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 6</span>
+                <h4><a href="/lokalisation-hjernestammen.html">Hjernestammen</a></h4>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+</body>
+</html>

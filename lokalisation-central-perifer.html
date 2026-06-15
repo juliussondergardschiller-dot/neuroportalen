@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centralt eller perifert? – Neuroportalen</title>
+  <meta name="description" content="Den vigtigste enkeltskelnen i klinisk neurologi: er læsionen i centralnervesystemet eller det perifere nervesystem, og hvilket mønster afslører svaret?">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- ============================================================
+       SIDE-SPECIFIKKE STILE (figurer, tabel, interaktiv quiz)
+       ============================================================ -->
+  <style>
+    .figure { margin: 2.4em 0; }
+    .figure svg { width: 100%; height: auto; display: block; }
+    .figure__frame {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 20px;
+    }
+    .figure__caption {
+      font-size: 13px; color: var(--color-text-muted);
+      margin-top: 14px; line-height: 1.55;
+    }
+    .figure__caption b { color: var(--color-indigo); font-weight: 700; }
+
+    .placeholder-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); background: var(--color-mist);
+      border: 1px dashed var(--color-periwinkle); border-radius: 20px;
+      padding: 5px 12px; margin-top: 12px;
+    }
+
+    .compare { width: 100%; border-collapse: collapse; margin: 1.6em 0; font-size: 15px; }
+    .compare caption {
+      text-align: left; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-indigo); margin-bottom: 12px;
+    }
+    .compare th, .compare td {
+      text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--color-border); vertical-align: top;
+    }
+    .compare thead th {
+      font-family: var(--font-body); font-weight: 700;
+      background: var(--color-mist); color: var(--color-indigo);
+    }
+    .compare thead th:first-child { background: transparent; color: var(--color-text-muted); }
+    .compare tbody th {
+      font-family: var(--font-body); font-weight: 600;
+      color: var(--color-text-muted); width: 26%;
+    }
+
+    /* Interaktiv case-quiz */
+    .quiz {
+      background: var(--color-mist);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px 24px; margin: 2.4em 0;
+    }
+    .quiz__eyebrow {
+      font-family: var(--font-body); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-indigo);
+    }
+    .quiz__progress { font-size: 13px; color: var(--color-text-muted); margin: 6px 0 16px; }
+    .quiz__case {
+      font-family: var(--font-display); font-weight: 600; font-size: 1.2rem;
+      line-height: 1.35; letter-spacing: -0.01em; color: var(--color-ink); margin-bottom: 18px;
+    }
+    .quiz__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .quiz__btn {
+      font-family: var(--font-body); font-size: 16px; font-weight: 700;
+      color: var(--color-ink); background: var(--color-white);
+      border: 1.5px solid var(--color-border); border-radius: var(--radius);
+      padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s;
+    }
+    .quiz__btn:hover { border-color: var(--color-periwinkle); }
+    .quiz__btn:focus-visible { outline: 3px solid var(--color-periwinkle); outline-offset: 2px; }
+    .quiz__btn[disabled] { cursor: default; opacity: 0.6; }
+    .quiz__btn.is-correct { border-color: var(--color-periwinkle); background: #fff; box-shadow: inset 0 0 0 1.5px var(--color-periwinkle); opacity: 1; }
+    .quiz__btn.is-wrong { border-color: #E0A93B; background: #FFF8E7; opacity: 1; }
+
+    .quiz__feedback { margin-top: 18px; }
+    .quiz__verdict { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .quiz__verdict.ok { color: var(--color-indigo); }
+    .quiz__verdict.no { color: #7A6020; }
+    .quiz__why { font-size: 15px; color: var(--color-ink); margin-bottom: 16px; }
+    .quiz__next {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      color: var(--color-white); background: var(--color-periwinkle);
+      border: none; border-radius: 6px; padding: 10px 18px; cursor: pointer;
+    }
+    .quiz__next:hover { background: var(--color-indigo); }
+    .quiz__restart {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      color: var(--color-text-muted); background: none; border: none; cursor: pointer; padding: 0; margin-top: 4px;
+    }
+    .quiz__restart:hover { color: var(--color-indigo); }
+    .quiz__restart svg { width: 15px; height: 15px; }
+
+    .takeaway { list-style: none; margin: 1.2em 0; }
+    .takeaway li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 16px; }
+    .takeaway li::before {
+      content: ""; position: absolute; left: 0; top: 8px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--color-periwinkle); box-shadow: 0 0 0 4px var(--color-mist);
+    }
+
+    @media (max-width: 480px) { .quiz__btns { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .quiz__btn, .card { transition: none; } }
+  </style>
+</head>
+<body>
+
+  <div id="topbar"></div>
+  <div id="navbar"></div>
+
+  <!-- ARTIKEL-HEADER -->
+  <section style="padding: 64px 0 0; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+
+      <div class="article-meta">
+        <span class="kicker" style="margin-bottom:0;">Lokalisation · Kapitel 2</span>
+        <span class="read-time">⏱ 11 min læsning</span>
+      </div>
+
+      <h1 style="max-width: 800px;">Centralt eller perifert?</h1>
+
+      <p style="font-size: 20px; color: var(--color-ink); margin-top: 16px; max-width: 680px; line-height: 1.6;">
+        Det er den vigtigste enkeltskelnen i klinisk neurologi. Får du den rigtigt, falder
+        halvdelen af kortet væk, og resten bliver til at overskue.
+      </p>
+
+      <div style="display:flex; align-items:center; gap:12px; margin-top:32px; padding-bottom:32px; border-bottom: 1px solid var(--color-border);">
+        <div style="width:40px; height:40px; border-radius:50%; background:var(--color-mist); overflow:hidden;">
+          <img src="/assets/images/julius.jpg" alt="Julius S. Schiller" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:14px;">Julius S. Schiller</div>
+          <div style="font-size:13px; color:var(--color-text-muted);">Stud.med. · Juni 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDHOLD + SIDEBAR -->
+  <section style="padding: 48px 0 96px; background: var(--color-bone);">
+    <div class="container" style="max-width: 900px;">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <!-- VIDEO -->
+          <div class="video-placeholder" style="margin-bottom: 12px;">
+            <img src="/assets/images/Neuro_overview.png" alt="Videolektion: centralt eller perifert"
+                 onerror="this.style.background='var(--color-mist)'">
+            <div class="video-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <span class="placeholder-note">Indsæt video: centralt vs. perifert (2–4 min)</span>
+
+          <div class="clinical-box" style="margin-top: 32px;">
+            <h4>Klinisk relevans</h4>
+            <p>
+              Spørgsmålet “centralt eller perifert?” besvares sjældent af ét enkelt fund, men af
+              <em>mønsteret</em>: hvilke funktioner der svigter sammen, og hvordan udfaldet er fordelt.
+              Læs altid fundene som en helhed, ikke hver for sig.
+            </p>
+          </div>
+
+          <!-- ── 1 ── -->
+          <h2 id="begreber">Hvad betyder centralt og perifert?</h2>
+          <p>
+            <b>Centralnervesystemet (CNS)</b> er hjernen og rygmarven. <b>Det perifere nervesystem
+            (PNS)</b> er alt det udenfor: nerverødderne, plexus, de perifere nerver, den neuromuskulære
+            overgang og musklerne. Skellet er ikke kun anatomisk pedanteri. De to verdener opfører
+            sig næsten modsat, når de rammes.
+          </p>
+          <p>
+            Grænsen går, hvor nerveroden forlader rygmarven. Forhorncellen, som sender signalet ud i
+            kroppen, har sin cellekrop inde i CNS, men dens udløber løber perifert. Det er derfor,
+            forhorncellesygdom (fx ALS) kan blande tegn fra begge verdener. Mere om den fælde senere.
+          </p>
+
+          <div class="figure">
+            <div class="figure__frame">
+              <!-- FIGUR 1: CNS vs PNS-kort (original, brand-farvet SVG) -->
+              <svg viewBox="0 0 760 380" role="img" aria-label="Centralnervesystemet (hjerne og rygmarv) over for det perifere nervesystem (rod, nerve, neuromuskulær overgang og muskel)">
+                <!-- CNS-blok -->
+                <text x="40" y="44" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5" fill="var(--color-periwinkle)">CENTRALT (CNS)</text>
+                <ellipse cx="150" cy="118" rx="66" ry="44" fill="var(--color-periwinkle)" opacity="0.9"/>
+                <text x="150" y="123" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="15" font-weight="700" fill="#fff">Hjerne</text>
+                <rect x="128" y="158" width="44" height="150" rx="22" fill="var(--color-periwinkle)" opacity="0.9"/>
+                <text x="150" y="238" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" fill="#fff" transform="rotate(-90 150 238)">Rygmarv</text>
+
+                <!-- grænse -->
+                <line x1="210" y1="120" x2="210" y2="320" stroke="var(--color-ink)" stroke-width="1.5" stroke-dasharray="4 5"/>
+                <text x="210" y="340" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12" font-style="italic" fill="var(--color-text-muted)">grænsen: roden forlader CNS</text>
+
+                <!-- PNS-kæde -->
+                <text x="470" y="44" font-family="Hanken Grotesk, sans-serif" font-size="13" font-weight="700" letter-spacing="0.5" fill="var(--color-indigo)">PERIFERT (PNS)</text>
+                <line x1="172" y1="230" x2="660" y2="230" stroke="var(--color-indigo)" stroke-width="2.5"/>
+                <!-- noder -->
+                <circle cx="250" cy="230" r="10" fill="var(--color-indigo)"/>
+                <text x="250" y="206" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="var(--color-ink)">Nerverod</text>
+                <circle cx="410" cy="230" r="10" fill="var(--color-indigo)"/>
+                <text x="410" y="206" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="var(--color-ink)">Perifer nerve</text>
+                <circle cx="545" cy="230" r="10" fill="var(--color-indigo)"/>
+                <text x="545" y="198" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="var(--color-ink)">Neuromuskulær</text>
+                <text x="545" y="212" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="700" fill="var(--color-ink)">overgang</text>
+                <ellipse cx="660" cy="230" rx="44" ry="26" fill="var(--color-indigo)" opacity="0.85"/>
+                <text x="660" y="235" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="14" font-weight="700" fill="#fff">Muskel</text>
+              </svg>
+            </div>
+            <p class="figure__caption">
+              <b>Figur 1.</b> De to verdener. Grænsen ligger der, hvor nerveroden forlader rygmarven.
+              Forhorncellen sidder lige på vippen, og derfor kan sygdom dér blande centrale og perifere tegn.
+            </p>
+          </div>
+
+          <!-- ── 2 ── -->
+          <h2 id="hvorfor">Hvorfor det er den vigtigste skelnen</h2>
+          <p>
+            To grunde. For det første giver centrale og perifere læsioner næsten modsatte signaturer
+            ved undersøgelsen. Så snart du har afgjort forken, har du elimineret halvdelen af neuroaksen.
+          </p>
+          <p>
+            For det andet er listen over mulige <em>årsager</em> helt forskellig i de to verdener.
+            Centralt tænker du apopleksi, dissemineret sklerose, tumor og blødning. Perifert tænker
+            du radikulopati, polyneuropati, myasteni og myopati. At vælge den rigtige verden styrer
+            altså både din videre undersøgelse og din differentialdiagnose.
+          </p>
+
+          <!-- ── 3 ── -->
+          <h2 id="moenster">Mønsteret afslører det</h2>
+          <p>
+            Det vigtigste princip i dette kapitel: stol ikke på ét fund. Læs kombinationen på tværs
+            af motorik, reflekser, tonus, følesans og ledsagefund. Her er de typiske signaturer:
+          </p>
+
+          <table class="compare">
+            <caption>Centralt vs. perifert: signaturer på tværs af systemer</caption>
+            <thead>
+              <tr><th scope="col">Træk</th><th scope="col">Centralt (CNS)</th><th scope="col">Perifert (PNS)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Svaghedsmønster</th><td>Hele lemmer, pyramidalt fordelt</td><td>Efter rod, nerve eller muskel (fokalt, distalt eller proksimalt)</td></tr>
+              <tr><th scope="row">Reflekser</th><td>Øgede</td><td>Nedsatte (ved rod/nerve)</td></tr>
+              <tr><th scope="row">Tonus</th><td>Øget (spasticitet)</td><td>Normal eller nedsat</td></tr>
+              <tr><th scope="row">Sensorisk mønster</th><td>Hemisensorisk, sensorisk niveau eller krydset</td><td>Dermatom, enkelt nerve eller handske-strømpe</td></tr>
+              <tr><th scope="row">Ledsagefund</th><td>Afasi, neglekt, synsfeltsudfald, blære/tarm</td><td>Fascikulationer, atrofi, udtrætning</td></tr>
+            </tbody>
+          </table>
+
+          <h3 id="motorisk">Det motoriske spor</h3>
+          <p>
+            Motorikken er arbejdshesten. Centrale læsioner rammer det øvre motorneuron og giver øgede
+            reflekser, øget tonus og en pyramidal fordeling af svagheden. Perifere læsioner i rod og
+            nerve rammer det nedre motorneuron og giver det modsatte: nedsatte reflekser, slap tonus
+            og tidlig atrofi. Selve mekanismen bag hvert fund tager vi i næste kapitel.
+          </p>
+
+          <h3 id="sensorisk">Det sensoriske spor</h3>
+          <p>
+            Følesansens fordeling er næsten lige så afslørende. Centralt ser du en hel kropshalvdel
+            (hemisensorisk), et vandret niveau på kroppen (rygmarv) eller et krydset mønster
+            (hjernestamme). Perifert følger udfaldet i stedet et dermatom, en enkelt nerves område
+            eller en handske-strømpe-fordeling.
+          </p>
+
+          <div class="figure">
+            <div class="figure__frame">
+              <!-- FIGUR 2: Sensoriske mønstre (skematisk, original SVG) -->
+              <svg viewBox="0 0 760 360" role="img" aria-label="Tre skematiske sensoriske mønstre: hemisensorisk er centralt, dermatom og handske-strømpe er perifert">
+                <!-- definer en figur via genbrugte former pr. panel -->
+                <!-- PANEL 1: hemisensorisk (central) cx=150 -->
+                <g>
+                  <circle cx="150" cy="60" r="22" fill="#d8d6e2"/>
+                  <rect x="120" y="86" width="60" height="110" rx="14" fill="#d8d6e2"/>
+                  <rect x="92"  y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="186" y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="124" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <rect x="154" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <!-- overlay: hele venstre side -->
+                  <rect x="86" y="36" width="64" height="262" fill="var(--color-periwinkle)" opacity="0.34"/>
+                  <line x1="150" y1="36" x2="150" y2="298" stroke="var(--color-ink)" stroke-width="1" stroke-dasharray="3 4"/>
+                  <text x="150" y="322" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="13.5" font-weight="700" fill="var(--color-periwinkle)">Hemisensorisk</text>
+                  <text x="150" y="340" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">én hel side · centralt</text>
+                </g>
+                <!-- PANEL 2: dermatom (rod) cx=380 -->
+                <g>
+                  <circle cx="380" cy="60" r="22" fill="#d8d6e2"/>
+                  <rect x="350" y="86" width="60" height="110" rx="14" fill="#d8d6e2"/>
+                  <rect x="322" y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="416" y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="354" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <rect x="384" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <!-- overlay: vandret bånd -->
+                  <rect x="350" y="120" width="60" height="32" fill="var(--color-indigo)" opacity="0.4"/>
+                  <text x="380" y="322" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="13.5" font-weight="700" fill="var(--color-indigo)">Dermatom / bånd</text>
+                  <text x="380" y="340" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">nerverod · perifert</text>
+                </g>
+                <!-- PANEL 3: handske-strømpe (polyneuropati) cx=610 -->
+                <g>
+                  <circle cx="610" cy="60" r="22" fill="#d8d6e2"/>
+                  <rect x="580" y="86" width="60" height="110" rx="14" fill="#d8d6e2"/>
+                  <rect x="552" y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="646" y="92" width="22" height="86" rx="11" fill="#d8d6e2"/>
+                  <rect x="584" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <rect x="614" y="196" width="22" height="96" rx="11" fill="#d8d6e2"/>
+                  <!-- overlay: hænder + fødder -->
+                  <rect x="552" y="150" width="22" height="28" rx="11" fill="var(--color-indigo)" opacity="0.45"/>
+                  <rect x="646" y="150" width="22" height="28" rx="11" fill="var(--color-indigo)" opacity="0.45"/>
+                  <rect x="584" y="264" width="22" height="28" rx="11" fill="var(--color-indigo)" opacity="0.45"/>
+                  <rect x="614" y="264" width="22" height="28" rx="11" fill="var(--color-indigo)" opacity="0.45"/>
+                  <text x="610" y="322" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="13.5" font-weight="700" fill="var(--color-indigo)">Handske-strømpe</text>
+                  <text x="610" y="340" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" fill="var(--color-text-muted)">polyneuropati · perifert</text>
+                </g>
+              </svg>
+            </div>
+            <p class="figure__caption">
+              <b>Figur 2.</b> Følesansens fordeling peger ofte direkte på verdenen. Figurerne er
+              skematiske. Tænk på dem som mønstre, ikke præcise kort.
+            </p>
+          </div>
+
+          <h3 id="ledsage">Ledsagefund der afgør det</h3>
+          <p>
+            Nogle fund hører kun hjemme i den ene verden. Afasi, neglekt, synsfeltsudfald og påvirket
+            bevidsthed er kortikale og dermed centrale. Påvirket blære og tarm med et sensorisk niveau
+            peger på rygmarven. Fascikulationer og udtalt atrofi peger perifert, og udtrættelig svaghed
+            uden føleudfald peger specifikt på den neuromuskulære overgang.
+          </p>
+
+          <!-- ── 4 ── -->
+          <h2 id="perifert-nuance">Det perifere er ikke kun “nedre motorneuron”</h2>
+          <p>
+            En vigtig nuance: “perifert” er en familie, ikke ét billede. Rod og nerve giver de
+            klassiske nedre-motorneuron-tegn, men de to sidste niveauer skiller sig ud. Den
+            neuromuskulære overgang giver <b>udtrættelig</b> svaghed uden sensoriske udfald (fx
+            myasthenia gravis). Musklen giver <b>symmetrisk, proksimal</b> svaghed med bevarede
+            reflekser og normal følesans (myopati). Begge er perifere, men ingen af dem ligner en
+            typisk nerveskade. Vi folder dem ud i kapitel 8.
+          </p>
+
+          <!-- ── 5 ── -->
+          <h2 id="oevelse">Prøv selv: centralt eller perifert?</h2>
+          <p>Læs den korte beskrivelse, og afgør verdenen. Du får begrundelsen bagefter.</p>
+
+          <div class="quiz" id="cpQuiz" aria-live="polite">
+            <div class="quiz__eyebrow">Interaktiv øvelse</div>
+            <div class="quiz__progress" id="quizProgress"></div>
+            <div id="quizBody"></div>
+          </div>
+
+          <!-- ── 6 ── -->
+          <h2 id="faldgruber">Faldgruber</h2>
+          <p>
+            <b>Akut centralt kan se perifert ud.</b> I de første timer efter en stor apopleksi, eller
+            i spinalt shock, kan en central læsion give slap tonus og svage reflekser. De øvre-motorneuron-tegn
+            kommer først senere. Tidlig slaphed udelukker derfor ikke en central årsag.
+          </p>
+          <p>
+            <b>Nogle sygdomme rammer begge verdener.</b> Den klassiske er ALS, hvor du finder centrale
+            tegn (spasticitet, hyperrefleksi) og perifere tegn (atrofi, fascikulationer) på én gang.
+            Kombinationen er i sig selv et stærkt spor.
+          </p>
+          <p>
+            <b>Cauda equina snyder.</b> Anatomisk er det perifere nerverødder, men billedet med rygsmerter,
+            ridebukseanæstesi og påvirket blære/tarm kræver samme akutte respekt som en rygmarvslæsion.
+            Lad ikke ordet “perifert” sløve årvågenheden.
+          </p>
+
+          <div class="video-placeholder" style="aspect-ratio:16/9; margin-top: 24px;">
+            <img src="/assets/images/video_placeholder.png" alt="" onerror="this.style.background='var(--color-mist)'">
+          </div>
+          <span class="placeholder-note">Indsæt billede: eksempel på blandet billede (fx ALS) eller cauda equina-MR</span>
+
+          <!-- ── 7 ── -->
+          <h2 id="opsummering">Opsummering og næste skridt</h2>
+          <ul class="takeaway">
+            <li>Den vigtigste fork: <b>centralt (CNS)</b> eller <b>perifert (PNS)</b>.</li>
+            <li>Grænsen går, hvor nerveroden forlader rygmarven.</li>
+            <li>Afgør det på <b>mønsteret</b>: motorik, reflekser, tonus, følesans og ledsagefund tilsammen.</li>
+            <li>“Perifert” er en familie: rod/nerve giver NMN-tegn, mens NMJ og muskel har egne signaturer.</li>
+            <li>Pas på akut slaphed, blandede billeder (ALS) og cauda equina.</li>
+          </ul>
+          <p>
+            Det motoriske spor er det stærkeste enkeltværktøj til denne skelnen. I næste kapitel går vi
+            i dybden med det: øvre vs. nedre motorneuron, hvert fund og mekanismen bag.
+          </p>
+          <p style="margin-top: 24px;">
+            <a href="/lokalisation-omn-nmn.html" class="btn btn--primary">
+              Videre til kapitel 3: Øvre vs. nedre motorneuron
+            </a>
+          </p>
+
+          <div class="disclaimer-box">
+            <strong>OBS:</strong> Neuroportalen er et undervisningsredskab. Ved kliniske beslutninger
+            følges lokale instrukser og nationale retningslinjer (NNBV).
+            <a href="https://www.nnbv.dk" style="color: inherit; text-decoration: underline;">Se NNBV →</a>
+          </div>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside>
+          <div class="toc">
+            <h5>Indhold</h5>
+            <ul>
+              <li><a href="#begreber">Hvad betyder centralt og perifert?</a></li>
+              <li><a href="#hvorfor">Hvorfor det er vigtigst</a></li>
+              <li><a href="#moenster">Mønsteret afslører det</a></li>
+              <li><a href="#perifert-nuance">Perifert er en familie</a></li>
+              <li><a href="#oevelse">Prøv selv</a></li>
+              <li><a href="#faldgruber">Faldgruber</a></li>
+              <li><a href="#opsummering">Opsummering</a></li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 32px;">
+            <h5 style="font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:8px;">Relaterede emner</h5>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 1</span>
+                <h4><a href="/lokalisation-introduktion.html">Introduktion til lokalisation</a></h4>
+              </div>
+            </div>
+
+            <div class="related-card">
+              <div style="width:72px; height:72px; border-radius:var(--radius); background:var(--color-mist); flex-shrink:0;"></div>
+              <div class="related-card__text">
+                <span>Lokalisation · Kapitel 3</span>
+                <h4><a href="/lokalisation-omn-nmn.html">Øvre vs. nedre motorneuron</a></h4>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="/js/components.js"></script>
+
+  <!-- ============================================================
+       INTERAKTIV CASE-QUIZ: centralt eller perifert?
+       Ren læringsmodel, ikke et klinisk værktøj.
+       ============================================================ -->
+  <script>
+  (function () {
+    var cases = [
+      { text: "55-årig med pludselig kraftnedsættelse i højre arm og ben, øgede reflekser samme side og talebesvær (afasi).",
+        answer: "central",
+        why: "Et kortikalt tegn (afasi) sammen med hyperrefleksi peger entydigt centralt." },
+      { text: "40-årig med gradvist tiltagende snurren og svaghed i begge fødder, ophævede ankelreflekser og handske-strømpe-føleudfald.",
+        answer: "perifer",
+        why: "Distalt symmetrisk udfald, hyporefleksi og handske-strømpe-mønster peger perifert (polyneuropati)." },
+      { text: "30-årig med dobbeltsyn og hængende øjenlåg, der forværres op ad dagen. Normal følesans og normale reflekser.",
+        answer: "perifer",
+        why: "Udtrættelig svaghed uden sensoriske udfald peger på den neuromuskulære overgang, altså perifert i bred forstand." },
+      { text: "60-årig med et sensorisk niveau ved navlen, svaghed i begge ben og urinretention.",
+        answer: "central",
+        why: "Et sensorisk niveau sammen med blærepåvirkning peger på rygmarven, altså centralt." },
+      { text: "50-årig med smerter fra lænden ned i venstre ben i et bånd, svagt fodløft og nedsat akillesrefleks samme side.",
+        answer: "perifer",
+        why: "Dermatom- og myotom-mønster med hyporefleksi peger på en nerverod, altså perifert." }
+    ];
+
+    var quiz = document.getElementById('cpQuiz');
+    if (!quiz) return;
+    var body = document.getElementById('quizBody');
+    var prog = document.getElementById('quizProgress');
+    var i = 0, score = 0, answered = false;
+
+    function restartSVG() {
+      return '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M5 9a7 7 0 0111-3m3 8a7 7 0 01-11 3"/></svg>';
+    }
+
+    function renderCase() {
+      answered = false;
+      prog.textContent = 'Case ' + (i + 1) + ' af ' + cases.length;
+      var c = cases[i];
+      body.innerHTML =
+        '<div class="quiz__case">' + c.text + '</div>' +
+        '<div class="quiz__btns">' +
+          '<button class="quiz__btn" type="button" data-pick="central">Centralt</button>' +
+          '<button class="quiz__btn" type="button" data-pick="perifer">Perifert</button>' +
+        '</div>' +
+        '<div class="quiz__feedback" id="quizFb"></div>';
+      Array.prototype.forEach.call(body.querySelectorAll('.quiz__btn'), function (btn) {
+        btn.addEventListener('click', function () { pick(this.getAttribute('data-pick'), this); });
+      });
+    }
+
+    function pick(choice, btn) {
+      if (answered) return;
+      answered = true;
+      var c = cases[i];
+      var correct = (choice === c.answer);
+      if (correct) score++;
+      Array.prototype.forEach.call(body.querySelectorAll('.quiz__btn'), function (b) {
+        b.setAttribute('disabled', 'disabled');
+        if (b.getAttribute('data-pick') === c.answer) b.classList.add('is-correct');
+      });
+      if (!correct) btn.classList.add('is-wrong');
+
+      var verdict = correct ? 'Rigtigt.' : 'Ikke helt.';
+      var cls = correct ? 'ok' : 'no';
+      var fb = document.getElementById('quizFb');
+      var last = (i === cases.length - 1);
+      fb.innerHTML =
+        '<div class="quiz__verdict ' + cls + '">' + verdict + '</div>' +
+        '<div class="quiz__why">' + c.why + '</div>' +
+        (last
+          ? '<div class="quiz__why" style="font-weight:600;">Du ramte ' + (correct ? score : score) + ' af ' + cases.length + ' rigtigt.</div>' +
+            '<button class="quiz__restart" type="button" id="quizRestart">' + restartSVG() + ' Prøv igen</button>'
+          : '<button class="quiz__next" type="button" id="quizNext">Næste case</button>');
+
+      var nx = document.getElementById('quizNext');
+      if (nx) nx.addEventListener('click', function () { i++; renderCase(); });
+      var rs = document.getElementById('quizRestart');
+      if (rs) rs.addEventListener('click', function () { i = 0; score = 0; renderCase(); });
+    }
+
+    renderCase();
+  })();
+  </script>
+</body>
+</html>
